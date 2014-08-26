@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75f1f853-e9df-4414-940b-1ea6d219624b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/lessc/lessc.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/css/less/app.variables.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/a0.jpg" afterPath="$PROJECT_DIR$/img/a0.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/less/app.layout.less" afterPath="$PROJECT_DIR$/css/less/app.layout.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/less/app.less" afterPath="$PROJECT_DIR$/css/less/app.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/app.css" afterPath="$PROJECT_DIR$/css/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/less/app.css" afterPath="$PROJECT_DIR$/css/less/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/less/app.mixins.css" afterPath="$PROJECT_DIR$/css/less/app.mixins.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/less/app.mixins.less" afterPath="$PROJECT_DIR$/css/less/app.mixins.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/less/app.nav.less" afterPath="$PROJECT_DIR$/css/less/app.nav.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/less/app.variables.less" afterPath="$PROJECT_DIR$/css/less/app.variables.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/blocks/aside.html" afterPath="$PROJECT_DIR$/tpl/blocks/aside.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers.js" afterPath="$PROJECT_DIR$/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/l10n/en.json" afterPath="$PROJECT_DIR$/l10n/en.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/blocks/header.html" afterPath="$PROJECT_DIR$/tpl/blocks/header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/blocks/nav.html" afterPath="$PROJECT_DIR$/tpl/blocks/nav.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="PortalCertidoes.iws" />
@@ -50,21 +39,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nav.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tpl/blocks/nav.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.75" vertical-offset="330" max-vertical-offset="4215">
-              <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="en.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/l10n/en.json">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-10.625" vertical-offset="60" max-vertical-offset="1170">
               <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.mixins.less" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/less/app.mixins.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.54545456" vertical-offset="5751" max-vertical-offset="6240">
+              <caret line="399" column="21" selection-start-line="399" selection-start-column="21" selection-end-line="399" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -93,19 +82,11 @@
       <file leaf-file-name="app.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="33674" max-vertical-offset="59295">
-              <caret line="2253" column="0" selection-start-line="2253" selection-start-column="0" selection-end-line="2258" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.colors.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/less/app.colors.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.375" vertical-offset="975" max-vertical-offset="1425">
-              <caret line="72" column="27" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="33764" max-vertical-offset="59370">
+              <caret line="2259" column="0" selection-start-line="2258" selection-start-column="0" selection-end-line="2263" selection-end-column="1" />
+              <folding>
+                <marker date="1409085359000" expanded="true" signature="101:239" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,11 +101,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="header.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tpl/blocks/header.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5944056" vertical-offset="825" max-vertical-offset="2655">
+            <state vertical-scroll-proportion="-10.625" vertical-offset="825" max-vertical-offset="2655">
               <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.layout.less" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/less/app.layout.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.125" vertical-offset="3678" max-vertical-offset="5685">
+              <caret line="255" column="23" selection-start-line="255" selection-start-column="23" selection-end-line="255" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -160,14 +151,14 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/css/less/app.css" />
         <option value="$PROJECT_DIR$/js/controllers.js" />
-        <option value="$PROJECT_DIR$/css/less/app.layout.less" />
         <option value="$PROJECT_DIR$/css/less/app.variables.less" />
         <option value="$PROJECT_DIR$/tpl/blocks/aside.html" />
-        <option value="$PROJECT_DIR$/css/less/app.mixins.less" />
         <option value="$PROJECT_DIR$/css/less/app.nav.less" />
         <option value="$PROJECT_DIR$/l10n/en.json" />
         <option value="$PROJECT_DIR$/tpl/blocks/nav.html" />
         <option value="$PROJECT_DIR$/tpl/blocks/header.html" />
+        <option value="$PROJECT_DIR$/css/less/app.layout.less" />
+        <option value="$PROJECT_DIR$/css/less/app.mixins.less" />
       </list>
     </option>
   </component>
@@ -515,7 +506,7 @@
     <property name="options.searchVisible" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/css" />
     <property name="FullScreen" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="nav&#9;FILE&#9;file:///Users/Demo/Desktop/PortalCertidoes/tpl/blocks/nav.html&#10;portle&#9;FILE&#9;file:///Users/Demo/Desktop/PortalCertidoes/tpl/ui_portlet.html&#10;nav.h&#9;FILE&#9;file:///Users/Demo/Desktop/PortalCertidoes/tpl/blocks/nav.html&#10;app.js&#9;FILE&#9;file:///Users/Demo/Desktop/PortalCertidoes/js/app.js&#10;side&#9;FILE&#9;file:///Users/Demo/Desktop/PortalCertidoes/tpl/blocks/aside.html" />
+    <property name="SearchEverywhereHistoryKey" value="mix&#9;FILE&#9;file:///Users/Demo/Desktop/PortalCertidoes/css/less/app.mixins.less&#10;nav&#9;FILE&#9;file:///Users/Demo/Desktop/PortalCertidoes/tpl/blocks/nav.html&#10;portle&#9;FILE&#9;file:///Users/Demo/Desktop/PortalCertidoes/tpl/ui_portlet.html&#10;nav.h&#9;FILE&#9;file:///Users/Demo/Desktop/PortalCertidoes/tpl/blocks/nav.html&#10;app.js&#9;FILE&#9;file:///Users/Demo/Desktop/PortalCertidoes/js/app.js&#10;side&#9;FILE&#9;file:///Users/Demo/Desktop/PortalCertidoes/tpl/blocks/aside.html" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -586,7 +577,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33887467" sideWeight="0.49964765" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33887467" sideWeight="0.49964765" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3255814" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -824,14 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/less/app.layout.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.25" vertical-offset="2238" max-vertical-offset="5685">
-          <caret line="172" column="22" selection-start-line="172" selection-start-column="22" selection-end-line="172" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="479" max-vertical-offset="4740">
@@ -848,14 +831,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/less/app.mixins.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.083333" vertical-offset="5668" max-vertical-offset="6150">
-          <caret line="402" column="25" selection-start-line="402" selection-start-column="25" selection-end-line="402" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/less/app.colors.less">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.375" vertical-offset="975" max-vertical-offset="1425">
@@ -864,11 +839,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/blocks/nav.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.75" vertical-offset="330" max-vertical-offset="4215">
+          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/blocks/aside.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="18.125" vertical-offset="600" max-vertical-offset="1140">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/ui_portlet.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2805">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/less/app.layout.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.125" vertical-offset="3678" max-vertical-offset="5685">
+          <caret line="255" column="23" selection-start-line="255" selection-start-column="23" selection-end-line="255" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/blocks/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.625" vertical-offset="825" max-vertical-offset="2655">
+          <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/less/app.variables.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="1440">
+          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="33674" max-vertical-offset="59295">
-          <caret line="2253" column="0" selection-start-line="2253" selection-start-column="0" selection-end-line="2258" selection-end-column="1" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="33764" max-vertical-offset="59370">
+          <caret line="2259" column="0" selection-start-line="2258" selection-start-column="0" selection-end-line="2263" selection-end-column="1" />
+          <folding>
+            <marker date="1409085359000" expanded="true" signature="101:239" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -896,42 +921,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/less/app.variables.less">
+    <entry file="file://$PROJECT_DIR$/css/less/app.mixins.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="1440">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/ui_portlet.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2805">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/blocks/aside.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="18.125" vertical-offset="600" max-vertical-offset="1140">
-          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/blocks/nav.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.75" vertical-offset="330" max-vertical-offset="4215">
-          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/blocks/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5944056" vertical-offset="825" max-vertical-offset="2655">
-          <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.54545456" vertical-offset="5751" max-vertical-offset="6240">
+          <caret line="399" column="21" selection-start-line="399" selection-start-column="21" selection-end-line="399" selection-end-column="21" />
           <folding />
         </state>
       </provider>
