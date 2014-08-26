@@ -16,10 +16,10 @@
 "aside" : {
   "nav" : {
     "HEADER" : "Navigation",
-    "DASHBOARD" : "Dashboard",
-    "CALENDAR" : "Calendar",
-    "EMAIL" : "Email",
-    "WIDGETS" : "Widgets",
+    "DASHBOARD" : "INICIAL",
+    "CALENDAR" : "MINHAS CERTIDÕES",
+    "EMAIL" : "MINHAS EMPRESAS",
+    "WIDGETS" : "EMPRESAS PARCEIRAS",
     "components" : {
       "COMPONENTS" : "Components",
       "ui_kits" : {

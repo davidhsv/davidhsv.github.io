@@ -1,0 +1,9 @@
+.bg-white .nav > li:hover > a,
+.bg-white .nav > li:focus > a,
+.bg-white .nav > li.active > a {
+  background-color: #edf1f2;
+  padding-left: 20px;
+  border-left-color: #325079;
+  border-left-style: solid;
+  border-left-width: 5px;
+}
