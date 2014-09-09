@@ -47,10 +47,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41958043" vertical-offset="750" max-vertical-offset="3240">
+            <state vertical-scroll-proportion="-7.5" vertical-offset="750" max-vertical-offset="3240">
               <caret line="62" column="45" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="45" />
               <folding />
             </state>
@@ -67,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="yasiv.fb.min.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="yasiv.fb.min.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/yasiv.fb.min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2834" max-vertical-offset="15225">
-              <caret line="320" column="187" selection-start-line="320" selection-start-column="187" selection-end-line="320" selection-end-column="187" />
+            <state vertical-scroll-proportion="0.26710817" vertical-offset="4634" max-vertical-offset="15195">
+              <caret line="317" column="0" selection-start-line="317" selection-start-column="0" selection-end-line="317" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -155,8 +155,8 @@
         <option value="$PROJECT_DIR$/tpl/blocks/header.html" />
         <option value="$PROJECT_DIR$/css/less/app.layout.less" />
         <option value="$PROJECT_DIR$/css/less/app.mixins.less" />
-        <option value="$PROJECT_DIR$/scripts/yasiv.fb.min.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/scripts/yasiv.fb.min.js" />
       </list>
     </option>
   </component>
@@ -801,18 +801,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/yasiv.fb.min.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2834" max-vertical-offset="15225">
-          <caret line="320" column="187" selection-start-line="320" selection-start-column="187" selection-end-line="320" selection-end-column="187" />
+        <state vertical-scroll-proportion="-7.5" vertical-offset="750" max-vertical-offset="3240">
+          <caret line="62" column="45" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/scripts/yasiv.fb.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41958043" vertical-offset="750" max-vertical-offset="3240">
-          <caret line="62" column="45" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.26710817" vertical-offset="4634" max-vertical-offset="15195">
+          <caret line="317" column="0" selection-start-line="317" selection-start-column="0" selection-end-line="317" selection-end-column="0" />
           <folding />
         </state>
       </provider>
