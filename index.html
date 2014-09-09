@@ -1,38 +1,209 @@
-<!DOCTYPE html>
-<html lang="en" data-ng-app="app">
-<head>
-  <meta charset="utf-8" />
-  <title>Be Angular | Bootstrap Admin Web App with AngularJS</title>
-  <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-  <link rel="stylesheet" href="css/animate.css" type="text/css" />
-  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
-  <link rel="stylesheet" href="css/simple-line-icons.css" type="text/css" />
-  <link rel="stylesheet" href="css/font.css" type="text/css" />
-  <link rel="stylesheet" href="css/app.css" type="text/css" />
-</head>
-<body ng-controller="AppCtrl">
-  <div class="app" id="app" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded}" ui-view></div>
-  <!-- jQuery -->
-  <script src="js/jquery/jquery.min.js"></script>
-  <!-- Angular -->
-  <script src="js/angular/angular.min.js"></script>
-  <script src="js/angular/angular-cookies.min.js"></script>
-  <script src="js/angular/angular-animate.min.js"></script>
-  <script src="js/angular/angular-ui-router.min.js"></script>
-  <script src="js/angular/angular-translate.js"></script>
-  <script src="js/angular/ngStorage.min.js"></script>
-  <script src="js/angular/ui-load.js"></script>
-  <script src="js/angular/ui-jq.js"></script>
-  <script src="js/angular/ui-validate.js"></script>
-  <script src="js/angular/ui-bootstrap-tpls.min.js"></script>
-  <!-- App -->
-  <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
-  <!-- Lazy loading -->
-</body>
-</html>
+
+<!-- saved from url=(0029)http://www.yasiv.com/facebook -->
+<html xmlns:fb="http://ogp.me/ns/fb#"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="Description" content="Facebook visualization shows network of your friends and allows you to view networks of friends of your friends.">
+        <meta name="keywords" content="Facebook, Facebook visualization, Friends network, Yasiv, Andrei Kashcha, anvaka">
+        <meta name="author" content="Andrei Kashcha">
+        <meta name="title" content="Facebook Friends Visualization - YASIV">
+        
+        <title>Facebook Friends Visualization - YASIV</title>
+        
+        <link type="text/css" href="./Facebook Friends Visualization - YASIV_files/basic.css" rel="stylesheet" media="screen">
+        <style>
+            body { font-size: 11px; font-family: "lucida grande",tahoma,verdana,arial,sans-serif; color:#333; line-height: 1.28; text-align: left;direction: ltr;}
+            .logo { font-size: 20px;}
+            #footer { position: absolute; bottom : 0px; left : 50%; margin-left: -136px; margin-bottom: 5px; font-size: 14px; }
+            #preview { display: none; position: absolute; top: 37px; width: 360px; height: 262px; background: black; left: 5px; border: 3px solid #666;  }
+            #status { height: 26px; width:100%; border-top: 1px solid #222;}
+            #header { background: #369; height: 28px; border-bottom: 1px solid rgb(95, 153, 207); color: white; }
+            #log { background: white; color: black;}
+            a { color : #4183C4; text-decoration: none; cursor: pointer;}
+            .tagLine { color: #888; font-size: 10px; }
+            .no_webgl { color: darkRed;position: absolute;bottom: 24px;width: 400px;font-size: 12px;left: 10px;display: none;}
+            .what_is_yasiv { color: #203360; font-size: 20px;}
+            .and_why_it_is_cool { color: #203360; font-size: 15px; margin-bottom: 8px;}
+            #loginArea { display: none; position: absolute; height: 50px; top: 36px; left: 50%; margin-left: -322px; text-align: center;}
+            #hoveredName {position: absolute; top: 40px; left: 10px; padding: 7px; background-color: #EFEFEF; text-align: center; display: none;}
+            #hoveredName > img { margin-top: 6px;}
+            .sidebar-close { right: 8px;top: 8px;}
+            .label_value{ font-weight: bold;}
+            .color_select { width: 10px; height: 10px; cursor: pointer; float: left; border:transparent solid 1px;}
+            .selected_color { border:#000000 solid 1px;}
+            #detailedInfo { position: absolute; top: 40px; right: 10px; padding: 7px 17px 7px 7px; background-color: #EFEFEF;display: none;min-width: 220px;}
+            #name {color: black;font-size: 20px;font-weight: bold;}
+            #searchForm { display : none;}
+        </style>
+
+        <script type="text/javascript" async="" src="./Facebook Friends Visualization - YASIV_files/ga.js"></script><script id="twitter-wjs" src="./Facebook Friends Visualization - YASIV_files/widgets.js"></script><script id="facebook-jssdk" src="./Facebook Friends Visualization - YASIV_files/all.js"></script><script src="./Facebook Friends Visualization - YASIV_files/jquery.min.js"></script>
+        <script src="./Facebook Friends Visualization - YASIV_files/vivagraph.min.js"></script>
+        <script src="./Facebook Friends Visualization - YASIV_files/yasiv.fb.min.js"></script>
+        <script src="./Facebook Friends Visualization - YASIV_files/jquery.simplemodal.js"></script>
+        <script type="text/javascript">
+            /*global $ Yasiv Viva window FB*/
+
+    
+    
+  window.checkLoginStatus = function () {
+      window.setTimeout(function(){
+          FB.getLoginStatus(function(response) {
+              if (response.status === 'connected') {
+                  $('#loginArea').hide();
+                  main(FB);
+              } else {
+                  $('#loginArea').show();
+              }
+          });
+     }, 0);
+  };
+    
+  window.fbAsyncInit = function() {
+    FB.init({
+        appId      : '326757437506058', // App ID
+        channel: true,
+        channelURL: 'http://www.yasiv.com/channel.html',
+        level: "debug",
+        status     : true, // check login status
+        cookie     : true, // enable cookies to allow the server to access the session
+        xfbml      : true  // parse XFBML
+    });
+
+     checkLoginStatus();
+  };
+
+        </script>
+    <style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fbpluginrecommendationsbarleft,.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}.fbpluginrecommendationsbarleft{left:10px}.fbpluginrecommendationsbarright{right:10px}</style></head>
+    <body data-twttr-rendered="true">
+        <div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Facebook Friends Visualization - YASIV_files/ZEbdHPQfV3x.html" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Facebook Friends Visualization - YASIV_files/ZEbdHPQfV3x(1).html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=169369956514459";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+        <div id="visualization"><canvas width="1338" height="802"></canvas></div>
+        <div id="header">
+            <span class="logo">YASIV</span>
+            
+            <form id="searchForm" style="display: block;">
+                Search in graph:
+            <input id="searchName">
+            <input type="submit" value="Highlight Friends">
+            </form>
+        </div>
+        <div id="log" style="margin-left: -81.5px; display: none;">Showing 165 friends</div>
+        <div id="detailedInfo">
+            <div id="name" class="name"></div>
+            <img id="imgAvatar">
+            <div>
+                <span class="label_header">Friend Count:</span>
+                <span class="label_value" id="friendsCount"></span>
+            </div>
+            <div>
+                <span class="label_header">Friend Shown:</span>
+                <span class="label_value" id="friendsShown"></span>
+            </div>
+            <div>
+                <a class="call_to_action" id="send_request_or_build_net"></a><br>
+                <a class="call_to_action" id="removeFromVisualization">Hide from visualization</a><br>
+                <a class="call_to_action" id="gotoFacebook" target="_blank">View on Facebook</a><br>
+                <a class="call_to_action" id="send_message">Send Message...</a><br><br>
+            </div>
+            <div>
+                <span class="label_header">Links Color:</span>
+                <span class="label_value" id="linksColor" style="display: inline-block"><div class="color_select selected_color" style="background-color:#b3b3b3"></div><div class="color_select" style="background-color:#D28E00"></div><div class="color_select" style="background-color:#731DD6"></div><div class="color_select" style="background-color:#0081E2"></div><div class="color_select" style="background-color:#1FB084"></div><div class="color_select" style="background-color:#35993A"></div><div class="color_select" style="background-color:#B3D66F"></div><div class="color_select" style="background-color:#D2C7FB"></div><div class="color_select" style="background-color:#00CBCD"></div><div class="color_select" style="background-color:#2A33D5"></div><div class="color_select" style="background-color:#802466"></div><div class="color_select" style="background-color:#899000"></div></span>
+            </div>
+            <div class="sidebar-close">
+            </div>
+        </div>
+        <div id="loginArea" style="display: none;">
+            <span class="what_is_yasiv">Your Facebook Universe. Visualized.</span><br>
+<span class="and_why_it_is_cool">See how your world is connected and discover new friends.</span> <br>
+<br>
+<iframe width="640" height="360" src="./Facebook Friends Visualization - YASIV_files/YhcJvJpW3oc.html" frameborder="0" allowfullscreen=""></iframe>
+<br>
+ <br>
+
+            <fb:login-button autologoutlink="true" size="xlarge" onlogin="checkLoginStatus()" login_text="
+  Visualize Friends
+" class=" fb_iframe_widget" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=169369956514459&amp;auto_logout_link=true&amp;locale=en_US&amp;login_text=%0A%20%20Visualize%20Friends%0A&amp;sdk=joey&amp;size=xlarge"><span style="vertical-align: bottom; width: 143px; height: 39px;"><iframe name="f2342c7bc8" width="1000px" height="1000px" frameborder="0" allowtransparency="true" scrolling="no" title="fb:login_button Facebook Social Plugin" src="./Facebook Friends Visualization - YASIV_files/login_button.html" class="" style="border: none; visibility: visible; width: 143px; height: 39px;"></iframe></span></fb:login-button>
+<br><br>
+<div>But please make sure your browser supports WebGL. Check here: <a href="http://get.webgl.org/" target="_blank">get.webgl.org</a></div>
+            
+        </div>
+        <div id="hoveredName" style="display: none;"></div>
+        <div id="footer">
+            <div id="footerLinks">
+                <ul style="text-align: center;">
+                    <!-- <li>
+                        <a id='aboutButton' href="">About</a> 
+                    </li> -->
+                    <li>
+                        <a href="http://blog.yasiv.com/">Blog</a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/#!/yasivcom">Twitter</a>
+                    </li>
+                    <li>
+                        <a href="http://www.facebook.com/pages/Yasiv/234739739945193">Facebook</a>
+                    </li>
+                    <li>
+                        <a href="mailto:anvaka@yasiv.com">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="copyText">(C) 2012 Andrei Kashcha. <a href="http://www.yasiv.com/stylesheets/fb_privacy.html">Privacy policy</a></div>
+            
+        <div id="about">
+            <h2>
+                About Yasiv</h2>
+            <div style="text-align: left">
+                <div>
+                Yasiv is a visual discovery engine. 
+                </div> <br>
+                <div>
+                </div> <br>
+                <div>
+                </div><br>
+                <div>
+                </div> <br>
+
+                <div>
+                    <a href="mailto:anvaka@yasiv.com" style="color: orange;">Andrei Kashcha</a> <br><br>
+                    <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./Facebook Friends Visualization - YASIV_files/follow_button.1409790579.html" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 108px; height: 20px;"></iframe>
+                </div>
+            </div>
+        </div>
+        
+    <div class="share_container">
+        <fb:like href="http://www.yasiv.com/facebook" send="true" layout="button_count" width="142" style="top: -2px" show_faces="false" class=" fb_iframe_widget" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=169369956514459&amp;href=http%3A%2F%2Fwww.yasiv.com%2Ffacebook&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=true&amp;show_faces=false&amp;width=142"><span style="vertical-align: bottom; width: 124px; height: 20px;"><iframe name="f2c9541044" width="142px" height="1000px" frameborder="0" allowtransparency="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./Facebook Friends Visualization - YASIV_files/like.html" style="border: none; visibility: visible; width: 124px; height: 20px;" class=""></iframe></span></fb:like>
+       <iframe allowtransparency="true" frameborder="0" scrolling="no" id="twitterShare" src="./Facebook Friends Visualization - YASIV_files/tweet_button.html" style="width:130px; height:20px;"></iframe>
+    </div>
+    
+    <div class="no_webgl">
+        You browser doesn't seem to support webgl. I'll try to show your network without links, but 
+        please visit <a href="http://get.webgl.org/">get.webgl.org</a> for troubleshooting. 
+    </div>
+    <img id="imgYasivLogo" src="./Facebook Friends Visualization - YASIV_files/yasiv_sn_logo.png" style="display: none;" alt="Yasiv Facebook Logo">
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-17876667-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    
+
+</body></html>
