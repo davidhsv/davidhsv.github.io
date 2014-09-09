@@ -70,12 +70,9 @@
       <file leaf-file-name="yasiv.fb.min.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/yasiv.fb.min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26710817" vertical-offset="4649" max-vertical-offset="15225">
-              <caret line="318" column="11" selection-start-line="318" selection-start-column="11" selection-end-line="318" selection-end-column="11" />
-              <folding>
-                <marker date="1410294412000" expanded="true" signature="5289:10560" placeholder="{...}" />
-                <marker date="1410294412000" expanded="true" signature="9883:10557" placeholder="{...}" />
-              </folding>
+            <state vertical-scroll-proportion="0.5651214" vertical-offset="4544" max-vertical-offset="15225">
+              <caret line="320" column="187" selection-start-line="320" selection-start-column="187" selection-end-line="320" selection-end-column="187" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -814,12 +811,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/yasiv.fb.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26710817" vertical-offset="4649" max-vertical-offset="15225">
-          <caret line="318" column="11" selection-start-line="318" selection-start-column="11" selection-end-line="318" selection-end-column="11" />
-          <folding>
-            <marker date="1410294412000" expanded="true" signature="5289:10560" placeholder="{...}" />
-            <marker date="1410294412000" expanded="true" signature="9883:10557" placeholder="{...}" />
-          </folding>
+        <state vertical-scroll-proportion="0.5651214" vertical-offset="4544" max-vertical-offset="15225">
+          <caret line="320" column="187" selection-start-line="320" selection-start-column="187" selection-end-line="320" selection-end-column="187" />
+          <folding />
         </state>
       </provider>
     </entry>
