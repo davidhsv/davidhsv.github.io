@@ -58,7 +58,22 @@
             }, 0);
         };
 
+
         window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '532518863457417',
+                xfbml      : true,
+                cookie:    true,
+                version    : 'v2.1',
+                status     : true,
+                level: "debug"
+            });
+            checkLoginStatus();
+        };
+
+
+
+//        window.fbAsyncInit = function() {
 //            FB.init({
 //                appId      : '532518863457417', // App ID
 //                channel: true,
@@ -68,13 +83,9 @@
 //                cookie     : true, // enable cookies to allow the server to access the session
 //                xfbml      : true  // parse XFBML
 //            });
-
-            FB.login(function(response) {
-                console.log(response);
-            }, {scope: 'user_friends'});
-
-            checkLoginStatus();
-        };
+//
+//            checkLoginStatus();
+//        };
 
     </script>
 </head>
