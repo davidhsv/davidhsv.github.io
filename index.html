@@ -58,34 +58,19 @@
             }, 0);
         };
 
-
         window.fbAsyncInit = function() {
             FB.init({
-                appId      : '532518863457417',
-                xfbml      : true,
-                cookie:    true,
-                version    : 'v1.0',
-                status     : true,
-                level: "debug"
+                appId      : '532518863457417', // App ID
+                channel: true,
+                channelURL: 'http://www.yasiv.com/channel.html',
+                level: "debug",
+                status     : true, // check login status
+                cookie     : true, // enable cookies to allow the server to access the session
+                xfbml      : true  // parse XFBML
             });
+
             checkLoginStatus();
         };
-
-
-
-//        window.fbAsyncInit = function() {
-//            FB.init({
-//                appId      : '532518863457417', // App ID
-//                channel: true,
-//                channelURL: 'http://www.yasiv.com/channel.html',
-//                level: "debug",
-//                status     : true, // check login status
-//                cookie     : true, // enable cookies to allow the server to access the session
-//                xfbml      : true  // parse XFBML
-//            });
-//
-//            checkLoginStatus();
-//        };
 
     </script>
 </head>
