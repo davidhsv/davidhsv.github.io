@@ -1,0 +1,212 @@
+
+<html xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <META NAME="Description" CONTENT="Facebook visualization shows network of your friends and allows you to view networks of friends of your friends.">
+    <meta name="keywords" content="Facebook, Facebook visualization, Friends network, Yasiv, Andrei Kashcha, anvaka" />
+    <meta name="author" content="Andrei Kashcha">
+    <meta name="title" content="Facebook Friends Visualization - YASIV" />
+
+    <title>Facebook Friends Visualization - YASIV</title>
+
+    <link type='text/css' href='scripts/basic.css?v=0.19' rel='stylesheet' media='screen' />
+    <style>
+        body { font-size: 11px; font-family: "lucida grande",tahoma,verdana,arial,sans-serif; color:#333; line-height: 1.28; text-align: left;direction: ltr;}
+        .logo { font-size: 20px;}
+        #footer { position: absolute; bottom : 0px; left : 50%; margin-left: -136px; margin-bottom: 5px; font-size: 14px; }
+        #preview { display: none; position: absolute; top: 37px; width: 360px; height: 262px; background: black; left: 5px; border: 3px solid #666;  }
+        #status { height: 26px; width:100%; border-top: 1px solid #222;}
+        #header { background: #369; height: 28px; border-bottom: 1px solid rgb(95, 153, 207); color: white; }
+        #log { background: white; color: black;}
+        a { color : #4183C4; text-decoration: none; cursor: pointer;}
+        .tagLine { color: #888; font-size: 10px; }
+        .no_webgl { color: darkRed;position: absolute;bottom: 24px;width: 400px;font-size: 12px;left: 10px;display: none;}
+        .what_is_yasiv { color: #203360; font-size: 20px;}
+        .and_why_it_is_cool { color: #203360; font-size: 15px; margin-bottom: 8px;}
+        #loginArea { display: none; position: absolute; height: 50px; top: 36px; left: 50%; margin-left: -322px; text-align: center;}
+        #hoveredName {position: absolute; top: 40px; left: 10px; padding: 7px; background-color: #EFEFEF; text-align: center; display: none;}
+        #hoveredName > img { margin-top: 6px;}
+        .sidebar-close { right: 8px;top: 8px;}
+        .label_value{ font-weight: bold;}
+        .color_select { width: 10px; height: 10px; cursor: pointer; float: left; border:transparent solid 1px;}
+        .selected_color { border:#000000 solid 1px;}
+        #detailedInfo { position: absolute; top: 40px; right: 10px; padding: 7px 17px 7px 7px; background-color: #EFEFEF;display: none;min-width: 220px;}
+        #name {color: black;font-size: 20px;font-weight: bold;}
+        #searchForm { display : none;}
+    </style>
+
+    <script src="scripts/jquery.min.js?v=0.1"></script>
+    <script src="scripts/vivagraph.min.js?v=24"></script>
+    <script src="scripts/yasiv.fb.min.js?v=0.27.9"></script>
+    <script src='scripts/jquery.simplemodal.js'></script>
+    <script type='text/javascript'>
+        /*global $ Yasiv Viva window FB*/
+
+
+
+        window.checkLoginStatus = function () {
+            window.setTimeout(function(){
+                FB.getLoginStatus(function(response) {
+                    if (response.status === 'connected') {
+                        $('#loginArea').hide();
+                        main(FB);
+                    } else {
+                        $('#loginArea').show();
+                    }
+                });
+            }, 0);
+        };
+
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '532518863457417', // App ID
+                channel: true,
+                channelURL: 'http://davidhsv.github.io/channel.html',
+                level: "debug",
+                status     : true, // check login status
+                cookie     : true, // enable cookies to allow the server to access the session
+                xfbml      : true,
+                  version: 2.0
+                  // parse XFBML
+            });
+
+            checkLoginStatus();
+        };
+
+    </script>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=532518863457417";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div id='visualization'></div>
+<div id='header'>
+    <span class="logo">YASIV</span>
+
+    <form id='searchForm'>
+        Search in graph:
+        <input id='searchName'>
+        <input type="submit" value="Highlight Friends" />
+    </form>
+</div>
+<div id='log'></div>
+<div id='detailedInfo'>
+    <div id="name" class="name"></div>
+    <img id="imgAvatar"/>
+    <div>
+        <span class='label_header'>Friend Count:</span>
+        <span class='label_value' id='friendsCount'></span>
+    </div>
+    <div>
+        <span class='label_header'>Friend Shown:</span>
+        <span class='label_value' id='friendsShown'></span>
+    </div>
+    <div>
+        <a class='call_to_action' id='send_request_or_build_net'></a><br/>
+        <a class='call_to_action' id='removeFromVisualization'>Hide from visualization</a><br/>
+        <a class='call_to_action' id='gotoFacebook' target="_blank">View on Facebook</a><br/>
+        <a class='call_to_action' id='send_message'>Send Message...</a><br/><br/>
+    </div>
+    <div>
+        <span class='label_header'>Links Color:</span>
+        <span class='label_value' id='linksColor' style='display: inline-block'></span>
+    </div>
+    <div class='sidebar-close'>
+    </div>
+</div>
+<div id="loginArea">
+    <span class='what_is_yasiv'>Your Facebook Universe. Visualized.</span><br/>
+    <span class='and_why_it_is_cool'>See how your world is connected and discover new friends.</span> <br/>
+    <br/>
+    <iframe width="640" height="360" src="http://www.youtube.com/embed/YhcJvJpW3oc?rel=0" frameborder="0" allowfullscreen></iframe>
+    <br/>
+    <br/>
+
+    <fb:login-button autologoutlink="true" size="xlarge" onlogin="checkLoginStatus()">
+        Visualize Friends
+    </fb:login-button>
+    <br/><br/>
+    <div>But please make sure your browser supports WebGL. Check here: <a href="http://get.webgl.org/" target="_blank" >get.webgl.org</a></div>
+
+</div>
+<div id='hoveredName'>
+
+</div>
+<div id='footer'>
+    <div id='footerLinks'>
+        <ul style='text-align: center;'>
+            <!-- <li>
+                <a id='aboutButton' href="">About</a>
+            </li> -->
+            <li>
+                <a href="http://blog.yasiv.com">Blog</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/#!/yasivcom">Twitter</a>
+            </li>
+            <li>
+                <a href="http://www.facebook.com/pages/Yasiv/234739739945193">Facebook</a>
+            </li>
+            <li>
+                <a href='mailto:anvaka@yasiv.com'>Contact</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id='copyText'>(C) 2012 Andrei Kashcha. <a href='/stylesheets/fb_privacy.html'>Privacy policy</a></div>
+
+<div id='about'>
+    <h2>
+        About Yasiv</h2>
+    <div style='text-align: left'>
+        <div>
+            Yasiv is a visual discovery engine.
+        </div> <br/>
+        <div>
+        </div> <br/>
+        <div>
+        </div><br/>
+        <div>
+        </div> <br />
+
+        <div>
+            <a href='mailto:anvaka@yasiv.com' style='color: orange;'>Andrei Kashcha</a> <br/><br/>
+            <a href="https://twitter.com/anvaka" class="twitter-follow-button" data-show-count="false">Follow me</a>
+        </div>
+    </div>
+</div>
+
+<div class="share_container">
+    <fb:like href="http://www.yasiv.com/facebook" send="true" layout="button_count" width="142" style='top: -2px' show_faces="false"></fb:like>
+    <iframe allowtransparency="true" frameborder="0" scrolling="no"
+            id='twitterShare'
+            src="http://platform.twitter.com/widgets/tweet_button.html?counturl=http%3A%2F%2Fwww.yasiv.com%2Ffacebook&text=Facebook%20visualization.%20See%20how%20your%20Facebook%20world%20is%20connected&via=yasivcom"
+            style="width:130px; height:20px;"></iframe>
+</div>
+
+<div class="no_webgl">
+    You browser doesn't seem to support webgl. I'll try to show your network without links, but
+    please visit <a href="http://get.webgl.org/">get.webgl.org</a> for troubleshooting.
+</div>
+<img id='imgYasivLogo' src="/images/yasiv_sn_logo.png" style='display: none;' alt='Yasiv Facebook Logo'/>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17876667-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+</body>
+</html>

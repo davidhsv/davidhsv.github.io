@@ -1,212 +1,441 @@
 
 <html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-    <META NAME="Description" CONTENT="Facebook visualization shows network of your friends and allows you to view networks of friends of your friends.">
-    <meta name="keywords" content="Facebook, Facebook visualization, Friends network, Yasiv, Andrei Kashcha, anvaka" />
-    <meta name="author" content="Andrei Kashcha">
-    <meta name="title" content="Facebook Friends Visualization - YASIV" />
-
-    <title>Facebook Friends Visualization - YASIV</title>
-
-    <link type='text/css' href='scripts/basic.css?v=0.19' rel='stylesheet' media='screen' />
-    <style>
-        body { font-size: 11px; font-family: "lucida grande",tahoma,verdana,arial,sans-serif; color:#333; line-height: 1.28; text-align: left;direction: ltr;}
-        .logo { font-size: 20px;}
-        #footer { position: absolute; bottom : 0px; left : 50%; margin-left: -136px; margin-bottom: 5px; font-size: 14px; }
-        #preview { display: none; position: absolute; top: 37px; width: 360px; height: 262px; background: black; left: 5px; border: 3px solid #666;  }
-        #status { height: 26px; width:100%; border-top: 1px solid #222;}
-        #header { background: #369; height: 28px; border-bottom: 1px solid rgb(95, 153, 207); color: white; }
-        #log { background: white; color: black;}
-        a { color : #4183C4; text-decoration: none; cursor: pointer;}
-        .tagLine { color: #888; font-size: 10px; }
-        .no_webgl { color: darkRed;position: absolute;bottom: 24px;width: 400px;font-size: 12px;left: 10px;display: none;}
-        .what_is_yasiv { color: #203360; font-size: 20px;}
-        .and_why_it_is_cool { color: #203360; font-size: 15px; margin-bottom: 8px;}
-        #loginArea { display: none; position: absolute; height: 50px; top: 36px; left: 50%; margin-left: -322px; text-align: center;}
-        #hoveredName {position: absolute; top: 40px; left: 10px; padding: 7px; background-color: #EFEFEF; text-align: center; display: none;}
-        #hoveredName > img { margin-top: 6px;}
-        .sidebar-close { right: 8px;top: 8px;}
-        .label_value{ font-weight: bold;}
-        .color_select { width: 10px; height: 10px; cursor: pointer; float: left; border:transparent solid 1px;}
-        .selected_color { border:#000000 solid 1px;}
-        #detailedInfo { position: absolute; top: 40px; right: 10px; padding: 7px 17px 7px 7px; background-color: #EFEFEF;display: none;min-width: 220px;}
-        #name {color: black;font-size: 20px;font-weight: bold;}
-        #searchForm { display : none;}
-    </style>
-
-    <script src="scripts/jquery.min.js?v=0.1"></script>
-    <script src="scripts/vivagraph.min.js?v=24"></script>
-    <script src="scripts/yasiv.fb.min.js?v=0.27.9"></script>
-    <script src='scripts/jquery.simplemodal.js'></script>
-    <script type='text/javascript'>
-        /*global $ Yasiv Viva window FB*/
-
-
-
-        window.checkLoginStatus = function () {
-            window.setTimeout(function(){
-                FB.getLoginStatus(function(response) {
-                    if (response.status === 'connected') {
-                        $('#loginArea').hide();
-                        main(FB);
-                    } else {
-                        $('#loginArea').show();
-                    }
-                });
-            }, 0);
-        };
-
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId      : '532518863457417', // App ID
-                channel: true,
-                channelURL: 'http://davidhsv.github.io/channel.html',
-                level: "debug",
-                status     : true, // check login status
-                cookie     : true, // enable cookies to allow the server to access the session
-                xfbml      : true,
-                  version: 2.0
-                  // parse XFBML
-            });
-
-            checkLoginStatus();
-        };
-
-    </script>
-</head>
+    </head>
 <body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=532518863457417";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<div id='visualization'></div>
-<div id='header'>
-    <span class="logo">YASIV</span>
-
-    <form id='searchForm'>
-        Search in graph:
-        <input id='searchName'>
-        <input type="submit" value="Highlight Friends" />
-    </form>
+    <div id="xxx"><table width="100%" cellspacing="2" cellpadding="2"
+        border="0" style="border-color: white; border-style: none;
+        display: block">
+        
+        <tr>
+            
+            <td><img src="data:image/jpg;base64,/9j/4AAQSkZJRgABAgAAZABkAAD/7AARRHVja3kAAQAEAAAAZAAA/+4ADkFkb2JlAGTA
+                
+                AAAAAf/bAIQAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB
+                
+                AQICAgICAgICAgICAwMDAwMDAwMDAwEBAQEBAQECAQECAgIBAgIDAwMDAwMDAwMDAwMD
+                
+                AwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMD/8AAEQgAXwBaAwERAAIR
+                
+                AQMRAf/EAIUAAAEFAQEBAQAAAAAAAAAAAAkABgcICgUDBAEBAQEBAQAAAAAAAAAAAAAA
+                
+                AAABAgMQAAICAwEAAAYCAAMGBgMAAAQFAwYBAgcIABESExQJFRYhIjViIzNkNlZBUTI0
+                
+                JRc3VxgRAQEAAgIBBQEBAQAAAAAAAAABESExQWFRcbECEpGhwf/aAAwDAQACEQMRAD8A
+                
+                38fAL4BfAVmdereX1a/2Sh2mc5R/XiYYc2WGOJugmj/r7R2x2L3WSEHrCVBKEwMiCSDa
+                
+                SObUfO306lj/AF3CZ3hBXrHv8BSKOl83dYO02zu5stjQm4+wNlPpKQjQDtxZdNwGRVw/
+                
+                i8ybabbY3H0Ig2/x1l11siW9IXi9RdkbQROxP5By45UbbQqgjQz/AEqe/wBpTIiZrXWb
+                
+                7IvFwDXta8oKFXpts4jjY3JuDBrj7sO8eVkiy5ePNvXDATsulottwAbV67xbLywxDQ5w
+                
+                gqaubvbPWXKIOKXTIa9bTr3/ACc8+scpJ61Pv88yyfLOLZpM7XavXrrk1NgnjClfW5xJ
+                
+                GZqjWIUbCMWxmw6xjBDp7C1gAQHjsnxYi3QgaeePUs2L6vlH9e+uZLVtiyCZsC+Tqniw
+                
+                oU5a5WgtV5oJMRoJgTAaIsUoMyHOYSxSIJtd45dP8smmcbY/wz8RXS+AXwC+AXwHnLvm
+                
+                OKTfXH1Z0j33xr8ts/POuuc4x8tNd98/POP/AAxnP/ljPwA5Q/2ECTRx4m5ZNsRvHprj
+                
+                Id1DIBmJ/Gb675DO3QxalrZTVeJYJ8aa7yL8G77RaGqWQA+vyz+g9ehXonZvbbswHjIY
+                
+                mktrcb+aUSGD92cXR6vWbOj9Tvuk6FxIdBAoYGJsowq6KXb8IMYppqTWGc52ZCk6Rj/F
+                
+                nV90L0W9tCVtREr3PrVoEog1f2etQKVcu2MZCp67D7WeKXeVwU3a64yykHiiHllMcEnS
+                
+                1QFatS7+gC0i0tdKQn2fRWudctEke9M1TUd500F8NpkTBItqXHMyenBawfZ3lsVhWgTf
+                
+                PRdtHjHmukzPdXroxzaltoKQGcvWVBraR+sqFyFcHNusmDcp63Y1dN3imWR29BRWsxES
+                
+                tCRvjQijnrt9iY8Gi4xucM/afw3KVaGXSHCulA2PfeAHQqqpa7aYLTIEhkYNB1S1MEXu
+                
+                w1FKWMFx7gUb7E2D9V4uZ/8AdE6j4ivDO8iM0T2XtzuigViajMLePUxYFkdx1fyAJ2cz
+                
+                DBTNQJjaVSyJgwOkmgJl21iig2Fxvotgnk0HDlzfrtrK83EOqZ7JRtbt/B4rsc71+phU
+                
+                7M9Gpo0SVjKux/LTQCjhiOd9oc5KDhkJwBN9Q0ku08UuumbMVZcpe+IpfAL4CpVv9jcr
+                
+                SyMFdfHsF3cCFTqZgU6ooQYdtDhhCUrZFMYYSA2YJAev31+o8zbcWbUkYMmDXffXX5vP
+                
+                SZgbr1BUwBpDW7CCA8yoB2Z3lUcQSYvft+iUFBX1u0bKdoQztB66yoiD/mbPMUaQHsVJ
+                
+                vkKMr4vLFRzSG141h/imlSRQAp7AJOA1Hc4cKW7arOn2wzdiiwQgcQiiunErLCdkXjch
+                
+                pCPGbtIEsGX5twR1wGVfrU7aVx9ljBUhbTNlIhgIkMZunSYxre3z8wMUeMJhJR2kKIiy
+                
+                nwqA8t7vObprBlZnSOXlqTT8L/bh+uvmlt4dXivTnEZWPP395Z342TuXn8QtvZbkgerH
+                
+                DQMAHqbAQHJtpcbyYDMIDyAL9MPy1xFrpjOGnIuHT+SdoqDyw8CuCt8gVNDXvLbVWbJW
+                
+                39d2jhRSktKSH0Hnzu6UgFodz4NgkEG3Y/eInqtUhijk3nkzizRZrHb76pzhODhDYU7+
+                
+                dRfq67Q3bmhkVup6BVZspzh7OBUGsDpGKicNHR+uBxpBj0YhARU2sREU+c6Fa+HPH9S4
+                
+                rtlUYcW9AuHqS5Vxnr19zZoKvd5G66+pGF0snMlPIl4lfiDEnYjMtjWiJcerm/FHE0nH
+                
+                0mn2kzJiWbi9LCcD9IUvjlRH5ldFNgCmRkuSI2y/QVuvwF+ZHtpBsIHPBorBTxT/AGd5
+                
+                AhR0awMbEk2qqGUUbaWZWXGqIZUrbXr1Xl1rqjLRxXm+s8ixpEOWPAfCOVMJsSLqaONN
+                
+                KJLMPtmKbGv2p4/lJHttHtrtnLUuTj+A+NhOUMAcSCFsyNHDJnDXaEQi7nlRQ7yDhalE
+                
+                51HG2Kl1xHiSTONNM7fPb/DGfgAmdPCsFrtVl6PgOg1VewSs704gOlsPRx+czVAsX+7Z
+                
+                ttmupvK+epTqW/GycYqGeChAfkRmTQ7x7DmSazrCWZ2ZdepnRLurQnq+t9SvAQa1gvUP
+                
+                +YURAKBsI83L3IlT22r0r1gCOJIuIiDFlhO1kEGFgkxvrNHFLhkwgv1A8p3j7nJ/Suro
+                
+                +wT6xjQrkqdtZrKffL4+6Db4w6lyTmVeqNw5LsR03rV9nwFX4DqxItF0HLYF6bCLSh92
+                
+                aYnTPJzfzb7X/cZYbzXTUv8AUeGjoOt0nqvIuhB9g5Xyzwz3BH0ORZE9y0kt6w/2f6IR
+                
+                VBFIQ6sV2m3CCKY7iyYjzAOFrGvAnfmj9Gvj/wBr8v7Tvyr9gofWhGSeg+au4H8F5zx+
+                
+                r0nBfnUoNbVFcAyHni4VW71Jq0B5DZfv+VYx5IjiCSxzdNpRlXP11+lL2R4julw9S8M6
+                
+                LEcwt/ReTNL16Q4jUZ6ZfuAcfp63+t3sEPyryoWscf8ARFYsiaIIpwlPT6FMJgdtRoiZ
+                
+                i5sbNEt4T9+uH0qj9o89Vcz6BymyVDpLOrxNQK8ln6jz6td74s9vLCi0n0Zw6o2TtFVq
+                
+                qLjVludewlb1nC9lioWicWBXrkAyEVbc2aSydiVB+MIud3emdAqyruvP33Nm0T9FETWZ
+                
+                bpU8MQCtDBiX6rTzsnVt4RDIo5dPuW3O33Io5/u4kj+rFzcbqfj68x2EFRstqAhX1W/0
+                
+                O76VtxVOcyGB08cb+KuGQwIVWvQ5eS9g7c4WWbUOEhmadlOnYCa7yGalBCaT7ZZwz+Rq
+                
+                eA2Imx85W75rwaRQmm3rtbPWW0m6qLajSwDBxWtQ+YgK3Ra9mZpNppIdBoRPmLM2NpYp
+                
+                Y5pMVtNXwEB+jkfR3POGe3Nnxy1iBFOSzTrY9oTbIrxpp+QGI4DOVPk5YWmuxEey8sck
+                
+                jOn2dd/8+MZsS56Cuq2hdVDdvItGOvz2hOdVjatL0MNqymrFuf226yWVuxfOorJR61Wp
+                
+                wo2BeGEO+28qpoLuGZnSXV2zNXwn/jLTl5Iq85awYU2uu4N90l/5c2YUfKLYLaDJUFlr
+                
+                i806rM1aXciLQ4RuM1lreZI98ymIZxGMOeG85ZWf3r27oHd/W1T85MIq12Or0JDsaXLd
+                
+                OrA8ju6nq3ofrVj8y+e+uUGo0g+ss+nvODI+cnPowVwEgEObIfOXFBpP9eQ2neMfNND8
+                
+                n+a+V8SoiqMJbWKiqibEzY++yevTBsGvG7w6XaUhq1Ysy5pSSZtt5SZpN5ZM7SSb7bTk
+                
+                PThfmjgvmZTakXAuV1HlKi821nfrivp67CwazXd1tjZxbHMesm+ptgZ4101nK3+cskcU
+                
+                em2c6RR66hHPub1tybw/5j6P6Q7fX7vZ+Z0kZYLZEtApzC6vTYrI1Dr40Oy4TTAQQU5b
+                
+                HSPco+cQLTffTTabXeSPXYMJ/fq9SfJH7G+d+pODUOJRx/pzHz96X1utz7FrSLRUPJnq
+                
+                sv8A+pen8QpPDDX+VFlKeM+sg3SbRJqSwRNYvvYg0+n6tKraUU4Ed88qJ12uNw6x0Z2g
+                
+                WbPlLthAl59WncIxMbjQjntQ/plUsBe5yg2QMBzsTHoKPKYaUKugIL0nhFTzzQ7areJ0
+                
+                SQgDk8SrJDqzVzACwa9H2KwPKkPWK/pIvU7E1NraKdvq+P3EFltgYGBIoBEP4YWdSWe7
+                
+                NuYtz4zr3Q9WjpoM+IWctXlkg6oo4IplbhtBETBurWgFWJ+NU4kJRX3p/wCJiXwzT/7m
+                
+                WPO2m2sb7f6fXPPQivxlpEfZ+vVzjdQnsDo0DVmbvldV0xDNEAY8cy4xrHCHC+e10c2A
+                
+                DG+CC9dCdJNRtNs6/Pb6cZsmUtk5CST1yCxo2qK1aDHwv3rg4VxsDuY+pkbZNMvRXFPs
+                
+                /YERQsKdaYYCno0MjMdjUH5MhOs4kJW3xtjaO6xcnlfuVVgrahibi1xRFOtDrGSw0O/j
+                
+                ca2LDdjYdFceVjVJBYGgKixjRMpzDlZGhEWFxZi/Msyucc8Mz/7OSK9yP37Q+4WBRwdR
+                
+                U65T+CXoO69c3PpXW0m3nr190Kn9B59wCvANZ6tPbHFV6MlbvFeupYu1dxGSFPpFvB9U
+                
+                925P42e+ffW/p7rPsW+8gceVpa55BV8Xol+5R63Hs5DdH0a1tlqYx5Sx14SaRcOxjisO
+                
+                mfokJg/A3Ulxb7kSyx6QwXa7lx+t+gORdA4vcG90Q1fpFcNq7xvzq4O6DdgF5/0Ynmrl
+                
+                wrpIjlEw+WnyxNBJjOdc7a7Y20221zA7EtNRpqfXaPJDM+SVpPXU4ebTNmxHmR1eEDRQ
+                
+                wbms9Z5WbmKdbCTsVL85ditPvfPG/wDj8Bgs/ekyrXpX9p6nivOFXnW1vqWF5f8APmq+
+                
+                +WGZd1ei23tHdagTi4+f6opardXLmmIOfkf2GefWcNbXmn3Nofqkj3xYvW2gOU83odbo
+                
+                qyt2ARDW39tQ3p7g9XCAK8rHSe1I3o+LotkI3JUcqMgeyFHwk6/fuW6j/wCT3gXRiL47
+                
+                5rFuakLtMDa8P0ipk8ZU2MqrKZny5k7YL4hLPaHb/rPUrJqsAgNlnHolMtwYFVBn1+qd
+                
+                9YV42dPvxz662aS7i5nkfsFZ20L46dquQWCJlYrJWwZtq4kJdBOmhz5guiRQvMuCHqbc
+                
+                mbYjOioGDI0eN9ddvp3k2zZeell6Xs+I0b9mqyC4pzUNlWwtFTCCQYoeTeeDfaGX6fua
+                
+                RFiSjmDZkxrjGdopNNs4/wAPn8vgA79843pWGvQqRSkB1xqykNGVOusBO9aTxN7NN9EO
+                
+                GDeohzwQ1hNu3zIc0/jlW4GnyxOXNnMk2Ny99s3KNJ6gHTiWzYzmq7n1hIstE5zydnvX
+                
+                0rrR2WwtdjU3pnWWFHINnmPr0Omiqav7smBYURJxGBMRZjGHvKeeA4PY/ka1+qODVzo3
+                
+                FK9T3PoelFdG9FcTL7FS6raa0Y/tkD6oPK311ZedJaqGn6r5+bc7WRnFh/iKbsrTM5vx
+                
+                hPzyR8NzUiCf1R/usC8QUwry76rF7O785cYvNI89V7vfUqQsoPU+c9lPo8djtHDOn8bh
+                
+                s1huoMFKaAsQFTuODK81cJBuXsHPnaQx8q0k9D/YF4475546OFxr3Vzfm1huHP7AuqHT
+                
+                K/bKt/MUqwMlU8aZxHo9R2xVjIbDfTE2cgl7a6fXiL5TY121Iz8VD9vEH69fEDjyLx70
+                
+                ex/aj7K5lzrpXRWHWgHLQWmUzmVNThTEnvH93sxWgNX5Qkh0EiDBOkasIx9ZdRIiCppo
+                
+                C9+isX62PJl56d0SX3n17dr0jlgVi6JefNHR+ocKrHJe29EO7nQIn3cuudV0WtWFlgoO
+                
+                tSpTylchBLYGYi/kpHgcY4Y0OxT5P+jf1iuOWtV/ry09LztrQesWDjebzbyBqynPa8dv
+                
+                5Fera6pw6g2Ow9EmzzWtzBjqYVJCzWafMksuZidotdy534YucuppVgFF4tkehRxNosDu
+                
+                a7X1nZGFnsd9CgcymwSOrhWhBVsVfbrji/xZxBJlUIQc0uhgI2ucb7uvCDW8i4zQOUpI
+                
+                YaiPk2U6EYgmwFYC/IZY10IyITCKrEXI1+mopuY9chiwZlixrmXMm/z3zi227akwmP4i
+                
+                l8ANXoHnfrC632a8lL0/Tl9nIcFs4a2xZ1qxoo3m04JUFdDcx2+ff8VBN+JvuRM6HNGl
+                
+                JE0WAiy5x8azMM4qrXXe0Nef8ee110mH6Hch6JYTjb+f9qAP+fpmmktRvNyqwTRkrUXu
+                
+                jMgU5DFxBiP+Ukkl03CjxvriK4/iZvCd/PIkXOJHFfWLFrawIKJXuNU+vmj6QoymK6HX
+                
+                mljLcRxa50Ap6BJ59FaM/wDN9GocmNIsyTEQ6b56b+FFvYn68PInaL1zDpdN3sTb0bzG
+                
+                dc6pPoqgs5KN0issqoR+ZlxQ+lJElrzdElbM0zkRY2rlyqlei10D1MRCRY+lyAUSfpkr
+                
+                9EIo97q/XmtipfCLZ2rothtli8peP+675aXupyW/o4/TL6X0Gk59Cj1GliSNAftIXK9U
+                
+                RvJlZp+TtiLLwul9PIf6b/JHOyOIzdvNufo6scY1d1TkDTpLGl9IrVB0dW024M1tC43U
+                
+                qrXebfybJ40IYzKLDverQsKkzpoj1j10K1cbM+jQZbYael5W6pqVmNZKGbaUt7pN0yw0
+                
+                ZsCMprIkO6jRbi2L22Ozda/UND5BPzfoL2S67DZ0xlVNnZ7oGWms3Sq517tFOr9o53z5
+                
+                c6S1DpzxuQM3r/QreVcuYUmbo6DPRQI94K0sHuFYa/jYI3TaSk5nzMzFxDjEmp5YvKyf
+                
+                OfOVy6hmfeonUU9RqIEQZZQIoE9enEeQAMtYUoMKy2ooMsoMfeJi11cQzMw87nDRFbjO
+                
+                yGZOSSjAc1rbunUWt1WxOhLE0r6/VTu6CEagwsAwpJIFk8grt9Z2cZeFukOs+ZTyfqmx
+                
+                ttrtjXONdcXlucHz8BUm1ejNSa3XbJSpI1juv3PfHTOVW+JcFf8Aeoq9LAhtQS1Xqxl+
+                
+                6eld6Dl6GgzEhZjE3xtJmPMnyYFktLShKq0tuhZwYr2FJTaRnvmSKMYIWCWUzcrTb7ZA
+                
+                swP2d9Z4t8aSwyababY131zjAZ6qnzfqEKqrDdOnYZ17f12gcrs/OsVgJUz47ZibfX7j
+                
+                GueEiEMp88r6nyiV47CiL+7la52i/LNNZGTk66ymPQ7GV9pa2xOipm57zoj6rKMWnn81
+                
+                7rDatrWyAWNraVwbJcuf88Ana2U2VgYFHjoTkmXSPb8RTtCP9tjO6W4d1ppXTdBmPQE3
+                
+                VesJrbNWH1SQc4fj8z5nZqy80Wx1t3o0Ib2y7dh6BoZPPDpDcHeyxPuNvpnZV9G0cbGN
+                
+                rl49hpl1qnn/ANOVi+pyVll3r3fRsCatQX2Clc3jM8BLsudA6BaNtNBI8C6kSjATzSwZ
+                
+                3kHgzt9PxLtMYOdpRpK/atqz0Gl9qo3W3db2dMb1QOg0iyL26KxOWcdPROeTWQQvlt6r
+                
+                aeYSMJ2oczS6hTDzEDbzi42Za3k4NNlExuFKdLLWO9DVNKaBPcOqclnfQ1KoTkwb7hJy
+                
+                7AwHtNortxrWm0OfxMA3hUIRL9gZMvgzvJ8LDMscXodCvHQOt18CoOUHN651rn3UzX/U
+                
+                2WlZvcXPKHyrq97tVltTM9E7LrRIG9Z68KiwCSRFtuacNJPCJmDaPRnHuWW3PQn3gSe4
+                
+                Refl1fv605Ha6zYni+VI4ChWuw64XLC2pZTQELaJVDM2qp4pPzCEXDfOTOuRB59J48Sq
+                
+                kFh2yHbrUSyOy11BzGppXQ9tZupRBirVdmBo4VbSVKQmXUk7RRlS01I1EjmkIJ1xHj6c
+                
+                R6ffh1k2v/7LoP8A2D2P/WPo/wChtf8AoP8A/cH+r/8A44/2/wDV/wDkPhgP/p3O6+ZC
+                
+                +Ld1mK2UG2D7w9Jqf2CSC4tvxYwtL3V9Qc6MxnoQMOkR2gW8ZZA8MUw2cFDaxkhRfr/p
+                
+                HnJ/paHzBWazZGZlpCp/Vhij8xBcwvlpo2+OpnFKyiiwCBgg69XwNzbB9MtaasSNhdCN
+                
+                Wiw7MVXgLn1J0b09Vrv6E6v1Vow63wNmWPciCa/GhpRfmCkV0uIJIma1143UxWFLzgrI
+                
+                psgDDZqRe7I7HkT7qdIXedyLH8E9SS3QIhxzllTpJyoptuiL+eh2mCoVvob8GDayp3dV
+                
+                QZXde5qkCHKHZEhtEpQ0LUieAIrSQeaaXWmbLnXCFPXdQ9Ac388dLt/mmncb753/AGm8
+                
+                4xUWq3hikqPOx6q86J2CDrzRZMR0/mZKaFqqIFKYmzEqCSDPlvkabO31zS3sk6oQUt69
+                
+                OXPkfu+f1T6C9Vec+xVKnfRyXz55su9r7lxdwtx5+0f7f/SF/sCPsEfQJujqFclQaCWG
+                
+                1gqE8raf+IKLOHjXRzFbk9F0PGRv7Ae0P+ypfaPnXz0lqkfC6VYuX21Z3Wbq96uXe9up
+                
+                83rEIN/tXQu0X+xVayl1I19CUMYhVDL5ZDIdsa6RSj4vFZu55GBtfZTqHXhCiqpW6jLX
+                
+                sJ0Ix9rZU+8z1x20fhrVVSB6e8CoHnvjCd6TvHALMqFbFEm7afZDm210xi6iYCzC9b2j
+                
+                rnTXy/zGGksVyNBrMZnQ0NXJD5bTaps1Bmr9stIt5FW6dCYmXOq2CSzvLYpgkW3IUMWN
+                
+                K0ByA0Ez8NdNEfIlvSevsFPT7oGkqJxfN01CttppMdkRxdC0EbEPmU1KV2GeV9X6iQyn
+                
+                21XkmybsRRCCdYt9pivvhTweUob0aoNrM7U0BGAnxKKprPQ70tzvqYuS19dCtC5vUDcS
+                
+                7bqmO67GIy8h5hjWwyb7/wDvpY9ox4Tb/Vqz/wBuo/8AQf6t/pQP/TP/AG7/AMD/AEP/
+                
+                AJT/AIH+z8B3vgKHeu/DHM/TNCuFXYpMaD3BTqrsYCU0eruWa6KyLLnKvRWyMEohME3t
+                
+                KQQ1onm1lr7+eDXY2DQnOp8IBa6bTPSHncdLzDoqDoHo7ytzrh6OnubpSNFlX9f81ZVr
+                
+                F56Bfev2cL+KsEX9LqY0C6u0msi5f15iGMALEy1m/IhJvk+VVReX+crTAVJQen1NyZHb
+                
+                Wtkt0ItgC87ddYuqBYnpvTSrlx65ta9X7Ofpvb7ErcmUV1qBtMabJHLnA30RNLxymq7B
+                
+                dlrlY5eif9FMZdFpVfv+LZN6Q81OlVk6fa7VdOzdPEbbWawVbq2I0tZyZSK6sH/mt9BV
+                
+                OrOXTaKLSDSW7T4fHB1T9iVeruyUwvzoxmJrAirpQG1sZ1haRkWPje0OhImLkkEGVy88
+                
+                3t+JYpwNIIpCx8xD6D6j5xMBvdI09Vy3qumwds4QG/h1XM2WxXA2/Qru6tKJ3zi2I4Mm
+                
+                r+K2Ih0itsRVoHYxQtx94x2QuNd8flyy4u8L5iUJ/Blu7J0z0jetqh3XofOeshdMlg5/
+                
+                3Nu0pSijcvf31B1KvpaVRktksnamrjmnQqtvuikQ7Lo/yMQDahaSxyazz3OvLhcoLsbU
+                
+                +zVDgKuxnLHd7p8HTewGV+v0qpct5d6Z5EZd+QeovNdA++qpzI2mXyYrFuAs+7e8MjYd
+                
+                YsxCm74jAZOGhTgKj0a84xzSq9xs48dnSVNco6N0VACfXbN1BuDF+LI2SqWAwTKhhtht
+                
+                NNzSyBg2s5OZdhg1mu0W+sRapQnVoFoadKAMsVgRYgDCEi1iggj+rbfb6ddf/VvJJttv
+                
+                vtn57b77Z22znbOc5DpfAL4BfAMW6reft90S27SI4jy2P26lIc1jSWHRz/u9vnT2sBgD
+                
+                0Jx8tdf86+aMj6f8Pn8s/L4bAefWPmz9aXQj3qjrnafKC22bV22rTd751igcw6mrTEH2
+                
+                TFyk1vNXs9eP21hZ6uPzi7AjsM+hOTczyZk+/wDBZnouP+ZafzGG92Pj/TtrrzezUqqU
+                
+                g2tuvUFR6L52qa8Ts5V7td+ZSZErzDDhv+ZInjzGvzsOGPqLpvn6s4jqTK6Hdg77pdbw
+                
+                trBz3Nav6WsJrCWibJQqvUMxR6rrAz6Jg7n9unXwCVJhhibNK3rmhqUbQYXfBWNZtpoT
+                
+                IaXakXbrwxqtRr9y1cc95sAziV3Gvp7ClZJ3PRZhiresZZyxGUNwXONV08Ec/wBf4RGP
+                
+                pznXGMAN3xf5K4Xyzu1/svHfSFDsHeGqrrGloFH7Qk7n0xJz24dtNtFjSsqyu/qYAg1J
+                
+                6nktfo2aLWkkbHaaArO5H06w1RNKBVOJVyeuSoH1ZsTo/VvJU2Jb+vsCJtcHmZfbUhMq
+                
+                /DriODDHM+DI0QAcOZsb/d1zv9WfiInr4BfAL4D/2Q==
+                
+                "/></td>
+            
+            <td> <span style="FONT-FAMILY: 'Arial'; font-size: 14pt; "> PODER JUDICIÁRIO </span> <br>
+                
+                <span style="FONT-FAMILY: 'Arial';font-size: 13pt;"> JUSTIÇA DO TRABALHO </span> <br>
+                
+                <span style="FONT-FAMILY: 'Arial';font-size: 12pt;"> TRIBUNAL REGIONAL DO TRABALHO DA 5ª REGIÃO </span> <br>
+                
+                <span style="FONT-FAMILY: 'Arial';font-size: 12pt;"></span> </td>
+            
+        </tr>
+    </table><div style="float: right; width: 20%"><div id='id_24058_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24058_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24058_titulo' style='display: inline;' tabIndex='1'>Identificação</div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24058_conteudo' tabIndex='2'><p style="font-size: 12pt; line-height: 120%; font-family: 'Arial'; text-align: justify; margin-bottom: 3pt; margin-top: 3pt;" data-estilo-editor="Texto cabeçalho"><strong>PROCESSO nº 0000437-27.2013.5.05.0000 (MS)</strong></p>
+        <p style="font-size: 12pt; line-height: 120%; font-family: 'Arial'; text-align: justify; margin-bottom: 3pt; margin-top: 3pt;" data-estilo-editor="Texto cabeçalho"><strong>AGRAVANTE: MARIA LUCIA DOS SANTOS CONCEICAO </strong></p>
+        <p style="font-size: 12pt; line-height: 120%; font-family: 'Arial'; text-align: justify; margin-bottom: 3pt; margin-top: 3pt;" data-estilo-editor="Texto cabeçalho"><strong>AGRAVADO: SINILDA SANTOS MASCARENHAS</strong></p>
+        <p style="font-size: 12pt; line-height: 120%; font-family: 'Arial'; text-align: justify; margin-bottom: 3pt; margin-top: 3pt;" data-estilo-editor="Texto cabeçalho"><strong>RELATOR: </strong><strong>DESEMBARGADOR EDILTON MEIRELES</strong></p>
+        <p style="font-size: 12pt; line-height: 120%; font-family: 'Arial'; text-align: justify; margin-bottom: 3pt; margin-top: 3pt;" data-estilo-editor="Texto cabeçalho"><strong>REDATORA: Desembargadora LUÍZA LOMBA</strong></p></div></p><div style="float: right; width: 20%"><div id='id_24059_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24059_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24059_titulo' style='display: inline;' tabIndex='3'>EMENTA</div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24059_conteudo' tabIndex='4'><p style="padding-left: 200px; font-size: 12pt; float: none; margin-bottom: 6pt; line-height: 113%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Ementa"><strong>PENHORA PARCIAL EM PROVENTOS DE APOSENTADORIA. POSSIBILIDADE. SEGURANÇA CONCEDIDA EM PARTE. </strong>A impenhorabilidade dos salários e proventos de aposentadoria goza de proteção estatal, através do art. 649, IV, CPC, que visa preservar a dignidade do devedor de maneira a lhe garantir os meios necessários de provimento da própria subsistência e da sua família. Por outro lado, o princípio da dignidade da pessoa humana, fundamento da República Federativa do Brasil, que dá o envoltório geral do capítulo dos direitos fundamentais explicitados na Carta Magna, não discrimina quem é o seu destinatário; antes ao contrário, alberga em si todos os que no solo pátrio estejam, porquanto também estabelece a Constituição que todos são iguais perante a lei. Assim, uma vida humana não se sobrepõe a outra, fundamentalmente, e não há porque proteger-se uma em detrimento de outra que lhe é semelhante. Nesse sentido, contra o direito é interpretar-se a norma restritiva da constrição apenas pelo viés da proteção ao devedor, para que a execução lhe seja menos gravosa. Ao assim fazer-se, se está violando o princípio da isonomia, constitucionalmente insculpido, e se valora desigualmente vidas humanas, todas dignas de proteção do Estado, deixando ao revés o crédito de natureza alimentar do obreiro. Desse modo, em nome dos princípios da dignidade da pessoa humana, da isonomia, da proporcionalidade, da razoabilidade, da economia e celeridade processuais e da razoável duração do processo, ante a ponderação de interesses em conflito, entendo possível a penhora parcial de proventos de aposentadoria.</p></div></p><div style="float: right; width: 20%"><div id='id_24060_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24060_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24060_titulo' style='display: inline;' tabIndex='5'><p>RELATÓRIO</p></div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24060_conteudo' tabIndex='6'><p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Em face do voto prevalecente apresentado, fui designada Redatora, nos termos do art. 108, § 1º, do Regimento Interno desse Regional.Adoto o relatório elaborado pelo Relator Exmº Desembargador Edilton Meireles, nos termos a seguir transcritos:</p>
+            <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">"<em>..</em><em>MARIA LÚCIA DOS SANTOS CONCEIÇÃO agrava regimentalmente no mandado de segurança impetrado em face da 2ª Vara do Trabalho de Salvador, nos autos da reclamação trabalhista nº 0032500-17.2004.05.00.0002RTOrd, atuando como réu SINILDA SANTOS MASCARENHAS.</em></p>
+            <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto"><em>Os agravados apresentaram suas contraminutas.</em></p>
+            <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto"><em>O Ministério Público opinou.</em></p>
+            <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto"><em>É O RELATÓRIO.</em><em>..."</em></p></div></p><div style="float: right; width: 20%"><div id='id_24061_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24061_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24061_titulo' style='display: inline;' tabIndex='7'><p>FUNDAMENTAÇÃO</p></div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24061_conteudo' tabIndex='8'><p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto"><strong>VOTO</strong></p></div></p><div style="float: right; width: 20%"><div id='id_24062_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24062_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24062_titulo' style='display: inline;' tabIndex='9'><p>ADMISSIBILIDADE</p></div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24062_conteudo' tabIndex='10'><p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">ADMISSIBILIDADE</p>
+                <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Preenchidos os requisitos intrínsecos e extrínsecos de admissibilidade, conheço do apelo.</p></div></p><div style="float: right; width: 20%"><div id='id_24063_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24063_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24063_titulo' style='display: inline;' tabIndex='11'><p>Preliminar de admissibilidade</p></div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24063_conteudo' tabIndex='12'></div></p><div style="float: right; width: 20%"><div id='id_24064_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24064_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24064_titulo' style='display: inline;' tabIndex='13'><p>Conclusão da admissibilidade</p></div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24064_conteudo' tabIndex='14'></div></p><div style="float: right; width: 20%"><div id='id_24068_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24068_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24068_titulo' style='display: inline;' tabIndex='21'><p>PREJUDICIAIS</p></div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24068_conteudo' tabIndex='22'></div></p><div style="float: right; width: 20%"><div id='id_24069_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24069_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24069_titulo' style='display: inline;' tabIndex='23'><p>Item de prejudicial</p></div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24069_conteudo' tabIndex='24'></div></p><div style="float: right; width: 20%"><div id='id_24070_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24070_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24070_titulo' style='display: inline;' tabIndex='25'><p>Conclusão das prejudiciais</p></div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24070_conteudo' tabIndex='26'></div></p><div style="float: right; width: 20%"><div id='id_24071_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24071_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24071_titulo' style='display: inline;' tabIndex='27'><p>MÉRITO</p></div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24071_conteudo' tabIndex='28'></div></p><div style="float: right; width: 20%"><div id='id_24072_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24072_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24072_titulo' style='display: inline;' tabIndex='29'><p>Recurso da parte</p></div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24072_conteudo' tabIndex='30'><p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">MÉRITO</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">DA PENHORA DA CONTA SALÁRIO</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Investe a Agravante em face da decisão monocrática que julgou improcedente <em>prima facie</em> o Mandado de Segurança impetrado contra a decisão proferida pela autoridade dita coatora que determinou a penhora de 30% de seus proventos de aposentadoria mensais. Alega que o I. Relator violou diretamente a regra contida no art. 649, IV, do CPC, afrontando também a OJ 153, da SDI-II, do TST. Argumenta, neste contexto, que <em>"...o entendimento jurisprudencial dominante é no sentido de que a proteção salarial é absoluta, não admitindo exceções, vez que, o artigo 169, inciso IV, é de Norma Pública e contém norma IMPERATIVA QUE NÃO ADMITE INTERPRETAÇÃO AMPLIATIVA..."</em>.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">O i. Relator julgou improcedente Prima Facie o Mandado de Segurança impetrante, consoante a seguinte fundamentação:</p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação">"<em>...</em><em>Aduz a Impetrante que a autoridade coatora lhe fere direito comprovado por prova líquida e certa ao determinar a penhora de 30% de seus vencimentos de aposentadoria. Há nos autos prova da ordem de apreensão de parte dos salários da Impetrante. Na hipótese dos autos, portanto, cabe decidir se é possível a penhora dos vencimentos do trabalhador para pagamento dos créditos trabalhista. Sempre sustentamos que, em prol da realização do mandamento constitucional da efetividade da justiça, em juízo de ponderação, é possível, no caso concreto, afastar a incidência de dispositivo infraconstitucional que se apresente como obstáculo à eficácia dos princípios e regras constitucionais. E é o caso dos autos, na qual cabe reconhecer, no caso concreto, a inconstitucionalidade do inciso IV do art. 649 do CPC, no ponto em que veda a penhora dos salários Ou seja, é preciso relevar, que, na realização do valor Justiça e para efetivação dos direitos fundamentais, o juiz está autorizado a afastar a incidência, no caso concreto, de qualquer norma infraconstitucional que crie obstáculo à satisfação dos mesmos. É certo, porém, que, estamos diante da proteção de, pelo menos, in casu, dois direitos fundamentais (os créditos trabalhistas cobrados na execução e os salários penhorados da Impetrante, ambos de natureza alimentar). E ambos direitos merecem extrema proteção, pois se relacionam com a própria dignidade da pessoa humana.</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>Ensina, porém, em resumo, a doutrina que, diante do conflito entre dois direitos fundamentais, deve prevalecer aquele que impõe menor sacrifício à pessoa humana. E, in casu, entre os dois direitos em conflito, ambos de igual natureza, deve-se optar por uma solução que resguarde, ao mesmo tempo, a dignidade do credor e do devedor. É certo, ainda, que não se pode fazer a opção por uma posição de modo a anular completamente o direito do outro. Devemos lembrar, o entanto, que, in casu, o credor tem ainda a seu favor o direito à efetividade da Justiça, não só formal, mas, principalmente, substancial. Ou seja, o credor tem direito a exigir que o Estado torne real a decisão judicial condenatória. Do contrário, o Estado estaria apenas a decidir em tese, fraudando a ordem constitucional da efetividade da Justiça. É preciso esclarecer, ainda, que, antiga doutrina, já acolhida pelo STF, entende que, diante do caso concreto, a norma possa ser tida como inconstitucional (materialmente), sem a necessidade de declará-la em tese, em abstrato, de modo formal. No Brasil, a doutrina sobre inconstitucionalidade formal e material foi introduzida pelo Min. Bilac Pinto, ao analisar a situação das leis fiscais que, na prática, têm carga fiscal tão exagerada sobre a atividade tributada que perturbam o seu ritmo, resultando ônus excessivo, dificultando-a, embaraçando-a ou desencorajando-a. Tal inconstitucionalidade, pois, teria a característica de só ocorrer no caso concreto apreciado e de poder coexistir com a constitucionalidade formal da lei em apreço. Esta idéia foi veiculada pelo Ministro Bilac Pinto em trabalho publicado na Revista Forense de junho de 1940, A Crise da Ciência das Finanças - Os Limites do Poder Fiscal do Estado - Uma Nota na Doutrina sobre a Inconstitucionalidade das Leis Fiscais, p. 547-562. Posteriormente o STF reconheceu que a inconstitucionalidade material poderia ocorrer também com relação a leis de outra natureza, sempre que, no caso concreto, verificasse que a sua aplicação violaria direito constitucionalmente protegido. Este reconhecimento se deu originariamente no RE 72.071-GB, cujo Relator foi o Ministro Thompson Flores, RTJ 58, p. 692-701. Pois bem. In casu, no caso concreto dos autos, a lei que estabelece a impenhorabilidade dos vencimentos, salvo quanto à pensão alimentícia, fez tábua rasa os direitos sociais dos trabalhadores (também direitos fundamentais) e o direito constitucional de efetividade da Justiça. Isso porque, se a Impetrante-devedora não possui outros bens que possam ser alienados para satisfação de sua dívida trabalhista, mas recebe salários, negar a penhora destes, por força de uma simples lei infraconstitucional, seria o mesmo que dizer que, em tais situações, odireito constitucional do credor-trabalhista e o direito constitucional à efetividade da Justiça não prevalecem diante da regra infraconstitucional de impenhorabilidade dos salários. Em suma, o art. 649 do CPC valeria mais do que a própria Constituição!</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>Neste caso concreto, portanto, a lei viola a Constituição ao negar eficácia aos preceitos acima mencionados. E, na ponderação de interesses, devemos buscar uma solução conciliatória. Repita-se, outrossim, que a Impetrante sequer se preocupou em demonstrar que por outros meios podia satisfazer a sua dívida.</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>E tal fato, reforça a declaração de inconstitucionalidade no caso concreto. É razoável se pensar, portanto, que, em casos extremos, podemos ter por inconstitucional qualquer norma infraconstitucional que impeça a realização da Justiça.</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>Neste sentido, ainda, cabe citar os seguintes arestos, que refletem a posição majoritária desta Corte:</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação">"<em>MANDADO DE SEGURANÇA. POSSIBILIDADE DE PENHORA NO SALÁRIO. PRINCÍPIOS DA PROPORCIONALIDADE E DA RAZOABILIDADE. CABIMENTO. PROTEÇÃO À DIGNIDADE DA PESSOA HUMANA. Não existe, no sistema jurídico brasileiro, regra absoluta da impenhorabilidade do salário. A simples leitura do preceito contido no art. 649, IV, do CPC, revela a existência de exceções em relação ao crédito de natureza alimentar. É, pois, válida a penhora em parte dos salários do devedor para a garantia de crédito dessa espécie, aplicando-se, à hipótese, os princípios da proporcionalidade e da razoabilidade, além da unidade da Constituição" (Processo 0040100-22.2009.5.05.0000 MS, ac. nº 004948/2010, Relator Desembargador CLÁUDIO BRANDÃO, SUBSEÇÃO II DA SEDI, DJ 10/03/2010)</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação">"<em>MANDADO DE SEGURANÇA. PENHORA EM CONTA SALÁRIO. DENEGAÇÃO. O ato impugnado que determinou que a penhora recaísse sobre parte dos vencimentos da impetrante não padece de qualquer ilegalidade, tendo em vista que a sobrevivência pessoal do devedor que o legislador buscou preservar com a regra contida no art. 649, inciso IV do CPC não se encontra ameaçada, uma vez que a penhora não recaiu sobre a totalidade, mas apenas sobre 11% dos seus vencimentos" (Processo 0019500-82.2006.5.05.0000 MS, ac. nº 013843/2006, Relatora Desembargadora DALILA ANDRADE, SUBSEÇÃO II DA SEDI, DJ 29/06/2006).</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação">"<em>PENHORA PARCIAL CONTA SALÁRIO. POSSIBILIDADE. LIMINAR INDEFERIDA. SEGURANÇA DENEGADA. A impenhorabilidade dos salários goza de proteção estatal, através do art. 649, IV, CPC, que visa preservar a dignidade do devedor de maneira a lhe garantir os meios necessários de provimento da própria subsistência e da sua família. Por outro lado, o princípio da dignidade da pessoa humana, fundamento da República Federativa do Brasil, que dá o envoltório geral do capítulo dos direitos fundamentais explicitados na Carta Magna, não discrimina quem é o seu destinatário; antes ao contrário, alberga em si todos os que no solo pátrio estejam, porquanto também estabelece a Constituição que todos são iguais perante a lei. Assim, uma vida humana não se sobrepõe a outra, fundamentalmente, e não há porque proteger-se uma em detrimento de outra que lhe é semelhante. Nesse sentido, contra o direito é interpretar-se a norma restritiva da constrição apenas pelo viés da proteção ao devedor, para que a execução lhe seja menos gravosa. Ao assim fazer-se, se está violando o princípio da isonomia, constitucionalmente insculpido, e se valora desigualmente vidas humanas, todas dignas de proteção do Estado, deixando ao revés o crédito de natureza alimentar do obreiro. Desse modo, em nome dos princípios da dignidade da pessoa humana, da isonomia, da proporcionalidade, da razoabilidade, daeconomia e celeridade processuais e da razoável duração do processo, ante a ponderação de interesses em conflito, entendo possível a penhora parcial em conta salário" (Processo 0073200-65.2009.5.05.0000 MS, ac. nº 002676/2010, Relatora Desembargadora LUÍZA LOMBA, SUBSEÇÃO I).</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>Diga-se, ainda, que não se mostra exorbitante o percentual (30%) e a base de cálculo de incidência.</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>Desse modo, diante do exposto acima, a hipótese é de improcedência prima facie.</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>Sendo assim, julgo IMPROCEDENTE o presente mandado de segurança, indeferindo a petição inicial. Condeno a Impetrante nas custas processuais, na quantia de R$..20,00, calculadas sobre o valor da causa fixado em R$..1.000,00, mas desde já dispensadas em face da concessão dos benefícios da Justiça Gratuita..</em><em>...".</em></p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Entretanto, os demais membros desta SEDI, apesar de compactuarem com a ponderação de valores e possibilidade de uma interpretação do art. 649, IV, do CPC, conforme a Constituição Federal, para permitir a penhora parcial dos proventos salariais e de aposentadoria, não comungaram do percentual arbitrado pela autoridade tida como coatora, concluindo, enfim, pela possibilidade de que o valor mensalmente bloqueado seja minorado para 20% de seus vencimentos, dando-se provimento ao apelo para se deferir, em parte, a liminar requerida, como abaixo passo a explicar.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Com efeito, em relação à impenhorabilidade absoluta dos salários e proventos de aposentadoria, é verdade que goza de proteção estatal, através do dispositivo legal de todos conhecido (art. 649, IV, CPC), visando preservar a dignidade do executado de maneira a lhe garantir os meios necessários de provimento da própria subsistência e da de sua família. A sua gênese repousa no Decreto-Lei n. 1.608/39, antecessor do atual digesto processual civil, e fica evidente tal assecuratória da dignidade da pessoa humana nos diversos incisos do art. 942, que retratavam com nitidez a necessidade de sobreviver o devedor, até para que possível fosse o adimplemento do crédito exequendo:</p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação">"<em>Art. 942. Não poderão absolutamente ser penhorados: </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>I - os bens inalienáveis por força de lei; </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>II - as provisões de comida e combustíveis necessários à manutenção do executado e de sua família durante um mês; </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>III - o anel nupcial e os retratos de família; </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>IV - uma vaca de leite e outros animais domésticos, à escolha do devedor, necessários à sua alimentação ou a suas atividades, em número que o juiz fixará de acordo com as circunstâncias; </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>V - os objetos de uso doméstico, quando evidente que o produto da venda dos mesmos será ínfimo em relação ao valor de aquisição, </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>VI - os socorros em dinheiro ou em natureza, concedidos ao executado por ocasião de calamidade pública; </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>VII - os vencimentos dos magistrados, professores e funcionários públicos, o soldo e fardamento dos militares, os salários a soldadas, em geral, salvo para pagamento de alimentos à mulher ou aos filhos, quando o executado houver sido condenado a essa prestação; </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>VIII - as pensões, tenças e montepios percebidos dos cofres públicos, de estabelecimento de previdência, ou provenientes da liberalidade de terceiro, e destinados ao sustento do executado ou da família; </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>IX - os livros, máquinas, utensílios e instrumentos necessários ou úteis ao exercício de qualquer profissão ; </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>X - o prédio rural lançado para efeitos fiscais por valor inferior ou igual a dois contos de réis (2:000$0), desde quo o devedor nele tenha a sua morada e o cultive com o trabalho próprio ou da família ; </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>XI - os materiais necessários para obras em andamento, salvo se estas forem penhoradas. </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>XII, os fundos sociais, pelas dívidas particulares do sócio, não compreendendo a isenção os lucros líquidos verificados em balanço; </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>XIII, separadamente, os móveis, o material fixo e rodante das estradas de ferro, e os edifícios, maquinismos, animais e accessórios de estabelecimentos de indústria extrativa, fabril, agrícola outras, indispensáveis ao seu funcionamento; </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>XIV, seguro de vida; </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>XV, o indispensável para a cama e vestuário do executado, ou de sua família, bem como os utensílios de cozinha." </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação">A hermenêutica que desse histórico dispositivo pode advir é a de que a vida humana merece guarida tão especial que, além da proteção que se lhe dá o aparelho repressivo do Estado, cuidando para que a espécie seja preservada incólume e segura - e daí os cânones norteadores do direito penal -, também os negócios jurídicos encetados pelo homem não lhe devam ser tão adversos que o levem a não dispor de condições básicas de sobrevivência para si e para sua família. Daí porque alguns bens são livres de constrição e, frisa a lei, "absolutamente livres".</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Para Araken de Assis, a impenhorabilidade de certos bens está ligada a uma "exigência de humanidade na execução"1, com o que concorda José Frederico Marques quando afirma que "os deveres de solidariedade humana e de assistência social é que impedem o ato expropriatório"2.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Mas, de qual vida humana se trata?</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">O princípio da dignidade da pessoa humana, fundamento da República Federativa do Brasil, que dá o envoltório geral do capítulo dos direitos fundamentais explicitados na Carta Magna brasileira, não discrimina quem é o seu destinatário; antes ao contrário, alberga em si todos os que no solo pátrio estejam, firme no generalista dispositivo que inaugura o elenco dos direitos e deveres individuais e coletivos expressos na Constituição, segundo o qual <em>todos são iguais perante a lei, sem distinção de qualquer natureza, garantindo-se aos brasileiros e aos estrangeiros residentes no país a inviolabilidade do direito à vida, à liberdade, à igualdade, à segurança e à propriedade</em>.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Assim considerada, uma vida humana não se sobrepõe a outra, fundamentalmente, e não há porque proteger-se uma em detrimento de uma que lhe é semelhante. Ambas têm, no ordenamento jurídico, um cabedal de normas protetivas indistintas, se as visualizarmos sobre o prisma dos fatos e valores que a informam.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Com efeito, toda norma jurídica é uma integração entre fato e valor, como acentuou com propriedade o mestre Miguel Reale. De fato, a Ciência Jurídica deve ser considerada em termos de uma realidade cultural, onde a norma é tomada como resultado da tensão entre fato e valor. Ou seja, para o devido entendimento da norma jurídica mister se faz estudá-la numa relação de unidade e de integração entre fatos e valores3.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">E não poderia ser outra a interpretação que se extrai da leitura da norma excluidora de penhorabilidade de bens. Não por outra razão, o § 2º, do art. 649, do CPC ressalva, logicamente, a prestação alimentícia daquelas obrigações de cuja exigência podem se furtar os salários de cobrir:</p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação">"<em>São absolutamente impenhoráveis: IV - - os vencimentos, subsídios, soldos, salários, remunerações, proventos de aposentadoria, pensões, pecúlios e montepios; as quantias recebidas por liberalidade de terceiro e destinadas ao sustento do devedor e sua família, os ganhos de trabalhador autônomo e os honorários de profissional liberal, observado o disposto no § 3o deste artigo</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>§ 2º. O disposto no inciso IV do caput deste artigo não se aplica no caso de penhora para pagamento de prestação alimentícia...".</em></p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Claro, porque a prestação alimentícia visa assegurar a sobrevivência do alimentando. Os créditos derivados da prestação laboral, por seu turno, guardam identidade de propósitos, servindo para atender às necessidades básicas como moradia, alimentação, educação, saúde, lazer, vestuário, higiene e previdência social. Portanto, são créditos de natureza privilegiada e de caráter alimentar, na forma do disposto no art. 5º da Lei n. 6.830/80, aplicado subsidiariamente ao processo do trabalho, na forma autorizada pelo artigo 889 da CLT.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Cândido Rangel Dinamarco afirma que "a percepção do significado humano e político das impenhorabilidades impõe uma interpretação teleológica das disposições contidas nos arts. 649 e 650 do Código de Processo Civil, de modo a evitar, de um lado, sacrifícios exagerados e, de outro, exageros de liberalização; a legitimidade dessas normas e de sua aplicação está intimamente ligada à sua inserção em um plano de indispensável equilíbrio entre os valores da cidadania, inerentes a todo o ser humano, e os da tutela jurisdicional prometida constitucionalmente, ambos dignos do maior realce na convivência social mas nenhum deles capaz de conduzir à irracional aniquilação do outro"4.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Daniel Amorim Assumpção Neves, em acurado estudo sobre a impenhorabilidade de bens, destaca que tal instituto é, em vez de regra, exceção, no ordenamento jurídico internacional, exatamente porque o legislador, atento às disposições constitucionais de igualdade - afinal entre nós desde a Declaração Universal dos Direitos Humanos, de 1789 - buscou o ponto de equilíbrio entre as vidas humanas em jogo, tanto a do devedor quanto a do credor:</p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação">"<em>No direito alemão há previsão expressa na ZPO sobre a possibilidade de penhora parcial dos salários, já que no art. 811, n. 8, considera-se impenhorável apenas o mínimo para preservar as necessidades básica e imediatas do executado, sendo impenhorável somente os valores necessários para suprir o lapso temporal entre a penhora e o próximo pagamento. Nos parece que os valores sejam arbitrados pelo próprio magistrado no caso concreto, levando-se em consideração o valor do salário ganho pelo executado e suas necessidades. No direito polonês há previsão no art. 833, § 1º, preservando-se dois salário mínimos (impenhorabilidade absoluta) e a partir daí permitindo-se a penhora de até um quinto dos vencimentos.</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>No direito português, existe previsão no Código de Processo Civil, artigo 823, nº 1, letra "e", de que somente 2/3 do salário são impenhoráveis, admitindo-se que a penhora incida sobre o 1/3 restante.</em><em>5</em><em> A penhorabilidade parcial do salário é encarada com tamanha naturalidade no direito português que José Alberto dos Reis assim se manifestou sobre o nosso sistema de isenção total: "O sistema brasileiro parece-nos inaceitável. Não se compreende que fiquem inteiramente isentos os vencimentos e soldos, por mais elevados que sejam. Há aqui um desequilíbrio manifesto entre o interesse do credor e do devedor; permite-se a este que continue a manter o seu teor de vida, que não sofra restrições algumas no seu conforto e nas suas comodidades, apesar de não pagar aos credores as dívidas que contraiu."</em><em>6</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>Na Espanha existe interessante disposição na Ley de Enjuiciamiento Civil, que determina uma progressão de percentagens dos vencimentos, determinando-se a penhora dependendo do valor do salário do executado.</em><em>7</em><em> O artigo 607 cria um valor mínimo, absolutamente impenhorável, e a partir desse valor estabelece a possibilidade de penhora de 30% a 90%, dependendo da faixa em que se verifica o valor total dos vencimentos. Assim, tomando-se, por exemplo, um executado que ganhe um salário mínimo, tem a garantia de impenhorabilidade absoluta, mas aquele que ganha até dois salários mínimos, poderá ter penhorado 30% do valor que supere um salário mínimo, e outro devedor, que receba três salários mínimos, terá com relação ao valor do "segundo" salário mínimo a penhora de 30% e com relação ao "terceiro" salário mínimo a penhora de 50%.</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>No direito argentino existe previsão expressa de possibilidade de penhora em até 20% do valor do salário que exceder o valor estritamente necessário para a subsistência do alimentante. A porcentagem no caso concreto encontra um teto máximo na legislação, devendo o juiz levar em consideração as circunstâncias do caso concreto para fundamentar sua decisão.</em><em>8</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>Também nos países da família da commom law é possível a penhora de parte do salário do executado. Nos Estados Unidos existe verdadeira discricionariedade judicial no arbitramento da porcentagem do salário que pode ser objeto de penhora, levando o juiz em consideração as necessidades mínimas do devedor e de sua família no caso concreto. Apesar dessa margem de atuação do juiz, que aparentemente não teria limitações na fixação da porcentagem a ser penhorada e por consequência a ser preservada, existe lei federal que limita tal desconto, exigindo que na fixação da penhora o devedor mantenha no mínimo 75% ou 30 vezes o valor do salário mínimo horário, o que for maior.</em><em>9</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>Dentre todos os ordenamentos estrangeiros estudados nos parece que a previsão mais adequada é certamente aquela contida na "Ley de Enjuiciamiento Civil" da Espanha. Leva em consideração a garantia mínima já que torna absolutamente impenhorável um valor teto (claro que no Brasil seria irrisório fixar tal teto tão somente um salário mínimo) e considera também o valor do salário e dos vencimentos, aumentando a percentagem de penhorabilidade conforme o valor aumenta.</em><em>10</em><em> Preserva-se, dessa forma, um mínimo para a sobrevivência do devedor, mas ao mesmo tempo entrega-se a prestação jurisdicional pleiteado pelo exequente. Todos os interesses são preservados, é claro que com certo sacrifício </em>do devedor, que como já tivemos oportunidade de asseverar é consequência natural do processo executivo"11.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">E não poderia ser diferente a exegese da norma restritiva da constrição, multicitada, até porque, como dito, a regra não existe sem a ponderação de interesses que emergem da realidade social, dos fatos, portanto, logicamente sob incidência dos valores que os distinguem.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Nem se alegue, ainda assim, que tachou o legislador de absoluta a impenhorabilidade, na exata dicção do artigo 649, CPC. A um, porque a interpretação literal é apenas mais uma dentre tantas as possíveis, como nos ensina a hermenêutica jurídica; a dois, porque o próprio dispositivo excepciona as prestações alimentícias (<em>rectius</em>: de caráter alimentar), no seu § 2º; ao fim, porque, na interpretação das normas, devemos nos ater mais aos princípios que a informam.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Não é outra a posição de doutrina de escol:</p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação">"<em>violar um princípio é muito mais grave que transgredir uma norma qualquer. A desatenção ao princípio implica ofensa não apenas a um específico mandamento obrigatório, mas a todo o sistema de comandos. É a mais grave forma de ilegalidade ou inconstitucionalidade, conforme o escalão do princípio atingido, porque representa insurgência contra todo o sistema, subversão dos seus valores fundamentais, agressão ao seu arcabouço lógico e corrosão de sua estrutura mestra"</em><em>12</em><em>.</em></p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Nesse sentido, é contra o direito interpretar-se a norma restritiva da constrição apenas pelo viés da proteção ao devedor, para que a execução lhe seja menos gravosa. Ao assim se fazer, na verdade, se está violando o princípio da isonomia, constitucionalmente insculpido, deixando ao revés o credor que, no mais das vezes, não tem sequer um novo emprego que lhe garanta até essa remuneração mínima de que dispõe o devedor. É direito? E o que é o Direito, senão a tentativa de atingir-se a justiça? Para Sergio Ferraz,</p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação">"<em>... os princípios jurídicos não existem tão apenas como afirmações de máximas, que ressoem bem ao ouvido. O princípio filosófico jurídico não é estipulado tão apenas por amor à arte ou ao culto da palavra. Ele tem de preencher uma finalidade. O direito existe como valor, que tende à realização de um determinado ideal; e esse ideal é o atingimento da justiça. O Direito existe como uma estruturação cultural, que só se justifica desde o momento em que cumpra a sua vocação, que é a realização do ideal de justiça"</em><em>13</em><em>.</em></p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">E tal equação não se resolve, senão pelo princípio da proporcionalidade, que sempre se impõe quando se encontram em cizânia dois direitos contrapostos e de igual valor. D'outro modo, é esse princípio que busca, resguardando a integridade da essência finalística de um direito, despi-lo da possibilidade do seu efetivo exercício <em>in totum</em> para emprestar a outro direito um pouco da sua essência, que este não possui. A proporcionalidade, bem por isso, é a <em>ratio</em>de todos os demais princípios, visto que busca harmonizar direitos em litígio, de forma que cada um e todos estejam contemplados com certo grau de justiça. Mais ainda tal aplicação se justifica quando se encontra em jogo um único bem, a vida humana, igual formalmente segundo os ditames da Lei Maior, mas não igual substancialmente, caso não se assegure "dar a cada um o que é seu", segundo postulado clássico do Direito.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Poder-se-ia, nesse diapasão, também acrescentar-se à motivação da novel interpretação do dispositivo o cultuado princípio da razoabilidade, segundo o qual os atos jurisdicionais ganham plena justificação teleológica, concretizam mesmo o Direito e lhe dão vida, ao proporcionarem a realização dos interesses conformados na letra da lei, porque assim o exigem as lides postas à decisão judicial. Ganha relevo tal aplicação quando há nítida contradição entre interesses de igual valor, como assevera o cultuado mestre Luiz de Pinho Pedreira Silva:</p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação">"<em>As regras legisladas nem mesmo quando aparecem com o máximo grau de qualidade e predição, expressam a autêntica totalidade do Direito quanto ás condutas que regulam. É assim que as regras legisladas empregam a única linguagem que podem usar: uma linguagem genérica e abstrata. Pelo contrário, a realidade da vida humana e, portanto, da existência social, é sempre concreta e particular. Por isso, Direito perfeito, no sentido de concluso ou terminado, é tão só o das normas individualizadas da sentença judicial e da resolução administrativa. As regras formuladas pelo Direito, de igual posto formal, muitas vezes são contraditórias entre si. Ao órgão jurisdicional compete escolher entre essas duas ou várias regras a que considere adequada para resolver de modo justo o caso"</em><em>14</em><em>.</em></p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Por fim, caberia ainda invocar ao presente caso o princípio da razoável duração do processo, inscrito no art. 5º, LXXVIII, da Carta Política pela EC 45, recentemente editada, pelo qual <em>a todos, no âmbito judicial e administrativo, são assegurados a razoável duração do processo e os meios que garantam a celeridade de sua tramitação</em>. Ora, é sabido que o dinheiro tem precedência na gradação dos bens sujeitos à penhora, segundo dispõe o art. 655, do Código de Processo Civil. Tanto porque, estando a dívida líquida e certa, prescindíveis são os atos de alienação, bastando transferir-se o patrimônio apresado do devedor para o credor, até o limite do <em>quantum debeatur</em>.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Assim sendo, é lógico que a constrição sobre quantia localizada em conta-corrente do devedor, mormente quando à falta de outros bens passíveis de penhora, não somente é possível como recomendável, em atenção à necessidade de se imprimir aos feitos, principalmente na fase executória, celeridade de tramitação. Na Justiça Laboral tal princípio ganha especial relevo porque, aqui, discutem-se créditos de natureza alimentar, como anteriormente afirmado, essenciais à sobrevivência e à manutenção da dignidade mínima da pessoa humana, a todos assegurada.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Isso nos ensina o Professor Manoel Antônio Teixeira Filho, quando ressalta que</p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação">"<em>Não nos move aqui - desejamos esclarecer - o escopo de fazer tábula rasa da norma processual, que diz da impenhorabilidade dos salários, vencimentos, soldos etc., e sim o de estabelecer uma regra de ponderação, segundo a qual, em situações especiais, será possível o apresamento de salário (para cogitarmos apenas deste), sem que isso implique afronta ao princípio inscrito no art. 649 do CPC. Desde que o devedor possa suportar, sem prejuízo do sustento pessoal e familiar, a penhora de parte do salário, e sendo esta suficiente para solver a dívida oriunda do título executivo, até mesmo razões éticas sugerem a prática desse ato de constrição"</em><em>15</em><em>.</em></p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Destarte, por quaisquer ângulos que se olhe a questão, derroga-se facilmente o dogma da impenhorabilidade "absoluta" dos salários e proventos de aposentadoria. Nunca é demais, todavia, nos cercarmos dos valiosos ensinamentos dos nossos ponderados mentores, segundo os quais:</p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação">"<em>a impenhorabilidade total e ilimitada é demasiada, produzindo efeitos contraproducentes. O ideal seria a impenhorabilidade parcial e limitada. Impenhorabilidade total e ilimitada até certo valor do salário, e, daí para cima, penhorabilidade progressiva. Não é justa ausência de distinção, por força do princípio constitucional da igualdade. O caráter alimentar da remuneração -fundamento da impenhorabilidade decresce em proporção inversa do seu valor. Por consequência, impenhorabilidade total e ilimitada, impenhorabilidade regressiva e penhorabilidade progressiva deveriam ser coordenadas"</em><em>16</em><em>.</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>e</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>As divergências entre os autores surgem quando se trata de determinar a extensão que deve ser dada à medida protetora. Sustentam alguns que a proteção deve ser absoluta, cobrindo todo o salário do empregado, qualquer que seja a sua importância, origem ou forma. Entendem outros, que só se justifica parcialmente, quer em relação ao montante da remuneração, quer em relação à forma do pagamento. Para os adeptos dessa corrente doutrinária, a impenhorabilidade somente deve exisitr em relação a determinada parte do salário, podendo a outra ser objeto de penhora. Outros se inclinam para um sistema de penhorabilidade progressiva pelo qual a percentagem penhorável será tanto maior quanto maior for o salário que o empregado percebe. Finalmente, há quem pense que certas formas de remuneração, como, por exemplo, a participação nos lucros da empresa, posto que tenham natureza de salário, não devem estar isentas de penhora. A impenhorabilidade absoluta não se justifica para empregados que percebem salário de alto padrão, muito superior ao necessário para atender à sua subsistência. Por isso, é vitoriosa na doutrina a tendência para admitir a penhorabilidade parcial ou progressiva"</em><em>17</em><em>.</em></p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Para finalizar, o crédito de natureza alimentar, além de expressamente ressalvado da impenhorabilidade gizada no art. 649, IV, CPC, tem a mesma natureza do salário auferido pelo impetrante, destinando-se à sobrevivência do credor e da sua família, como o é a remuneração que se penhorou apenas parcialmente, não se podendo valorar desigualmente vidas humanas, todas dignas de proteção do Estado.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">A Justiça Laboral, em nome da primazia da igualdade substancial, deve ser um dos pilares da construção de uma sociedade mais justa, na qual as disparidades sejam, em todas as oportunidades, reduzidas. Como discorre Eduardo Cambi que, após fazer considerações sobre um capitalismo selvagem, que considera as pessoas como mercadorias, esquecendo-se de sua qualidade de seres humanos, assevera que tal decisão "opera dentro de uma perspectiva humanista, norteada pelos princípios constitucionais da igualdade em sentido substancial e da dignidade da pessoa humana, o que representa uma reação à proposta capitalista neoliberal de assegurar a acumulação desmedida de capitais, reduzindo o papel do Direito à simples mediação das relações comerciais e dos sujeitos a meros consumidores"18.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">É assim, aliás, que vem se posicionando parcela respeitável da jurisprudência pátria:</p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação">"<em>PENHORA DE SALÁRIOS PARA SALDAR DÍVIDA TRABALHISTA. POSSIBILIDADE. LEGALIDADE. A impenhorabilidade prevista no art. 649, IV, do CPC, cede na presença de débito de natureza alimentícia. Os créditos trabalhistas têm natureza alimentícia (art. 100, § 1.º-A, da CF), portanto, autorizada está a penhora de salários para saldá-los. A determinação de penhora de trinta por cento dos salários da executada para saldar dívida trabalhista está em consonância com as disposições legais que regem a espécie, não havendo falar em violação dos artigos 5.º, II, LIV, LV, da CF e 649, IV, do CPC. Agravo conhecido e não provido". (TRT 10ª R. Ac. 1ª Turma. AP01002-2001-007-10-85-8. Relatora: JUÍZA CILENE FERREIRA AMARO SANTOS. Julgado em: 16/11/2005).</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>"CRÉDITO TRABALHISTA. Com efeito, o art. 649, IV, do CPC, assegurou a impenhorabilidade dos vencimentos dos funcionários públicos. Não obstante, tratou em sua parte final de excepcionar essa impenhorabilidade nos casos de pagamento de prestação alimentícia. O crédito trabalhista, por deter natureza alimentícia e ser destinado à subsistência, também se enquadra no conceito de prestação alimentícia, sendo, portanto, possível a penhora de parte do salário do executado, na forma da exceção prevista no art. 649, IV, do CPC" (AP 00074-1997-019-10-00-8, Relatora Juíza Maria Piedade Bueno Teixeira). Com ressalvas de entendimento da Juíza Relatora". (TRT 10ª R. Ac. 2ª Turma. AP 00902-1999-005-10-00-7. Relatora: JUÍZA FLÁVIA SIMÕES FALCÃO. Julgado em: 13/07/2005).</em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>"RENDIMENTOS AUFERIDOS DO TRABALHADO ASSALARIADO. EXECUÇÃO DE CRÉDITO TRABALHISTA. PENHORABILIDADE. A teor do art. 649, IV, do CPC, os rendimentos decorrentes do trabalho assalariado são impenhoráveis, excepcionada as hipóteses em que envolvidas prestações de natureza alimentícia. Nesse cenário, inserindo-se o crédito trabalhista na categoria daqueles de caráter alimentar, de acordo com a própria definição constitucional (art. 100, § 1°-A), não há como elidir a possibilidade de penhora dos rendimentos auferidos pelo devedor, decorrentes do trabalho assalariado, devendo-se, porém, nessa hipótese, à luz do art. 620 do CPC, buscar a adoção de parâmetros proporcionalmente adequados e razoáveis que possibilitem também o suprimento das necessidades vitais básicas do devedor. Agravo de petição conhecido e provido". (TRT 10ª R. Ac. 3ª Turma. AP 00928-1991-008-10-85-0 Relator: JUIZ DOUGLAS ALENCAR RODRIGUES. Julgado em: 29/09/2004). </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação">"<em>MANDADO DE SEGURANÇA. PENHORA SOBRE SALÁRIO DA IMPETRANTE. POSSIBILIDADE. COLISÃO DE DIREITOS FUNDAMENTAIS DA MESMA CATEGORIA. APLICAÇÃO DOS PRINCÍPIOS DA PROPORCIONALIDADE, RAZOABILIDADE E EFETIVIDADE DO PROCESSO. Conquanto a legislação pátria, mais especificamente o artigo 649, incisos IV e VII do CPC, estabeleça a impenhorabilidade dos salários e das pensões pagas por institutos de previdência, têm se inclinado a doutrina e a jurisprudência no sentido de que, em se tratando de execução de crédito trabalhista, o qual, como se sabe, em regra, também possui natureza alimentar, é perfeitamente possível, ante a ponderação de direitos de mesma categoria, estabelecer constrição sobre o salário do executado, de forma a garantir a eficácia da tutela jurisdicional que assegurou ao trabalhador o direito ao pagamento do seu crédito. (TRT 5ª Região, Ac. 6.862/06 Mandado de Segurança nº 00919-2005-000-05-00-9-MS Subseção II da SEDI. Rel. Des. Cláudio Brandão).</em></p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Registre-se que, recentemente, o TST se posicionou sobre a questão mediante entendimento consubstanciado na OJ 153, da SDI2, que assim estabelece:</p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>153. MANDADO DE SEGURANÇA. EXECUÇÃO. ORDEM DE PENHORA SOBRE VALORES EXISTENTES EM CONTA SALÁRIO. art. 649, IV, do CPC. ILEGALIDADE. (DJe divulgado em 03, 04 e 05.12.2008) </em></p>
+                    <p style="padding-left: 200px; font-size: 10pt; float: none; margin-bottom: 6pt; line-height: 116%; font-family: 'Arial'; position: static; text-align: justify; text-indent: 0px;" data-estilo-editor="Citação"><em>Ofende direito líquido e certo decisão que determina o bloqueio de numerário existente em conta salário, para satisfação de crédito trabalhista, ainda que seja limitado a determinado percentual dos valores recebidos ou a valor revertido para fundo de aplicação ou poupança, visto que o art. 649, IV, do CPC contém norma imperativa que não admite interpretação ampliativa, sendo a exceção prevista no art. 649, § 2º, do CPC espécie e não gênero de crédito de natureza alimentícia, não englobando o crédito trabalhista.</em></p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Todavia, não comungo desse mesmo entendimento. E é, em nome dos princípios da dignidade da pessoa humana, da isonomia, da proporcionalidade, da razoabilidade, da economia e celeridade processuais e da razoável duração do processo, sobretudo por ser medida de inegável justiça, ante a ponderação de interesses em conflito e não havendo direito líquido e certo a proteger.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Transpondo os ensinamentos e as motivações supra delineadas para o caso <em>sub examine</em>, entendo que há parcialmente o direito líquido e certo do devedor para limitar a penhora apenas em parte de seu salário ou provento de aposentadoria para satisfação do crédito exequendo.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Considerando que a Agravante provou como vencimento de aposentadoria no mês de junho de 2013 a quantia bruta de R$ 2.889,13 e líquida de R$ 1.991,00, penso que o bloqueio deve se limitar ao percentual equivalente a 20% (vinte por cento) do rendimento bruto recebido mensalmente pelo Impetrante, até a satisfação integral do crédito exequendo, frise-se, mais adequado aos limites do caso concreto.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Daí porque, dou provimento parcial ao Agravo Regimental para conhecer e, no mérito, julgar parcialmente procedente o <em>writ of mandamus, </em>limitando o bloqueio a 20% (vinte por cento) dos proventos de aposentadoria do Impetrante.</p>
+                    <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto"> </p></div></p><div style="float: right; width: 20%"><div id='id_24073_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24073_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24073_titulo' style='display: inline;' tabIndex='31'><p>Item de recurso</p></div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24073_conteudo' tabIndex='32'></div></p><div style="float: right; width: 20%"><div id='id_24074_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24074_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24074_titulo' style='display: inline;' tabIndex='33'>Conclusão do recurso</div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24074_conteudo' tabIndex='34'><p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">1Comentários ao Código de Processo Civil, vol. 9, São Paulo, RT, 2000, p. 75.</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">2 Instituições de direito processual civil, vol. V, Campinas, Millennium, 2001, p. 172<strong>. </strong></p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">3 Antonio Braz Teixeira, Miguel Reale e o Diálogo Filosófico Luso-Brasileiro, In Celso Lafer e Tércio Sampaio Ferraz Jr (orgs.), Direito, Política, Filosofia e Poesia, Estudos em Homenagem ao Professor Miguel Reale no seu Octagésimo Aniversário, Editora Saraiva, São Paulo, 1992, p. 256</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">4DINAMARCO, Cândido Rangel. Instituições de direito processual civil, vol. IV.</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">5 J. P. REMÉDIO MARQUES, Curso de Processo Executivo Comum à face do Código revisto, Coimbra, Almedina, 2000, p. 181.</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">6Autor citado. Processo de execução, vol. 2, Coimbra, 1982, p. 78. Também aplaudindo a impenhorabilidade parcial temos FERNANDO AMÂNCIO FERREIRA, Curso de Processo de Execução, 2ª ed., Coimbra, Almedina, 2000, p. 134-135.</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">7 JOSÉ GARBERÍ LLOBREGAT, El proceso de ejecución forzosa en la nueva ley de enjuiciamineto civil, op. cit., p. 452: "En los casos en que, por carecer el ejecutado de cualesquiera otros elementos patrimoniales susceptibles de ser embargados para hacer frente a la satisfacción del crédito que le sea reclamado, la traba haya de recaer sobre los emolumentos que el mismo reciba como contraprestación por el ejercicio de su profesión, arte u oficio (o ingresos asimilados, como lo son las pensiones), resulta del todo punto evidente que, de la misma forma que en aras al respeto de su dignidad personal no se le priva del mobiliario y manaje no superfluo (art. 606. 1º LECiv), tampouco puede privársele de la totalidad de dichos ingresos, una parte de los cuales necesitará aquél afectar inexcusablemente a sua alimentación y demás gastos básicos inherentes al normal desarrollo de su vida y la de su familia o la de quienes de él dependan."</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">8 LINO ENRIQUE PALACIO, Manual de Derecho Procesal Civil, 14ª ed., Buenos Aires, Abeledo-Perrot, 1998, p. 679: "En materia de sueldos, salarios, jubilaciones y pensiones rige la ley 14.443, cuyo art. 1º excluye del embargo los salarios, sueldos, jubilaciones y pensiones que no excedan de determinada cantidad, con la salvedad de las cuostas p<strong>or alimentos y </strong>litisexpensas, que deben ser fijadas dentro de un mínimo que permita la subsistencia del alimentante. En el caso de los sueldos, jubilaciones y pensiones que excedan de aquella suma, el embargo podrá efectuarse, de acuerdo con el art. 2º de dicha ley, hasta llegar a un porcentaje del 20% sobre el importe mensual percibido.". ENRIQUE M. FALCÓN, Procesos de Ejecución, tomo I, vol. A, Buenos Aires, Rubinzal-Culzoni, 2001, pp. 46-48 traz interessante compilação da legislação sobre o tema.</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">9 JACK H. FRIEDENTHAL; MARY KAY KANE; ARTHUR R. MILLER, Civil Procedure, St. Paul, West Publishing, 1985, p. 713: "Regardless of wich form of income execution is used, the judgment debtor should be given an opportunity to demonstrate his reasonable needs and those of his family. The exact amount to be deducted from the judgment debtor's wage is discritionary with the court. Indeed, it has been held that even the judgment debtor's stipulation to pay a specified amount is not controlling, especially if the debtor's circunstances change after the stipulation. However, some state legislatures have limited the court's discrition by declaring that no more than a certain percentge or a fixed dollar amount may be deducted from a wage earner's income, and Congress has enacted a statute providing that no court - state or federal - may authorize a deduction from a judgment debtor's wages that will leave his remaining income less than 75% of his take home pay or 30 times the minimum hourly wage, wichever is greater".</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">10 Essa é a redação do art. 607 na LINO ENRIQUE PALACIO, Manual de Derecho Procesal Civil, 14ª ed., Buenos Aires, Abeledo-Perrot, 1998, p. 679: "En materia de sueldos, salarios, jubilaciones y pensiones rige la ley 14.443, cuyo art. 1º excluye del embargo los salarios, sueldos, jubilaciones y pensiones que no excedan de determinada cantidad, con la salvedad de las cuostas por alimentos y litisexpensas, que deben ser fijadas dentro de un mínimo que permita la subsistencia del alimentante. En el caso de los sueldos, jubilaciones y pensiones que excedan de aquella suma, el embargo podrá efectuarse, de acuerdo con el art. 2º de dicha ley, hasta llegar a un porcentaje del 20% sobre el importe mensual percibido.". ENRIQUE M. FALCÓN, Procesos de Ejecución, tomo I, vol. A, Buenos Aires, Rubinzal-Culzoni, 2001, pp. 46-48 traz interessante compilação da legislação sobre o tema.</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">JACK H. FRIEDENTHAL; MARY KAY KANE; ARTHUR R. MILLER, Civil Procedure, St. Paul, West Publishing, 1985, p. 713: "Regardless of wich form of income execution is <strong>used, the </strong>judgment debtor should be given an opportunity to demonstrate his reasonable needs and those of his family. The exact amount to be deducted from the judgment debtor's wage is discritionary with the court. Indeed, it has been held that even the judgment debtor's stipulation to pay a specified amount is not controlling, especially if the debtor's circunstances change after the stipulation. However, some state legislatures have limited the parte em que nos interessa: "607. Embargo de sueldos y pensiones - 1. Es inembargable el salario, sueldo, pensión, retribución o su equivalente, que no exceda de la cuantía señalada para el salario mínimo interprofesional (593). 2. Los salarios, sueldos, jornales, retribuciones o pensione que sean superiores al salario mínimo interprofesional se embargarán conforme a esta escala: 1º. Para la primera cuantía adicional hasta la que suponga el importe del doble del salario mínimo interprofesional, el 30 por 100. 2º. Para la cuantía adicional hasta el importe equivalente a un tecer salario mínimo interprofesional, el 50 por 100. 3º. Para la cuantía adicional hasta el importe equivalente a un cuarto salario mínimo interpofesional, el 60 por 100. 4º. Para la cunatía adicional hasta el importe equivalente a un quinto salario mínimo interpofesional, el 75 por 100. 5º. Para cualquier cantidad que exceda de la anterior cuantía, el 90 por 100."</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">11Impenhorabilidade de bens - Análise com vistas à efetivação da tutela jurisdicional.Daniel Amorim Assumpção Neves. Capturado em flavioartuce.adv.br, em 20/11/2006.</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">12Colisão de Princípios e Regras no Ordenamento Jurídico: uma leitura atual, Edna Maria Fernandes Barbosa, in "Revista TRT - 11a Região", Amazonas, n. 12, 2004, p. 38.</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">13 Igualdade Processual e os Benefícios da Fazenda Pública, na "Revista da Procuradoria do Estado de São Paulo", volumes 13/15, p. 431.</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">14Principiologia do Direito do Trabalho. Luiz de Pinho Pedreira da Silva. LTr, São Paulo, 1997, p. 1</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">15 TEIXEIRA FILHO, Manoel Antonio. Execução no Processo do Trabalho. 5ª ed.: LTr, São Paulo, 1995. p. 414</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">16 CATHARINO. José Martins. Compêndio de Direito do Trabalho, 2o volume, Saraiva, 3a edição, 1982, p. 111.</p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">17GOTTSHALK, Elson e GOMES, Orlando. Curso de Direito do Trabalho, Forense, 15a edição, 1998, p. 269<strong>.</strong></p>
+                        <p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">18CAMBI, Eduardo. Tutela do patrimônio mínimo necessário à dignidade do devedor e de sua família, in Processo de Execução, coord. Sérgio Shimura e Teresa Arruda Alvim Wambier. São Paulo: RT, 2001</p></div></p><div style="float: right; width: 20%"><div id='id_24075_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24075_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24075_titulo' style='display: inline;' tabIndex='35'><p>ACÓRDÃO</p></div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24075_conteudo' tabIndex='36'><p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Acordam os Desembargadores da SUBSEÇÃO II DA SEDI do Tribunal Regional do Trabalho da 5ª Região, em sua 14ª Sessão Ordinária, realizada no terceiro dia do mês de setembro do ano de 2013, sob a Presidência da Excelentíssima Senhora Desembargadora do Trabalho LUÍZA APARECIDA OLIVEIRA LOMBA-designada Redatora e com a presença dos Excelentíssimos Senhores Desembargadores do Trabalho LOURDES LINHARES, EDILTON MEIRELES, MARCOS GURGEL e Juiz convocado MARCELO PRATA, em gozo de licença médica a Ex.ma Sra. Desembargadora IVANA MAGALDI e ausente justificadamente a Ex.ma Sra. Desembargadora LÉA NUNES, por maioria, DAR PROVIMENTO ao agravo regimental para determinar o processamento do Mandado de Segurança, deferindo parcialmente a liminar para reduzir o percentual de penhora para 20% (vinte por cento), vencidos a Ex.ma Sra. Desembargadora LOURDES LINHARES, que conhecia e dava provimento ao agravo regimental, determinando o regular processamento do Mandado de Segurança, bem como concedia, de imediato, o provimento liminar postulado, para suspender o bloqueio sobre os proventos de aposentadoria da impetrante, até o final do julgamento do presente writ; e o Ex.mo Sr. Desembargador RELATOR que negava provimento ao recurso. Fez ressalva do entendimento pessoal o Ex.mo Sr. Juiz MARCELO PRATA.</p></div></p><div style="float: right; width: 20%"><div id='id_24076_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24076_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24076_titulo' style='display: inline;' tabIndex='37'>Cabeçalho do acórdão</div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24076_conteudo' tabIndex='38'><p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">Acordam os Desembargadores da SUBSEÇÃO II DA SEDI do Tribunal Regional do Trabalho da 5ª Região, em sua 14ª Sessão Ordinária, realizada no terceiro dia do mês de setembro do ano de 2013, sob a Presidência da Excelentíssima Senhora Desembargadora do Trabalho<strong><strong> LUÍZA APARECIDA OLIVEIRA LOMBA</strong></strong>-designada Redatora e com a presença dos Excelentíssimos Senhores Desembargadores do Trabalho <strong><strong>LOURDES LINHARES, EDILTON MEIRELES, MARCOS GURGEL </strong></strong>e Juiz convocado <strong><strong>MARCELO PRATA</strong></strong>, em gozo de licença médica a Ex.ma Sra. Desembargadora IVANA MAGALDI e ausente justificadamente a Ex.ma Sra. Desembargadora LÉA NUNES,</p></div></p><div style="float: right; width: 20%"><div id='id_24077_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24077_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24077_titulo' style='display: inline;' tabIndex='39'>Acórdão</div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24077_conteudo' tabIndex='40'><p style="padding-left: 0px; font-size: 12pt; margin-bottom: 10pt; text-indent: 200px; line-height: 175%; font-family: 'Arial'; text-align: justify;" data-estilo-editor="Corpo de texto">por maioria, <strong>DAR PROVIMENTO</strong> ao agravo regimental para determinar o processamento do Mandado de Segurança, deferindo parcialmente a liminar para reduzir o percentual de penhora para 20% (vinte por cento), vencidos a Ex.ma Sra. Desembargadora LOURDES LINHARES, que conhecia e dava provimento ao agravo regimental, determinando o regular processamento do Mandado de Segurança, bem como concedia, de imediato, o provimento liminar postulado, para suspender o bloqueio sobre os proventos de aposentadoria da impetrante, até o final do julgamento do presente writ; e o Ex.mo Sr. Desembargador RELATOR que negava provimento ao recurso. Fez ressalva do entendimento pessoal o Ex.mo Sr. Juiz MARCELO PRATA.</p></div></p><div style="float: right; width: 20%"><div id='id_24078_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24078_titulo_completo' style='display: none'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24078_titulo' style='display: inline;' tabIndex='41'>ASSINATURA</div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24078_conteudo' tabIndex='42'><p style="padding-left: 200px; font-size: 13pt; float: none; margin: 0px; line-height: 100%; font-family: 'Arial'; position: static; text-align: justify;" data-estilo-editor="Assinatura"><strong>LUIZA APARECIDA OLIVEIRA LOMBA </strong></p>
+                            <p style="padding-left: 200px; font-size: 13pt; float: none; margin: 0px; line-height: 100%; font-family: 'Arial'; position: static; text-align: justify;" data-estilo-editor="Assinatura"><strong>Relator</strong></p></div></p><div style="float: right; width: 20%"><div id='id_24079_atributos' style='float: right; z-index:99; position: relative;'></div></div><div id='id_24079_titulo_completo' style='display: block'><div style="margin-top: 0px; margin-bottom: 0px; margin-right: 0%; font-family: Arial; font-weight: bold; font-size: 14pt"><div><div id='id_24079_titulo' style='display: inline;' tabIndex='43'><p style="; display: inline;; display: inline;">VOTOS</p></div></div></div></div><p style="clear: both"><div class='conteudo_editor' id='id_24079_conteudo' tabIndex='44'></div></p>
+                        
 </div>
-<div id='log'></div>
-<div id='detailedInfo'>
-    <div id="name" class="name"></div>
-    <img id="imgAvatar"/>
-    <div>
-        <span class='label_header'>Friend Count:</span>
-        <span class='label_value' id='friendsCount'></span>
-    </div>
-    <div>
-        <span class='label_header'>Friend Shown:</span>
-        <span class='label_value' id='friendsShown'></span>
-    </div>
-    <div>
-        <a class='call_to_action' id='send_request_or_build_net'></a><br/>
-        <a class='call_to_action' id='removeFromVisualization'>Hide from visualization</a><br/>
-        <a class='call_to_action' id='gotoFacebook' target="_blank">View on Facebook</a><br/>
-        <a class='call_to_action' id='send_message'>Send Message...</a><br/><br/>
-    </div>
-    <div>
-        <span class='label_header'>Links Color:</span>
-        <span class='label_value' id='linksColor' style='display: inline-block'></span>
-    </div>
-    <div class='sidebar-close'>
-    </div>
-</div>
-<div id="loginArea">
-    <span class='what_is_yasiv'>Your Facebook Universe. Visualized.</span><br/>
-    <span class='and_why_it_is_cool'>See how your world is connected and discover new friends.</span> <br/>
-    <br/>
-    <iframe width="640" height="360" src="http://www.youtube.com/embed/YhcJvJpW3oc?rel=0" frameborder="0" allowfullscreen></iframe>
-    <br/>
-    <br/>
+<textarea id="xxx2"></textarea>
 
-    <fb:login-button autologoutlink="true" size="xlarge" onlogin="checkLoginStatus()">
-        Visualize Friends
-    </fb:login-button>
-    <br/><br/>
-    <div>But please make sure your browser supports WebGL. Check here: <a href="http://get.webgl.org/" target="_blank" >get.webgl.org</a></div>
+<input type="button" value="ok" onclick="javascript:document.getElementById('xxx2').value=document.getElementById('xxx').innerHtml"/>
 
-</div>
-<div id='hoveredName'>
-
-</div>
-<div id='footer'>
-    <div id='footerLinks'>
-        <ul style='text-align: center;'>
-            <!-- <li>
-                <a id='aboutButton' href="">About</a>
-            </li> -->
-            <li>
-                <a href="http://blog.yasiv.com">Blog</a>
-            </li>
-            <li>
-                <a href="https://twitter.com/#!/yasivcom">Twitter</a>
-            </li>
-            <li>
-                <a href="http://www.facebook.com/pages/Yasiv/234739739945193">Facebook</a>
-            </li>
-            <li>
-                <a href='mailto:anvaka@yasiv.com'>Contact</a>
-            </li>
-        </ul>
-    </div>
-</div>
-<div id='copyText'>(C) 2012 Andrei Kashcha. <a href='/stylesheets/fb_privacy.html'>Privacy policy</a></div>
-
-<div id='about'>
-    <h2>
-        About Yasiv</h2>
-    <div style='text-align: left'>
-        <div>
-            Yasiv is a visual discovery engine.
-        </div> <br/>
-        <div>
-        </div> <br/>
-        <div>
-        </div><br/>
-        <div>
-        </div> <br />
-
-        <div>
-            <a href='mailto:anvaka@yasiv.com' style='color: orange;'>Andrei Kashcha</a> <br/><br/>
-            <a href="https://twitter.com/anvaka" class="twitter-follow-button" data-show-count="false">Follow me</a>
-        </div>
-    </div>
-</div>
-
-<div class="share_container">
-    <fb:like href="http://www.yasiv.com/facebook" send="true" layout="button_count" width="142" style='top: -2px' show_faces="false"></fb:like>
-    <iframe allowtransparency="true" frameborder="0" scrolling="no"
-            id='twitterShare'
-            src="http://platform.twitter.com/widgets/tweet_button.html?counturl=http%3A%2F%2Fwww.yasiv.com%2Ffacebook&text=Facebook%20visualization.%20See%20how%20your%20Facebook%20world%20is%20connected&via=yasivcom"
-            style="width:130px; height:20px;"></iframe>
-</div>
-
-<div class="no_webgl">
-    You browser doesn't seem to support webgl. I'll try to show your network without links, but
-    please visit <a href="http://get.webgl.org/">get.webgl.org</a> for troubleshooting.
-</div>
-<img id='imgYasivLogo' src="/images/yasiv_sn_logo.png" style='display: none;' alt='Yasiv Facebook Logo'/>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-17876667-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function () {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-</script>
 </body>
 </html>
