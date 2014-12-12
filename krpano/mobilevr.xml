@@ -16,9 +16,9 @@
 	</action>
 
 	<image>
-		<cube url="panos/%$cubepath%%$cubepathsidepostfix%/pano_%s.jpg" />
+		<cube url="panos/pano_%s.jpg" />
 		<mobile>
-			<cube url="panos/%$cubepath%%$cubepathsidepostfix%/mobile_%s.jpg" />
+			<cube url="panos/mobile_%s.jpg" />
 		</mobile>
 	</image>
 
