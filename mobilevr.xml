@@ -1,0 +1,25 @@
+<krpano>
+
+	<view fovtype="DFOV" fov="90" fovmin="30" fovmax="150" />
+	<contextmenu fullscreen="false" />
+
+	<events onxmlcomplete="if(side == left, loadgyro() );"
+	        onviewchange="if(plugin[gyro].available, js(sync_1to2()) , if(syncother, if(side == left, js(sync_1to2()) , js(sync_2to1()) ); ) );"
+	        onmousedown="set(syncother,true); events.onviewchange();"
+	        onmousewheel="events.onmousedown();"
+	        />
+
+	<action name="loadgyro">
+		addplugin(gyro);
+		set(plugin[gyro].onavailable, js(sync_set(control.usercontrol,off)) );
+		set(plugin[gyro].url, '../plugins/gyro.js');
+	</action>
+
+	<image>
+		<cube url="panos/%$cubepath%%$cubepathsidepostfix%/pano_%s.jpg" />
+		<mobile>
+			<cube url="panos/%$cubepath%%$cubepathsidepostfix%/mobile_%s.jpg" />
+		</mobile>
+	</image>
+
+</krpano>
