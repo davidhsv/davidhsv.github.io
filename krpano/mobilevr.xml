@@ -12,7 +12,7 @@
 	<action name="loadgyro">
 		addplugin(gyro);
 		set(plugin[gyro].onavailable, js(sync_set(control.usercontrol,off)) );
-		set(plugin[gyro].url, '../plugins/gyro.js');
+		set(plugin[gyro].url, 'gyro.js');
 	</action>
 
 	<image>
