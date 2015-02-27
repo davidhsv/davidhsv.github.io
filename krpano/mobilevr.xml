@@ -4,7 +4,6 @@
 	<contextmenu fullscreen="false" />
 
 	<events onxmlcomplete="if(side == left, loadgyro() );"
-	        onviewchange="if(plugin[gyro].available, js(sync_1to2()) , if(syncother, if(side == left, js(sync_1to2()) , js(sync_2to1()) ); ) );"
 	        onmousedown="set(syncother,true); events.onviewchange();"
 	        onmousewheel="events.onmousedown();"
 	        />
