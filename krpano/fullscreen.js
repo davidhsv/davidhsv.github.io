@@ -93,10 +93,10 @@ function exitHandler()
     if (fs)
     {
         /* Run code on exit */
-        document.getElementById('viewersDiv').style.display = 'block';
+        document.getElementById('pano').style.display = 'block';
         document.getElementById('bannerpano').style.display = 'none';
     } else {
-      document.getElementById('viewersDiv').style.display = 'none';
+      document.getElementById('pano').style.display = 'none';
       document.getElementById('bannerpano').style.display = 'block';
     }
 }

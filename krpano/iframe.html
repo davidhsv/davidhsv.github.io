@@ -19,11 +19,18 @@
 <body>
 
 	<div id="bannerpano">
-		<img src="http://placehold.it/400x100" onclick="document.getElementById('viewersDiv').style.display = 'block';requestfullscreen(document.getElementById('viewersDiv'));"/>
+		<img src="400x100.gif" onclick="document.getElementById('pano').style.display = 'block';requestfullscreen(document.getElementById('pano'));"/>
 	</div>
 
-	<div id="viewersDiv" style="display:none;position:absolute;  left:0; top:0; width:100%; height:100%;">
+	<!-- <div id="viewersDiv" style="display:none;position:absolute;  left:0; top:0; width:100%; height:100%;">
 		<div id="krpanoLeftEyeDiv"  style="position:absolute; left:0;   top:0; width:100%; height:100%;"></div>
+	</div> -->
+
+	<div id="pano" style="width:100%;height:100%;">
+		<noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;text-align:center;"><td>ERROR:<br/><br/>Javascript not activated<br/><br/></td></tr></table></noscript>
+		<script>
+			embedpano({swf:"krpano.swf", xml:"krpano_vr.xml", target:"pano", html5:"only", passQueryParameters:true});
+		</script>
 	</div>
 
 	<script>
@@ -32,7 +39,7 @@
 		//TODO analisar colocar ao clicar o embedpano
 		//embedpano({html5:"only+webgl", id:"krpanoLeftEyeViewer",  target:"krpanoLeftEyeDiv",  xml:"mobilevr.xml", vars:{side:"left",  cubepathsidepostfix:"-L.tiles"}, passQueryParameters:true});
 		// embedpano({xml:"krpano_vr.xml?v=119pr1", target:"krpanoLeftEyeDiv", html5:"only+webgl", passQueryParameters:true});
-		embedpano({swf:"krpano.swf", xml:"krpano_vr.xml", target:"krpanoLeftEyeDiv", html5:"only", passQueryParameters:true});
+		// embedpano({swf:"krpano.swf", xml:"krpano_vr.xml", target:"krpanoLeftEyeDiv", html5:"only", passQueryParameters:true});
 
 	</script>
 
