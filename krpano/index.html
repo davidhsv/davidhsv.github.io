@@ -1,150 +1,36 @@
-
-<!DOCTYPE html>
 <html>
-<head>
-	<title>krpano.com - Mobile-VR Viewer</title>
-	<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
-	<style>
-		body,html{height:100%;overflow:hidden;}
-		body{ font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF; background-color:#000000; margin:0; padding:0; }
-	</style>
-	<script src="krpano.js"></script>
-</head>
+
 <body>
+  <h1>HTML Ipsum Presents</h1>
 
-	<div id="bannerpano">
-		<img src="http://placehold.it/400x100" onclick="document.getElementById('viewersDiv').style.display = 'block';requestfullscreen(document.getElementById('viewersDiv'));"/>
-	</div>
+<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
 
-	<div id="viewersDiv" style="display:none;position:absolute;  left:0; top:0; width:100%; height:100%;">
-		<div id="krpanoLeftEyeDiv"  style="position:absolute; left:0;   top:0; width:100%; height:100%;"></div>
-		<!-- <div id="krpanoRightEyeDiv" style="position:absolute; left:50%; top:0; width:50%; height:100%;"></div> -->
-	</div>
+<h2>Header Level 2</h2>
 
-	<script>
+<ol>
+   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+   <li>Aliquam tincidunt mauris eu risus.</li>
+</ol>
 
-	/*
-	Native FullScreen JavaScript API
-	-------------
-	Assumes Mozilla naming conventions instead of W3C for now
-	*/
+<iframe frameborder="0" allowfullscreen="true" src="iframebkp_funcionando_sem_video.html" width="400" height="100" />
 
-	(function() {
-		var
-			fullScreenApi = {
-				supportsFullScreen: false,
-				isFullScreen: function() { return false; },
-				requestFullScreen: function() {},
-				cancelFullScreen: function() {},
-				fullScreenEventName: '',
-				prefix: ''
-			},
-			browserPrefixes = 'webkit moz o ms khtml'.split(' ');
+<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
 
-		// check for native support
-		if (typeof document.cancelFullScreen != 'undefined') {
-			fullScreenApi.supportsFullScreen = true;
-		} else {
-			// check for fullscreen support by vendor prefix
-			for (var i = 0, il = browserPrefixes.length; i < il; i++ ) {
-				fullScreenApi.prefix = browserPrefixes[i];
+<h3>Header Level 3</h3>
 
-				if (typeof document[fullScreenApi.prefix + 'CancelFullScreen' ] != 'undefined' ) {
-					fullScreenApi.supportsFullScreen = true;
+<ul>
+   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+   <li>Aliquam tincidunt mauris eu risus.</li>
+</ul>
 
-					break;
-				}
-			}
-		}
-
-		// update methods to do something useful
-		if (fullScreenApi.supportsFullScreen) {
-			fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
-
-			fullScreenApi.isFullScreen = function() {
-				switch (this.prefix) {
-					case '':
-						return document.fullScreen;
-					case 'webkit':
-						return document.webkitIsFullScreen;
-					default:
-						return document[this.prefix + 'FullScreen'];
-				}
-			}
-			fullScreenApi.requestFullScreen = function(el) {
-				return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
-			}
-			fullScreenApi.cancelFullScreen = function(el) {
-				return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
-			}
-		}
-
-		// jQuery plugin
-		if (typeof jQuery != 'undefined') {
-			jQuery.fn.requestFullScreen = function() {
-
-				return this.each(function() {
-					var el = jQuery(this);
-					if (fullScreenApi.supportsFullScreen) {
-						fullScreenApi.requestFullScreen(el);
-					}
-				});
-			};
-		}
-
-		// export api
-		window.fullScreenApi = fullScreenApi;
-	})();
-
-	</script>
-
-
-	<script>
-
-		// embed the krpano viewers
-		embedpano({html5:"only+webgl", id:"krpanoLeftEyeViewer",  target:"krpanoLeftEyeDiv",  xml:"mobilevr.xml", vars:{side:"left",  cubepathsidepostfix:"-L.tiles"}, passQueryParameters:true});
-		// embedpano({html5:"only+webgl", id:"krpanoRightEyeViewer", target:"krpanoRightEyeDiv", xml:"mobilevr.xml", vars:{side:"right", cubepathsidepostfix:"-R.tiles"}, passQueryParameters:true});
-
-
-		// html5 fullscreen api
-		function requestfullscreen(div)
-		{
-			var fs = ["requestFullscreen","mozRequestFullScreen","webkitRequestFullscreen","webkitRequestFullScreen","msRequestFullscreen"];
-
-			for (var i=0; i<fs.length; i++)
-			{
-				if( div[fs[i]] )
-				{
-					div[fs[i]]();
-					break;
-				}
-			}
-		}
-
-		function exitHandler()
-		{
-
-			var fs = window.fullScreenApi.isFullScreen();
-		    if (fs)
-		    {
-		        /* Run code on exit */
-						document.getElementById('viewersDiv').style.display = 'block';
-						document.getElementById('bannerpano').style.display = 'none';
-		    } else {
-					document.getElementById('viewersDiv').style.display = 'none';
-					document.getElementById('bannerpano').style.display = 'block';
-				}
-		}
-
-		if (document.addEventListener)
-		{
-		    document.addEventListener('webkitfullscreenchange', exitHandler, false);
-		    document.addEventListener('mozfullscreenchange', exitHandler, false);
-		    document.addEventListener('fullscreenchange', exitHandler, false);
-		    document.addEventListener('MSFullscreenChange', exitHandler, false);
-		}
-
-	</script>
+<pre><code>
+#header h1 a {
+	display: block;
+	width: 300px;
+	height: 80px;
+}
+</code></pre>
 
 </body>
+
 </html>
