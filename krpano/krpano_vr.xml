@@ -223,9 +223,10 @@
 	         depth="4000"
 	         vr_timeout="2000"
 	         zorder="99"
-	         onclick="set(enabled,false); tween(ty|alpha, 8000|0.0, 2.5, easeInQuint, removehotspot(start)); delayedcall(2.0,start_vr());"
+	         onclick="vr_menu_over(); delayedcall(0,tween(alpha,0.75,0.1));set(enabled,false); tween(ty|alpha, 8000|0.0, 2.5, easeInQuint, removehotspot(start)); delayedcall(2.0,start_vr());"
 	         alpha="0.0"
 	         onloaded="if(vr_start_done === true, removehotspot(start); start_vr(); , tween(alpha,1); );"
+           onover="vr_menu_over(); delayedcall(0,tween(alpha,0.75,0.1));"
 	         />
 
 
