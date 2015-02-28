@@ -26,8 +26,12 @@ Assumes Mozilla naming conventions instead of W3C for now
 
       if (typeof document[fullScreenApi.prefix + 'CancelFullScreen' ] != 'undefined' ) {
         fullScreenApi.supportsFullScreen = true;
-
         break;
+      } else if (fullScreenApi.prefix == 'ms') {
+        if (typeof document[fullScreenApi.prefix + 'ExitFullscreen' ] != 'undefined' ) {
+          fullScreenApi.supportsFullScreen = true;
+          break;
+        }
       }
     }
   }
@@ -42,6 +46,8 @@ Assumes Mozilla naming conventions instead of W3C for now
           return document.fullScreen;
         case 'webkit':
           return document.webkitIsFullScreen;
+        case 'ms':
+          return document.msFullscreenElement != null;
         default:
           return document[this.prefix + 'FullScreen'];
       }
@@ -52,19 +58,6 @@ Assumes Mozilla naming conventions instead of W3C for now
     fullScreenApi.cancelFullScreen = function(el) {
       return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
     }
-  }
-
-  // jQuery plugin
-  if (typeof jQuery != 'undefined') {
-    jQuery.fn.requestFullScreen = function() {
-
-      return this.each(function() {
-        var el = jQuery(this);
-        if (fullScreenApi.supportsFullScreen) {
-          fullScreenApi.requestFullScreen(el);
-        }
-      });
-    };
   }
 
   // export api
