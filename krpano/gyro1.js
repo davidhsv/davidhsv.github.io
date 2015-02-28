@@ -1,6 +1,5 @@
-
 /*
-	krpano 1.19-pr1 Gyro Plugin (build 2015-02-14)
+	krpano 1.18.1 gyro plugin (build 2014-11-19)
 
 	for devices with a gyro sensor
 
