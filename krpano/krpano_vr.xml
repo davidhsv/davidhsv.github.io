@@ -220,14 +220,29 @@
 	<hotspot name="start" distorted="true"
 	         url="texts.png" crop="80|450|690|100"
 	         ath="0" atv="0"
-	         depth="4000"
-	         vr_timeout="2000"
-	         zorder="99"
-	         onclick="vr_menu_over(); delayedcall(0,tween(alpha,0.75,0.1));set(enabled,false); tween(ty|alpha, 8000|0.0, 2.5, easeInQuint, removehotspot(start)); delayedcall(2.0,start_vr());"
+	         depth="2000"
+	         onclick="trace('click');vr_menu_over(); delayedcall(0,tween(alpha,0.75,0.1));set(enabled,false); tween(ty|alpha, 8000|0.0, 2.5, easeInQuint, removehotspot(start)); delayedcall(2.0,start_vr());"
 	         alpha="0.0"
 	         onloaded="if(vr_start_done === true, removehotspot(start); start_vr(); , tween(alpha,1); );"
-           onover="vr_menu_over(); delayedcall(0,tween(alpha,0.75,0.1));"
+           onover="trace('hover');vr_menu_over(); delayedcall(0,tween(alpha,0.75,0.1));"
 	         />
+
+	<style name="hotspot_ani_white" editorplugin_ishotspotstyle="true"
+	       url="hotspot_ani_white_64x64x20.png"
+	       crop="0|0|64|64"
+	       frames="20" framewidth="64" frameheight="64" frame="0"
+	       onloaded="if(device.mobile, set(scale,1.5)); hotspot_animate();"
+	       />
+
+	<!-- hotspot animation code -->
+	<action name="hotspot_animate">
+		if(loaded,
+			inc(frame,1,get(frames),0);
+			mul(ypos,frame,frameheight);
+			txtadd(crop,'0|',get(ypos),'|',get(framewidth),'|',get(frameheight));
+			delayedcall(0.03, hotspot_animate() );
+		  );
+	</action>
 
 
 	<!-- start animation -->
