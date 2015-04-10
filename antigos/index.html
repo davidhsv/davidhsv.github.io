@@ -531,6 +531,12 @@ padding-left: 0px;
             O quanto você está satisfeito com seu clube? Clique a vontade !
             </p>
           <script>
+          function defer(method) {
+              if (window.$)
+                  method();
+              else
+                  setTimeout(function() { defer(method) }, 50);
+          }
             var myDataRef = new Firebase('https://votacao.firebaseio.com/');
 
             function clickk(url) {
@@ -539,11 +545,12 @@ padding-left: 0px;
                 return (current_value || 0) + 1;
               });
             }
+            defer(
+            function () { myDataRef.on('value', function(snapshot) {
+                var message = snapshot.val();
 
-            myDataRef.on('value', function(snapshot) {
-              var message = snapshot.val();
-              console.log(message);
-              displayChatMessage(message);
+                displayChatMessage(message);
+              });
             });
             function displayChatMessage(name) {
               $('#sportlike').text(name.sport.like);
@@ -567,14 +574,14 @@ padding-left: 0px;
                 <span class="likebtn-icon lb-like-icon">&nbsp;</span>
                 <span class="likebtn-label lb-like-label">Satisfeito</span>
               </span>
-              <span class="lb-count" id="sportlike">0</span>
+              <span class="lb-count" id="sportlike">Carregando...</span>
             </span>
             <span class="likebtn-button lb-dislike " id="lb-dislike-6">
               <span onclick="clickk('sport/dislike');" class="lb-a">
                 <span class="likebtn-icon lb-dislike-icon">&nbsp;</span>
                 <span class="likebtn-label lb-like-label">Insatisfeito</span>
               </span>
-              <span class="lb-count" id="sportdislike">0</span>
+              <span class="lb-count" id="sportdislike">Carregando...</span>
             </span>
           </span>
           <hr></hr>
@@ -585,14 +592,14 @@ padding-left: 0px;
                 <span class="likebtn-icon lb-like-icon">&nbsp;</span>
                 <span class="likebtn-label lb-like-label">Satisfeito</span>
               </span>
-              <span class="lb-count" id="santacruzlike">0</span>
+              <span class="lb-count" id="santacruzlike">Carregando...</span>
             </span>
             <span class="likebtn-button lb-dislike " id="lb-dislike-6">
               <span onclick="clickk('santacruz/dislike');" class="lb-a">
                 <span class="likebtn-icon lb-dislike-icon">&nbsp;</span>
                 <span class="likebtn-label lb-like-label">Insatisfeito</span>
               </span>
-              <span class="lb-count" id="santacruzdislike">0</span>
+              <span class="lb-count" id="santacruzdislike">Carregando...</span>
             </span>
           </span>
           <hr></hr>
@@ -603,14 +610,14 @@ padding-left: 0px;
                 <span class="likebtn-icon lb-like-icon">&nbsp;</span>
                 <span class="likebtn-label lb-like-label">Satisfeito</span>
               </span>
-              <span class="lb-count" id="nauticolike">0</span>
+              <span class="lb-count" id="nauticolike">Carregando...</span>
             </span>
             <span class="likebtn-button lb-dislike " id="lb-dislike-6">
               <span onclick="clickk('nautico/dislike');" class="lb-a">
                 <span class="likebtn-icon lb-dislike-icon">&nbsp;</span>
                 <span class="likebtn-label lb-like-label">Insatisfeito</span>
               </span>
-              <span class="lb-count" id="nauticodislike">0</span>
+              <span class="lb-count" id="nauticodislike">Carregando...</span>
             </span>
           </span>
         </div>
