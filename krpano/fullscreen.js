@@ -88,7 +88,8 @@ function exitHandler()
         /* Run code on exit */
         document.getElementById('pano').style.display = 'block';
         document.getElementById('bannerpano').style.display = 'none';
-        document.getElementById('closebtnn').style.display = 'block';
+        document.getElementById('closebtnn').style.display = 'none';
+        document.getElementById('pano').style.position = 'static';
     } else {
       document.getElementById('pano').style.display = 'none';
       document.getElementById('closebtnn').style.display = 'none';
