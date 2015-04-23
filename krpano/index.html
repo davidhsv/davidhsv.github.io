@@ -148,6 +148,37 @@
 	</script>
 </div>			</div>
         </div><!--/.container --><div class="main-container container">
+
+
+
+          <!-- .vitrine -->
+
+  <div class="vitrine col-xs-12">
+      <!-- <header>
+          <a href="http://adserver.ne10.uol.com.br/countHit.php?ad=3919&ac=2&lk=http://ofertas.fiat.com.br/?s_cid=VarejoRecife2014_ne10_home_vitrine1x1_logo_CPC&utm_source=ne10_home_vitrine1x1_logo_VarejoRecife2014&utm_medium=MG&utm_term=ne10&utm_content=logo&utm_campaign=VarejoRecife2014" target="_blank">
+              <h1>Peugeot Experience Rivoli</h1>
+          </a>
+      </header> -->
+
+      <script src="krpano.js"></script>
+      <script src="fullscreen.js"></script>
+
+      <div id="pano" style="display:none;width:100%;height:100%; ">
+        <noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;text-align:center;"><td>ERROR:<br/><br/>Javascript not activated<br/><br/></td></tr></table></noscript>
+        <script>
+        embedpano({html5:"only+webgl", id:"krpanoLeftEyeViewer",  target:"pano",  xml:"mobilevr.xml", vars:{side:"left",  cubepathsidepostfix:"-L.tiles"}, passQueryParameters:true});
+        </script>
+      </div>
+
+      <img style="padding: 0" class="col-xs-12" src="banner.gif" onclick="document.getElementById('pano').style.display = 'block';requestfullscreen(document.getElementById('pano'));">
+
+      <!-- <p class="descricao-fiat">* Ofertas válidas para a cidade de Recife e região. Confira a vigência da oferta no site</p> -->
+  </div>
+  <div class="block-divisor"></div>
+
+
+
+
     <div class="main wrapper clearfix">
         <!-- noticia-quente -->
 <article id="noticia-quente">
@@ -472,33 +503,6 @@ de taekwondo confirmou participação do lutador                                
                 <!-- fim blogs -->
 
         <!-- vitrine -->
-                <!-- .vitrine -->
-
-        <div class="block-divisor"></div>
-        <div class="vitrine col-xs-12">
-            <!-- <header>
-                <a href="http://adserver.ne10.uol.com.br/countHit.php?ad=3919&ac=2&lk=http://ofertas.fiat.com.br/?s_cid=VarejoRecife2014_ne10_home_vitrine1x1_logo_CPC&utm_source=ne10_home_vitrine1x1_logo_VarejoRecife2014&utm_medium=MG&utm_term=ne10&utm_content=logo&utm_campaign=VarejoRecife2014" target="_blank">
-                    <h1>Peugeot Experience Rivoli</h1>
-                </a>
-            </header> -->
-
-            <script src="krpano.js"></script>
-            <script src="fullscreen.js"></script>
-
-            <div id="pano" style="display:none;width:100%;height:100%; ">
-              <noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;text-align:center;"><td>ERROR:<br/><br/>Javascript not activated<br/><br/></td></tr></table></noscript>
-              <script>
-              embedpano({html5:"only+webgl", id:"krpanoLeftEyeViewer",  target:"pano",  xml:"mobilevr.xml", vars:{side:"left",  cubepathsidepostfix:"-L.tiles"}, passQueryParameters:true});
-              </script>
-            </div>
-
-            <div id="bannerpano" class="col-xs-12">
-              <img class="col-xs-12" src="banner.gif" onclick="document.getElementById('pano').style.display = 'block';requestfullscreen(document.getElementById('pano'));">
-            </div>
-
-            <!-- <p class="descricao-fiat">* Ofertas válidas para a cidade de Recife e região. Confira a vigência da oferta no site</p> -->
-        </div>
-        <div class="block-divisor"></div>
         <!-- fim vitrine -->
                 <!-- fim vitrine -->
 
