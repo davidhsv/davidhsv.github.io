@@ -14,12 +14,12 @@
 
 <!-- <iframe frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" src="iframebkp_funcionando_sem_video.html" width="400" height="100" /> -->
 
-<!--<style>
+<style>
   @-ms-viewport { width: device-width; }
   @media only screen and (min-device-width: 800px) { html { overflow:hidden; } }
   html { height:100%; }
   body { height:100%; overflow:hidden; margin:0; padding:0;  }
-</style>-->
+</style>
 <script src="krpano.js"></script>
 <script src="fullscreen.js"></script>
 
@@ -31,7 +31,9 @@
 </div>
 
 <div id="bannerpano">
-  <img src="400x100.gif" onclick="document.getElementById('pano').style.display = 'block';requestfullscreen(document.getElementById('pano'));"/>
+<a href="#" onclick="document.getElementById('pano').style.display = 'block';requestfullscreen(document.getElementById('pano'));">
+  <img src="400x100.gif" />
+</a>
 </div>
 
 <blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
