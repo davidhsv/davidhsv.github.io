@@ -161,7 +161,15 @@
 <div id="pano" style="display:none; z-index: 999999;width:100%;height:100%;position:fixed;top:0;left:0;">
   <noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;text-align:center;"><td>ERROR:<br/><br/>Javascript not activated<br/><br/></td></tr></table></noscript>
   <script>
-  embedpano({html5:"only+webgl", id:"krpanoLeftEyeViewer",  target:"pano",  xml:"mobilevr.xml", vars:{side:"left",  cubepathsidepostfix:"-L.tiles"}, passQueryParameters:true});
+  var d = new Date();
+  var n = d.getHours();
+  if (n >= 18) {
+     embedpano({html5:"only+webgl", id:"krpanoLeftEyeViewer",  target:"pano",  xml:"mobilevrnoite.xml", vars:{side:"left",  cubepathsidepostfix:"-L.tiles"}, passQueryParameters:true});
+  } else if (n >= 12) {
+     embedpano({html5:"only+webgl", id:"krpanoLeftEyeViewer",  target:"pano",  xml:"mobilevrtarde.xml", vars:{side:"left",  cubepathsidepostfix:"-L.tiles"}, passQueryParameters:true});
+  } else {
+     embedpano({html5:"only+webgl", id:"krpanoLeftEyeViewer",  target:"pano",  xml:"mobilevrdia.xml", vars:{side:"left",  cubepathsidepostfix:"-L.tiles"}, passQueryParameters:true});
+  }
   </script>
 </div>
 <div id="closebtnn" style="display:none;position: fixed; z-index: 9999999;top: 20px;left: 20px;">
