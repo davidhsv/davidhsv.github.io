@@ -88,8 +88,10 @@ function exitHandler()
         /* Run code on exit */
         document.getElementById('pano').style.display = 'block';
         document.getElementById('bannerpano').style.display = 'none';
+        document.getElementById('closebtnn').style.display = 'block';
     } else {
       document.getElementById('pano').style.display = 'none';
+      document.getElementById('closebtnn').style.display = 'none';
       document.getElementById('bannerpano').style.display = 'block';
     }
 }
