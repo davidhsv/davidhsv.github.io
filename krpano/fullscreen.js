@@ -67,7 +67,7 @@ Assumes Mozilla naming conventions instead of W3C for now
 // html5 fullscreen api
 function requestfullscreen(div)
 {
-  var fs = ["requestFullscreen","mozRequestFullScreen","webkitRequestFullscreen","webkitRequestFullScreen","msRequestFullscreen"];
+  var fs = ["requestFullscreen","mozRequestFullScreen","webkitRequestFullScreen","webkitRequestFullscreen","msRequestFullscreen"];
 
   for (var i=0; i<fs.length; i++)
   {
