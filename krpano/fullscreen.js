@@ -94,7 +94,7 @@ function exitHandler()
       document.getElementById('pano').style.display = 'none';
       document.getElementById('closebtnn').style.display = 'none';
       document.getElementById('bannerpano').style.display = 'none';
-      document.getElementById('bannerpanodial').style.position = 'block';
+      document.getElementById('bannerpanodial').style.display = 'block';
     }
 }
 
