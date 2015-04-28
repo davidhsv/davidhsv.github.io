@@ -14,10 +14,6 @@
 		set(plugin[gyro].url, 'gyro1.js');
 	</action> -->
 
-	<action name="showgyrowarning">
-		console.log('asdasdsadsad');
-	</action>
-
 	<plugin name="gyro" url="gyro.js" enabled="true"
         sensor_mode="3"/>
 
