@@ -29,7 +29,7 @@ var loadScript = function(src, callbackfn) {
     document.documentElement.firstChild.appendChild(newScript);
 }
 
-if (device.mobile()) {
+if (!device.mobile()) {
 	loadScript("camera_.js", function() {console.log("carregou plugins de camera.")});
 }
 document.getElementById('img_banner_').removeAttribute("onclick");
