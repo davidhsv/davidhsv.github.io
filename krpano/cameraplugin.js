@@ -114,7 +114,7 @@ try {
   if (krpano.plugin.getItem("gyro").available) {
     return;
   }
-}catch (var e) {
+}catch (e) {
 }
 
       isomas++;
