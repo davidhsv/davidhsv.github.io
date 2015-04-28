@@ -60,6 +60,7 @@ var krpanoplugin = function()
 
         }
         window.addEventListener("testeevento", testeevento,  true);
+
         //console.log('sadas111');
     }
 
@@ -109,12 +110,19 @@ var krpanoplugin = function()
        //krpano.call("wrapangle(30)");
       //krpano.view.camroll(40);
 
+try {
+  if (krpano.plugin.getItem("gyro").available) {
+    return;
+  }
+}catch (var e) {
+}
 
       isomas++;
       soma += event.detail[0];
       somav += event.detail[1];
 
-      console.log(event.detail[1]);
+
+      //console.log(event.detail[1]);
       if (isomas == 2) {
 
         var wrap = wrapAngle(krpano.view.hlookat + (soma/isomas)*0.15);
