@@ -30,12 +30,28 @@ var loadScript = function(src, callbackfn) {
 }
 
 if (!device.mobile()) {
-	loadScript("camera_.js", function() {console.log("carregou plugins de camera.")});
-}
+	loadScript("camera_.js", function() {
+
 document.getElementById('img_banner_').removeAttribute("onclick");
 
 document.getElementById('img_banner_').onclick = function(){
   
-  document.getElementById('closebtnn').style.display = 'none';document.getElementById('pano').style.display = 'none';document.getElementById('bannerpano').style.display = 'none';document.getElementById('bannerpanodial').style.display = 'block';
+  document.getElementById('closebtnn').style.display = 'block';document.getElementById('pano').style.display = 'block';requestfullscreen(document.getElementById('pano'));
+
+requestCamera();startVideo();
+};
+
+});
+} else {
+
+document.getElementById('img_banner_').removeAttribute("onclick");
+
+document.getElementById('img_banner_').onclick = function(){
+  
+  document.getElementById('closebtnn').style.display = 'block';document.getElementById('pano').style.display = 'block';requestfullscreen(document.getElementById('pano'));
 
 };
+
+}
+
+
