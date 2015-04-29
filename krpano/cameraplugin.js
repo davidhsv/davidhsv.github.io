@@ -125,8 +125,8 @@ try {
       //console.log(event.detail[1]);
       if (isomas == 2) {
 
-        var wrap = wrapAngle(krpano.view.hlookat + (soma/isomas)*0.15);
-        var wrapv = Math.max(Math.min(( krpano.view.vlookat + (somav/isomas)*0.15 ),90),-90);
+        var wrap = wrapAngle(krpano.view.hlookat + powninja((soma/isomas)));
+        var wrapv = Math.max(Math.min(( krpano.view.vlookat + powninja((somav/isomas)) ),90),-90);
 
 
         krpano.view.hlookat = wrap;
@@ -183,3 +183,6 @@ try {
 
 function wrapAngle(value)	{ value = value % 360; return (value<=180)? value : value-360;	} // wrap a value between
 function wrapAngleV(value)	{ value = value % 90; return (value<=45)? value : value-90;	} // wrap a value between
+function powninja(value){
+var m = 1;if (value < 0) {m = -1};
+return Math.pow(Math.abs(value), 0.3)*m*0.2;}
