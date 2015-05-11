@@ -3,10 +3,10 @@
 	<view fovtype="DFOV" fov="90" fovmin="30" fovmax="150" />
 	<contextmenu fullscreen="false" />
 
-	<events 
+	<!-- <events
 	        onmousedown="set(syncother,true); events.onviewchange();"
 	        onmousewheel="events.onmousedown();"
-	        />
+	        /> -->
 
 	<!-- <action name="loadgyro">
 		addplugin(gyro);
@@ -16,6 +16,8 @@
 
 	<plugin name="gyro" url="gyro.js" enabled="true"
         sensor_mode="3"/>
+
+	<plugin name="cameraplugin" url="cameraplugin.js"/>
 
 	<image>
 		<cube url="panos/panotarde_%s.jpg" />
