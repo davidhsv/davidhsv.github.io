@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.nativescript.org/tns.xsd">
+  <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" name="Page" type="tns:PageType"/>
+  <xs:complexType name="ImageType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="src" use="optional"/>
+        <xs:attribute type="xs:string" name="stretch" use="optional"/>
+        <xs:attribute type="xs:byte" name="rowSpan" use="optional"/>
+        <xs:attribute type="xs:string" name="cssClass" use="optional"/>
+        <xs:attribute type="xs:string" name="visibility" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="GridLayoutType">
+    <xs:sequence>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:ImageType" name="Image" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:GridLayoutType" name="GridLayout" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:StackLayoutType" name="StackLayout" minOccurs="0"/>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:LabelType" name="Label" minOccurs="0"/>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:ActivityIndicatorType" name="ActivityIndicator" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="tap" use="optional"/>
+    <xs:attribute type="xs:byte" name="width" use="optional"/>
+    <xs:attribute type="xs:string" name="cssClass" use="optional"/>
+    <xs:attribute type="xs:byte" name="col" use="optional"/>
+    <xs:attribute type="xs:string" name="columns" use="optional"/>
+    <xs:attribute type="xs:byte" name="row" use="optional"/>
+    <xs:attribute type="xs:string" name="verticalAlignment" use="optional"/>
+    <xs:attribute type="xs:string" name="dock" use="optional"/>
+    <xs:attribute type="xs:string" name="rows" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="LabelType" mixed="true">
+    <xs:sequence>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:Label.formattedTextType" name="Label.formattedText" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="text" use="optional"/>
+    <xs:attribute type="xs:string" name="cssClass" use="optional"/>
+    <xs:attribute type="xs:byte" name="col" use="optional"/>
+    <xs:attribute type="xs:string" name="textWrap" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="StackLayoutType">
+    <xs:sequence>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:ImageType" name="Image" minOccurs="0"/>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:LabelType" name="Label" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="orientation" use="optional"/>
+    <xs:attribute type="xs:byte" name="col" use="optional"/>
+    <xs:attribute type="xs:string" name="verticalAlignment" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="ActivityIndicatorType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="busy"/>
+        <xs:attribute type="xs:string" name="cssClass"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="SpanType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="text"/>
+        <xs:attribute type="xs:string" name="fontAttributes"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="FormattedString.spansType">
+    <xs:sequence>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:SpanType" name="Span"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FormattedStringType">
+    <xs:sequence>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:FormattedString.spansType" name="FormattedString.spans"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Label.formattedTextType">
+    <xs:sequence>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:FormattedStringType" name="FormattedString"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ListView.itemTemplateType">
+    <xs:sequence>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:GridLayoutType" name="GridLayout"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ListViewType">
+    <xs:sequence>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:ListView.itemTemplateType" name="ListView.itemTemplate"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id"/>
+    <xs:attribute type="xs:string" name="items"/>
+  </xs:complexType>
+  <xs:complexType name="DockLayoutType">
+    <xs:sequence>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:GridLayoutType" name="GridLayout" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:ListViewType" name="ListView"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ScrollViewType">
+    <xs:sequence>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:DockLayoutType" name="DockLayout"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id"/>
+  </xs:complexType>
+  <xs:complexType name="PageType">
+    <xs:sequence>
+      <xs:element xmlns:tns="http://www.nativescript.org/tns.xsd" type="tns:ScrollViewType" name="ScrollView"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="navigatedTo"/>
+  </xs:complexType>
+</xs:schema>
