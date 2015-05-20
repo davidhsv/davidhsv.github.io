@@ -4,15 +4,15 @@
 	<contextmenu fullscreen="false" />
 
 
-	<plugin name="gyro" url="http://davidhsv.github.io/ne10/gyro.js" enabled="true"
+	<plugin name="gyro" url="http://www.peugeotexperience.com.br/ne10/gyro.js" enabled="true"
         sensor_mode="3"/>
 
-	<plugin name="cameraplugin" url="http://davidhsv.github.io/ne10/cameraplugin.js"/>
+	<plugin name="cameraplugin" url="http://www.peugeotexperience.com.br/ne10/cameraplugin.js"/>
 
 	<image>
-		<cube url="http://davidhsv.github.io/ne10/panos/panotarde_%s.jpg" />
+		<cube url="http://www.peugeotexperience.com.br/ne10/panos/panotarde_%s.jpg" />
 		<mobile>
-			<cube url="http://davidhsv.github.io/ne10/panos/mobiletarde_%s.jpg" />
+			<cube url="http://www.peugeotexperience.com.br/ne10/panos/mobiletarde_%s.jpg" />
 		</mobile>
 	</image>
 

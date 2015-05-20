@@ -5,11 +5,11 @@ function requestfullscreen($){for(var B=["requestFullscreen","mozRequestFullScre
 var d = new Date();
   var n = d.getHours();
   if (n >= 18) {
-     embedpano({html5:"only+webgl", id:"krpanoLeftEyeViewer",  target:"pano",  xml:"http://davidhsv.github.io/ne10/mobilevrnoite.xml", vars:{side:"left",  cubepathsidepostfix:"-L.tiles"}, passQueryParameters:true});
+     embedpano({html5:"only+webgl", id:"krpanoLeftEyeViewer",  target:"pano",  xml:"http://www.peugeotexperience.com.br/ne10/mobilevrnoite.xml", vars:{side:"left",  cubepathsidepostfix:"-L.tiles"}, passQueryParameters:true});
   } else if (n >= 12) {
-     embedpano({html5:"only+webgl", id:"krpanoLeftEyeViewer",  target:"pano",  xml:"http://davidhsv.github.io/ne10/mobilevrtarde.xml", vars:{side:"left",  cubepathsidepostfix:"-L.tiles"}, passQueryParameters:true});
+     embedpano({html5:"only+webgl", id:"krpanoLeftEyeViewer",  target:"pano",  xml:"http://www.peugeotexperience.com.br/ne10/mobilevrtarde.xml", vars:{side:"left",  cubepathsidepostfix:"-L.tiles"}, passQueryParameters:true});
   } else {
-     embedpano({html5:"only+webgl", id:"krpanoLeftEyeViewer",  target:"pano",  xml:"http://davidhsv.github.io/ne10/mobilevrdia.xml", vars:{side:"left",  cubepathsidepostfix:"-L.tiles"}, passQueryParameters:true});
+     embedpano({html5:"only+webgl", id:"krpanoLeftEyeViewer",  target:"pano",  xml:"http://www.peugeotexperience.com.br/ne10/mobilevrdia.xml", vars:{side:"left",  cubepathsidepostfix:"-L.tiles"}, passQueryParameters:true});
   };
 
 var loadScript = function(src, callbackfn) {
@@ -30,7 +30,7 @@ var loadScript = function(src, callbackfn) {
 }
 
 if (!device.mobile()) {
-	loadScript("http://davidhsv.github.io/ne10/camera_.js", function() {
+	loadScript("http://www.peugeotexperience.com.br/ne10/camera_.js", function() {
 
 document.getElementById('img_banner_').removeAttribute("onclick");
 
