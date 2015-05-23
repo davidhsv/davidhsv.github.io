@@ -1,15 +1,89 @@
+
+<!DOCTYPE html>
 <htlm>
-<head></head>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<script>
+	
+jQuery(document).ready(function(){
+	console.log("aaa");
+	jQuery(window).scroll(function() {
+	//se tela < banner, mostrar bg2
+	if ($(window).height() < 450) {
+		//mostra bg2
+
+	} else {
+		var $h1 = $("#banner_lateral_");
+		var $carro = $("#carro_");
+		var scrollTop = $h1.offset().top - $(window).scrollTop();
+		var scrollBottom = $(window).scrollTop() + $(window).height() - ($h1.offset().top + 446);
+		console.log(scrollBottom);
+
+		var DELAY = 1000;
+
+		var espaco_disponivel = $(window).height() - 446;
+		if (scrollBottom < espaco_disponivel / 2
+			&& scrollBottom > 0	) {
+			//escostando em baixo
+			// 45 + 65 + 65*proporcao
+			var proporcao = scrollBottom / (espaco_disponivel / 2);
+			var top = 45 + 85 + 85*(1-proporcao);
+			$carro.css("top", top);
+			$("#sombaixo_").css("top", 178 + top);
+
+			if (scrollBottom > 0 && scrollBottom < 70) {
+				$("#sombaixo_").fadeIn(DELAY);
+				$("#textocima_").fadeIn(DELAY);
+			} else {
+				$("#textocima_").fadeOut(DELAY/5);
+				$("#sombaixo_").fadeOut(DELAY/5);
+			}
+
+		} else if (scrollTop < espaco_disponivel / 2
+			&& scrollTop > 0) {
+			// 45 + 65*proporcao
+			var proporcao = scrollTop / (espaco_disponivel / 2);
+			var top = 45 + 0 + 85*proporcao;
+			$carro.css("top", top);
+			$("#somcima_").css("top", -18 + top);
+
+			if (scrollTop > 0 && scrollTop < 70) {
+				$("#textobaixo_").fadeIn(DELAY);
+				$("#somcima_").fadeIn(DELAY);
+			} else {
+				$("#textobaixo_").fadeOut(DELAY/5);
+				$("#somcima_").fadeOut(DELAY/5);
+			}
+		} else {
+			$("#sombaixo_").finish();
+			$("#textocima_").finish();
+			$("#textobaixo_").finish();
+			$("#somcima_").finish();
+			//resetar para posicoes iniciais (se já não está no bg2)
+		}
+	}
+	});
+
+});
+</script>
+
+</head>
 <body>
 	
 <div style="height: 2000px">
 	cima
 </div>
-<div style="height: 466px;width: 200px" id="banner_lateral_">
-
+<div style="height: 446px;width: 200px;background-image: url(http://davidhsv.github.io/ne10/bannerlateral/bg1.jpg);position:relative" id="banner_lateral_">
+	<img id="carro_" src="http://davidhsv.github.io/ne10/bannerlateral/carro.png" style="position:absolute; top: 130px; left: 61px;">
+	<img id="sombaixo_" src="http://davidhsv.github.io/ne10/bannerlateral/sombaixo.png" style="position:absolute; top: 395px; left: 88px; display:none">
+	<img id="somcima_" src="http://davidhsv.github.io/ne10/bannerlateral/somcima.png" style="position:absolute; top: 30px; left: 88px; display:none">
+	<img id="textobaixo_" src="http://davidhsv.github.io/ne10/bannerlateral/texto.png" style="position:absolute; top: 284px; left:44px; display:none">
+	<img id="textocima_" src="http://davidhsv.github.io/ne10/bannerlateral/texto.png" style="position:absolute; top: 54px; left:44px; display:none">
 </div>
-<div style="height: 2000px">
+<div style="height: 2000px; ">
 	baixo
+	
 </div>
 
 </body>
