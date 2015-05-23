@@ -34,7 +34,7 @@ if (!device.mobile()) {
 
 document.getElementById('img_banner_').removeAttribute("onclick");
 
-document.getElementById('img_banner_').onclick = function(){
+document.getElementById('img_banner_').onmouseup = function(){
   
   document.getElementById('closebtnn').style.display = 'block';document.getElementById('pano').style.display = 'block';requestfullscreen(document.getElementById('pano'));
 
@@ -46,7 +46,7 @@ requestCamera();startVideo();
 
 document.getElementById('img_banner_').removeAttribute("onclick");
 
-document.getElementById('img_banner_').onclick = function(){
+document.getElementById('img_banner_').onmouseup = function(){
   
   document.getElementById('closebtnn').style.display = 'block';document.getElementById('pano').style.display = 'block';requestfullscreen(document.getElementById('pano'));
 
