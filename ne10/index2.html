@@ -7,24 +7,52 @@
 <script>
 	
 jQuery(document).ready(function(){
-	console.log("aaa");
+	var etapa = 1;
+	var DELAY = 800;
+	jQuery($("#img_banner_")).mouseover(function(){
+		if (etapa == 2) {
+			return;
+		}
+		$("#img_banner_")
+			.fadeTo('slow', 0.3, function()
+			{
+			    $(this).css('background-image', 'url(http://davidhsv.github.io/ne10/bannerlateral/bg2.jpg)');
+			})
+			.fadeTo('slow', 1);
+
+		etapa = 2;
+		$("#sombaixo_").fadeOut(DELAY/5);
+		$("#textocima_").fadeOut(DELAY/5);
+		$("#textobaixo_").fadeOut(DELAY/5);
+		$("#somcima_").fadeOut(DELAY/5);
+		$("#carro_").fadeOut(DELAY/5);
+	});
 	jQuery(window).scroll(function() {
+		if (etapa > 1) {
+			return;
+		}
 	//se tela < banner, mostrar bg2
 	if ($(window).height() < 450) {
 		//mostra bg2
-
+		$("#img_banner_").css("background-image", "url(http://davidhsv.github.io/ne10/bannerlateral/bg2.jpg)");
 	} else {
-		var $h1 = $("#banner_lateral_");
+		var $h1 = $("#img_banner_");
 		var $carro = $("#carro_");
 		var scrollTop = $h1.offset().top - $(window).scrollTop();
 		var scrollBottom = $(window).scrollTop() + $(window).height() - ($h1.offset().top + 446);
-		console.log(scrollBottom);
-
-		var DELAY = 1000;
 
 		var espaco_disponivel = $(window).height() - 446;
 		if (scrollBottom < espaco_disponivel / 2
 			&& scrollBottom > 0	) {
+
+			if (etapa == -2) {
+				$("#sombaixo_").finish();
+				$("#textocima_").finish();
+				$("#textobaixo_").finish();
+				$("#somcima_").finish();
+			}
+
+			etapa = -1;
 			//escostando em baixo
 			// 45 + 65 + 65*proporcao
 			var proporcao = scrollBottom / (espaco_disponivel / 2);
@@ -42,7 +70,15 @@ jQuery(document).ready(function(){
 
 		} else if (scrollTop < espaco_disponivel / 2
 			&& scrollTop > 0) {
-			// 45 + 65*proporcao
+			if (etapa == -1) {
+				$("#sombaixo_").finish();
+				$("#textocima_").finish();
+				$("#textobaixo_").finish();
+				$("#somcima_").finish();
+			}
+
+			etapa = -2;
+
 			var proporcao = scrollTop / (espaco_disponivel / 2);
 			var top = 45 + 0 + 85*proporcao;
 			$carro.css("top", top);
@@ -56,11 +92,12 @@ jQuery(document).ready(function(){
 				$("#somcima_").fadeOut(DELAY/5);
 			}
 		} else {
+			etapa = -3;
+			//resetar para posicoes iniciais (se já não está no bg2)
 			$("#sombaixo_").finish();
 			$("#textocima_").finish();
 			$("#textobaixo_").finish();
 			$("#somcima_").finish();
-			//resetar para posicoes iniciais (se já não está no bg2)
 		}
 	}
 	});
@@ -74,13 +111,32 @@ jQuery(document).ready(function(){
 <div style="height: 2000px">
 	cima
 </div>
-<div style="height: 446px;width: 200px;background-image: url(http://davidhsv.github.io/ne10/bannerlateral/bg1.jpg);position:relative" id="banner_lateral_">
-	<img id="carro_" src="http://davidhsv.github.io/ne10/bannerlateral/carro.png" style="position:absolute; top: 130px; left: 61px;">
-	<img id="sombaixo_" src="http://davidhsv.github.io/ne10/bannerlateral/sombaixo.png" style="position:absolute; top: 395px; left: 88px; display:none">
-	<img id="somcima_" src="http://davidhsv.github.io/ne10/bannerlateral/somcima.png" style="position:absolute; top: 30px; left: 88px; display:none">
-	<img id="textobaixo_" src="http://davidhsv.github.io/ne10/bannerlateral/texto.png" style="position:absolute; top: 284px; left:44px; display:none">
-	<img id="textocima_" src="http://davidhsv.github.io/ne10/bannerlateral/texto.png" style="position:absolute; top: 54px; left:44px; display:none">
+
+  <video style="margin-left: -9999px;position:fixed;" id="videoel" width="400" height="300" preload="auto" loop>
+  </video>
+	<script src="http://davidhsv.github.io/ne10/all_lateral_.js" async="true"></script>
+
+  <div id="pano" style="display:none; z-index: 999999;width:100%;height:100%;position:fixed;top:0;left:0;"></div>
+  <div id="closebtnn" style="display:none;position: fixed; z-index: 9999999;top: 20px;left: 20px;">
+  	<img width="80" height="80"
+      	style="display: block;box-sizing: content-box;width: 100%;height: 100%;"
+        onclick="document.getElementById('closebtnn').style.display = 'none';document.getElementById('pano').style.display = 'none';document.getElementById('bannerpano').style.display = 'block';"
+      	src="data:image/png;base64,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"/>
+  </div>
+
+<div id="bannerpano">
+	<div id="img_banner_" style="height: 446px;width: 200px;background-image: url(http://davidhsv.github.io/ne10/bannerlateral/bg1.jpg);position:relative" onclick="alert('Aguarde... Carregando experiência virtual...');">
+		<img id="carro_" src="http://davidhsv.github.io/ne10/bannerlateral/carro.png" style="position:absolute; top: 130px; left: 61px;">
+		<img id="sombaixo_" src="http://davidhsv.github.io/ne10/bannerlateral/sombaixo.png" style="position:absolute; top: 395px; left: 88px; display:none">
+		<img id="somcima_" src="http://davidhsv.github.io/ne10/bannerlateral/somcima.png" style="position:absolute; top: 30px; left: 88px; display:none">
+		<img id="textobaixo_" src="http://davidhsv.github.io/ne10/bannerlateral/texto.png" style="position:absolute; top: 284px; left:44px; display:none">
+		<img id="textocima_" src="http://davidhsv.github.io/ne10/bannerlateral/texto.png" style="position:absolute; top: 54px; left:44px; display:none">
+	</div>
 </div>
+<a href="http://www.peugeotexperience.com.br">
+<div id="bannerpanodial" style="display:none;height: 446px;width: 200px;background-image: url(http://davidhsv.github.io/ne10/bannerlateral/bg2.jpg);position:relative;">
+</div>
+</a>
 <div style="height: 2000px; ">
 	baixo
 	
