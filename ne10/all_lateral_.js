@@ -1,6 +1,6 @@
 jQuery(document).ready(function() {
     var etapa = 1;
-    var qtdVezesChegouPerto = -3;
+    var qtdVezesChegouPerto = -1;
     var DELAY = 800;
     jQuery($("#img_banner_")).mouseover(function() {
         if (etapa == 2) {
