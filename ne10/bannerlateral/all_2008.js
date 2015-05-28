@@ -2,11 +2,11 @@ jQuery(document).ready(function() {
     var etapa = 1;
     var qtdVezesChegouPerto = -1;
     var DELAY = 800;
-    jQuery($("#img_banner_")).mouseover(function() {
+    jQuery($("#img_banner__")).mouseover(function() {
         if (etapa == 2) {
             return;
         }
-        $("#img_banner_")
+        $("#img_banner__")
             .fadeTo('slow', 0.3, function() {
                 $(this).css('background-image', 'url(http://davidhsv.github.io/ne10/bannerlateral/bg2.jpg)');
             })
@@ -26,7 +26,7 @@ jQuery(document).ready(function() {
         if (qtdVezesChegouPerto >= 3 && 
         	!$("#textocima_").is(":visible")
         	&& !$("#textobaixo_").is(":visible")) {
-        	$("#img_banner_")
+        	$("#img_banner__")
         	    .fadeTo('slow', 0.3, function() {
         	        $(this).css('background-image', 'url(http://davidhsv.github.io/ne10/bannerlateral/bg2.jpg)');
         	    })
@@ -39,9 +39,9 @@ jQuery(document).ready(function() {
         	$("#carro_").fadeOut(DELAY / 5);
         } else if ($(window).height() < 450) {
             //mostra bg2
-            $("#img_banner_").css("background-image", "url(http://davidhsv.github.io/ne10/bannerlateral/bg2.jpg)");
+            $("#img_banner__").css("background-image", "url(http://davidhsv.github.io/ne10/bannerlateral/bg2.jpg)");
         } else {
-            var $h1 = $("#img_banner_");
+            var $h1 = $("#img_banner__");
             var $carro = $("#carro_");
             var scrollTop = $h1.offset().top - $(window).scrollTop();
             var scrollBottom = $(window).scrollTop() + $(window).height() - ($h1.offset().top + 446);
@@ -65,6 +65,8 @@ jQuery(document).ready(function() {
                 	}
                     $("#sombaixo_").fadeIn(DELAY);
                     $("#textocima_").fadeIn(DELAY);
+                    $("#textobaixo_").hide();
+                    $("#somcima_").hide();
                 } else {
                     $("#textocima_").fadeOut(DELAY / 5);
                     $("#sombaixo_").fadeOut(DELAY / 5);
@@ -87,6 +89,8 @@ jQuery(document).ready(function() {
                 	}
                     $("#textobaixo_").fadeIn(DELAY);
                     $("#somcima_").fadeIn(DELAY);
+                    $("#sombaixo_").hide();
+                    $("#textocima_").hide();
                 } else {
                     $("#textobaixo_").fadeOut(DELAY / 5);
                     $("#somcima_").fadeOut(DELAY / 5);
