@@ -29,9 +29,15 @@ angular.module('starter', ['ionic', 'ngCordova'])
 
       return {
           getProduto: function () {
+            if (produto == undefined) {
+              produto = {};
+            }
               return produto;
           },
           setProduto: function(value) {
+              if (produto == undefined) {
+                produto = {};
+              }
               produto = value;
           }
       };
