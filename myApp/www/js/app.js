@@ -236,8 +236,7 @@ angular.module('starter', ['ionic', 'ngCordova'])
                 var filename_ = "orcamento.docx";
 
                // if (cordova == undefined) {
-                  doc.output();
-                  return;
+                  saveAs(out, filename_);
                   //console.log(cordova.file.externalRootDirectory);
                // }
 
