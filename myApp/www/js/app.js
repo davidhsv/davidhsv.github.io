@@ -314,7 +314,9 @@ angular.module('starter', ['ionic', 'ngCordova'])
     console.log("pesquisar");
     //item.produto = {};
     item.rolos = null;
-    sharedProperties.setProduto(item.produto);
+    if (item.produto != undefined) {
+      sharedProperties.setProduto(item.produto);
+    }
     $state.go("pesquisarProduto");
   }
 
