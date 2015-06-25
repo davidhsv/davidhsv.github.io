@@ -235,7 +235,11 @@ angular.module('starter', ['ionic', 'ngCordova'])
 
                 var filename_ = "orcamento.docx";
 
-                console.log(cordova.file.externalRootDirectory);
+                if (!cordova) {
+                  doc.output();
+                  return;
+                  //console.log(cordova.file.externalRootDirectory);
+                }
 
                 $cordovaFile.writeFile(cordova.file.externalRootDirectory, filename_, out,  true)
                       .then(function (success) {
