@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
+    <script src="lib/pouchdb/dist/pouchdb.min.js"></script>
+    <script src="lib/papaparse.min.js"></script>
+    <script src="lib/locale.js"></script>
+
+    <script type="text/javascript" src="lib/main.min.js"></script>
+    <script src="lib/angular-expressions.js"></script>
+
+    <script src="lib/FileSaver.min.js"></script>
+    <script src="lib/jszip-utils.js"></script>
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="MyCtrl">
+
+  <ion-nav-view></ion-nav-view>
+
+  <script id="templates/home.html" type="text/ng-template">
+
+    <ion-header-bar class="bar-positive">
+      <div class="buttons">
+        <button class="button button-icon icon ion-ios-minus-outline"
+          ng-click="data.showDelete = !data.showDelete; data.showReorder = false"></button>
+      </div>
+      <h1 class="title">Orçamentos</h1>
+      <div class="buttons">
+        <!-- <button class="button button-icon icon ion-ios-minus-outline"
+          ng-click="share(null)"></button>-->
+      </div>
+    </ion-header-bar>
+
+    <ion-content>
+
+      <ion-list show-delete="data.showDelete">
+
+        <ion-item collection-repeat="item in items" 
+                  href="#/orcamento/{{item._id}}" class="item-remove-animate">
+                  <!-- ion-chevron-right -->
+            <button ng-class="item.compartilhado ? 'ion-alert': 'ion-checkmark'" class="button" ng-click="toggleCompartilhado(item, $event)"></button>
+            {{ item.nome }}
+            <span class="item-note">
+              {{ item.data | date:"dd/MM/yy HH:mm"}}
+            </span>
+          <ion-delete-button class="ion-minus-circled" 
+                             ng-click="onItemDelete(item)">
+          </ion-delete-button>
+          <ion-option-button class="button-calm"
+                             ng-click="share(item)">
+            Compartilhar
+          </ion-option-button>
+          <ion-option-button class="button-agressive"
+                             ng-click="abrir(item)">
+            Abrir
+          </ion-option-button>
+        </ion-item>
+
+      </ion-list>
+
+    </ion-content>
+
+    <ion-footer-bar align-title="left" class="bar-assertive">
+      <div class="buttons">
+      </div>
+      <h1 class="title"></h1>
+      <div class="buttons">
+        <a href="#/orcamentoNovo" class="button">Criar Orçamento</a>
+      </div>
+    </ion-footer-bar>
+
+  </script>
+
+
+  <script id="templates/orcamento.html" type="text/ng-template">
+    <ion-header-bar class="bar-positive">
+      <div class="buttons">
+      </div>
+      <h1 class="title">Cadastro de Orçamento</h1>
+      <div class="buttons">
+        <button class="button button-icon icon ion-ios-plus-outline"
+          ng-click="adicionarItemOrcamento()"></button>
+      </div>
+    </ion-header-bar>
+
+    <ion-content>
+
+      <div class="card">
+        <div class="item item-divider">
+          <h2>{{orcamento.nome}}</h2>
+          <p>{{orcamento.data | date:"dd/MM/yy HH:mm"}}</p>
+        </div>
+        <div class="item item-text-wrap">
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">Nome</span>
+              <input type="text" ng-model="orcamento.nome" value="{{orcamento.nome}}">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Telefone</span>
+              <input type="tel" ng-model="orcamento.telefone" value="{{orcamento.telefone}}">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Email</span>
+              <input type="email" ng-model="orcamento.email" value="{{orcamento.email}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Endereço</span>
+              <input type="text" ng-model="orcamento.endereco" value="{{orcamento.endereco}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Observações</span>
+              <input type="text" ng-model="orcamento.obs" value="{{orcamento.obs}}">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Desconto</span>
+              <input type="number" ng-model="orcamento.desconto" value="{{orcamento.desconto}}">
+            </label>
+          </div>
+        </div>
+        <div class="item item-divider">
+          Total do orçamento: R$ {{orcamento.valor_total | number:2}}
+        </div>
+      </div>
+
+      <div class="card" ng-repeat="item in orcamento.items">
+        <div class="item item-divider" style="display:flex;align-items: center;">
+          <span style="flex:1">{{item.ambiente}}</span><button style="float: right" class="button button-icon icon ion-ios-minus-outline"
+          ng-click="removerItemOrcamento(item)"></button>
+        </div>
+        <div class="item item-text-wrap">
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">Ambiente</span>
+              <input type="text" ng-model="item.ambiente" value="{{item.ambiente}}">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Altura</span>
+              <input type="number" ng-model="item.altura" value="{{item.altura}}">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Largura</span>
+              <input type="number" ng-model="item.largura" value="{{item.largura}}">
+            </label>
+            <label class="item item-input item-stacked-label">
+                <button style="float:right" class="button" ng-click="pesquisarProduto(item)">Pesquisar Produto</button>
+                <span class="input-label">Produto <br/>{{item.rolos? '(' + item.rolos + ' rolos)': ''}}</span>
+                <br/>{{item.produto.nome}} | R$ {{item.produto.preco | number:2}}
+            </label>
+          </div>
+        </div>
+        <div class="item item-divider">
+          Valor do ambiente: R$ {{item.valor_item | number:2}}
+        </div>
+      </div>
+
+
+    </ion-content>
+    <ion-footer-bar align-title="left">
+      <button class="button button-large  button-positive" ng-click="salvar()">
+        Salvar
+      </button>
+      <h1 class="title"></h1>
+      <a href="#/" class="button button-large button-assertive">
+        Cancelar
+      </a>
+    </ion-footer-bar>
+  </script>
+
+  <script id="templates/pesquisarProduto.html" type="text/ng-template">
+
+    <ion-header-bar class="bar-positive">
+      <div class="buttons">
+      </div>
+      <h1 class="title">Pesquisar Produto</h1>
+      <div class="buttons">
+      </div>
+    </ion-header-bar>
+
+    <div class="bar bar-subheader">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" ng-model="searchText" placeholder="Pesquisar">
+      </label>
+    </div>
+
+    <ion-content style="margin-top:55px">
+
+      <!-- The list directive is great, but be sure to also checkout the collection repeat directive when scrolling through large lists -->
+      
+      <ion-list >
+
+        <ion-item collection-repeat="item in items" 
+        item-height="100px"
+                  ng-click="selecionarProduto(item)">
+            <span>{{ item.nome }} | {{ item.tipo }} | R$ {{ item.preco | number:2 }}<span>
+        </ion-item>
+
+      </ion-list>
+
+    </ion-content>
+
+    <ion-footer-bar align-title="left" class="bar-assertive">
+      <div class="buttons">
+      </div>
+      <h1 class="title"></h1>
+      <div class="buttons">
+        <input class="button" type="file" fileread="uploadme" value="Atualizar lista de produtos" />
+      </div>
+    </ion-footer-bar>
+
+  </script>
+
+
+    </body>
+</html>
