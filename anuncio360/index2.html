@@ -693,7 +693,10 @@
                         gyro.startTracking(function(o) {
                             // o.x, o.y, o.z for accelerometer
                             // o.alpha, o.beta, o.gamma for gyro
-                            jQuery(".teste123").text(o.alpha);
+                            if (o.alpha == null) {
+                                return;
+                            }
+                            jQuery(".teste123").text(steps * o.alpha);
                             
                             wrapper.kinetic('jumpTo', { x: steps * o.alpha});
                         });
