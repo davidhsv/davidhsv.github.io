@@ -1,0 +1,725 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+        <!-- FIXME<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">-->
+        <!-- ESSE VIEWPORT PERMITE O GPU RASTERIZATION NO ANDROID ( https://www.chromium.org/developers/design-documents/chromium-graphics/how-to-get-gpu-rasterization )-->
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+        <title>Fields - Anuncio 360</title>
+        <link rel="stylesheet" href="http://fields360.agency/anuncio360/css/foundation.css" />
+
+        <link rel="stylesheet" href="http://fields360.agency/anuncio360/css/style.css">
+
+        <link rel="stylesheet" href="http://fields360.agency/anuncio360/icon/style.css">
+        <link rel="stylesheet" href="http://fields360.agency/anuncio360/iconx/style.css">
+
+        <script src="http://fields360.agency/anuncio360/js/vendor/modernizr.js"></script>
+
+        <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Playfair+Display:700italic' rel='stylesheet' type='text/css'>
+
+        <!-- <link rel="stylesheet" href="css/animation.css"> -->
+        <!-- <link rel="stylesheet" href="css/component.css"> -->
+        <link rel="stylesheet" href="http://fields360.agency/anuncio360/css/icons-effects.css">
+        <!-- <link rel="stylesheet" href="css/animate.css"> -->
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <style>
+        /* FIXME colocando height 100% do pai até o filho (img), não é preciso mudar o height a partir do javascript */
+        #anuncio360, .box-images, .parallax, .layer, .layer img {
+            height: 100%;
+        }
+
+        .layer img {
+            width:auto;
+            max-width: initial;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="loader"></div>
+
+        <nav>
+            <div class="row full-width nav-close">
+                <div class="small-6 columns">
+                    <h5><span class="icon-noun_110454_cc faa-passing animated"></span>deslizar</h5>
+                </div>
+                <div class="small-6 columns">
+                    <h5><span class="icon-noun_110452_cc faa-fadding animated"></span>abrir</h5>
+                </div>
+            </div>
+            <div class="row full-width nav-open">
+                <div class="small-12 columns">
+                    <a id="menuOpen" href="#"><h4><span class="icon-arrow_up"></span></h4></a>
+                </div>
+            </div>
+        </nav>
+
+
+        <div id="anuncio360">
+            <div class="box-images">
+                <ul class="parallax">
+                    <li class="layer" data-depth="0.05"><img src="http://fields360.agency/anuncio360/img/bg_fields_l.jpg"></li>
+                    <li class="layer" data-depth="0.10"><img src="http://fields360.agency/anuncio360/img/galera_fields_l.png"></li>
+                </ul>
+                <div class="dots">
+                    <div class="dot zeladoria"><a href="#" id="modal-zeladoria" data-dialog="tip-zeladoria"><h5>Zeladoria</h5><div class="shape"></div></a></div>
+                    <div class="dot midia"><a href="#" id="modal-midia" data-dialog="tip-midia"><h5>Mídia</h5><div class="shape"></div></a></div>
+                    <div class="dot copa"><a href="#" id="modal-copa" data-dialog="tip-copa"><h5>Copa</h5><div class="shape"></div></a></div>
+                    <div class="dot revisao"><a href="#" id="modal-revisao" data-dialog="tip-revisao"><h5>Revisão</h5><div class="shape"></div></a></div>
+                    <div class="dot atendimento"><a href="#" id="modal-atendimento" data-dialog="tip-atendimento"><h5>Atendimento</h5><div class="shape"></div></a></div>
+                    <div class="dot producao"><a href="#" id="modal-producao" data-dialog="tip-producao"><h5>Produção</h5><div class="shape"></div></a></div>
+                    <div class="dot estudio"><a href="#" id="modal-estudio" data-dialog="tip-estudio"><h5>Estúdio</h5><div class="shape"></div></a></div>
+                </div>
+            </div>
+            <div class="box-images">
+                <ul class="parallax">
+                    <li class="layer" data-depth="0.05"><img src="http://fields360.agency/anuncio360/img/bg_fields_r.jpg"></li>
+                    <li class="layer" data-depth="0.10"><img src="http://fields360.agency/anuncio360/img/galera_fields_r.png"></li>
+                </ul>
+                <div class="dots">
+                    <div class="dot criacao"><a href="#"  id="modal-criacao" data-dialog="tip-criacao"><h5>Criação</h5><div class="shape"></div></a></div>
+                    <div class="dot operacoes"><a href="#" id="modal-operacoes" data-dialog="tip-operacoes"><h5>Operações</h5><div class="shape"></div></a></div>
+                    <div class="dot gerencia"><a href="#" id="modal-gerencia"  data-dialog="tip-gerencia"><h5>Gerência</h5><div class="shape"></div></a></div>
+                    <div class="dot delivery"><a href="#" id="modal-delivery" data-dialog="tip-delivery"><h5>Delivery</h5><div class="shape"></div></a></div>
+                    <div class="dot rh"><a href="#" id="modal-rh"  data-dialog="tip-rh"><h5>Recepção/RH</h5><div class="shape"></div></a></div>
+                    <div class="dot financeiro"><a href="#" id="modal-financeiro"  data-dialog="tip-financeiro"><h5>Financeiro</h5><div class="shape"></div></a></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="dialog">
+            <div id="tip-operacoes" class="dialog">
+                <div class="dialog__overlay"></div>
+                <div class="dialog__content">
+                    <a  class="action hi-icon-effect-5 hi-icon-effect-5d" data-dialog-close><span class="icon-arrow_close"></span></a>
+                        <div class="cube">
+                            <div class="svg-box">
+                                <div class="box"></div>
+                                <div class="bloco-texto">
+                                    <h2>Operações</h2>
+                                    <p class="writer">Nossa Diretoria de Operações é a responsável pelo o meio de campo entre as áreas a cada job. A coisas começam a acontecer a partir daqui.</p>
+                                </div>
+                           </div>
+                       </div>
+                    <div class="nav-controls-modal">
+                        <div class="next"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                        <div class="prev"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                    </div><!--nav-->
+
+                </div>
+            </div>
+            <div id="tip-criacao" class="dialog">
+                <div class="dialog__overlay"></div>
+                <div class="dialog__content">
+                    <a  class="action hi-icon-effect-5 hi-icon-effect-5d" data-dialog-close><span class="icon-arrow_close"></span></a>
+                        <div class="cube">
+                            <div class="svg-box">
+                                <div class="box"></div>
+                                <div class="bloco-texto">
+                                    <h2>Criação</h2>
+                                    <p class="writer">O time de criação da Fields tem filho de mineiros, ascendente árabe/português, e claro, brasilienses da gema. É por isso que sai tanta coisa boa daqui.</p>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="nav-controls-modal">
+                        <div class="next"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                        <div class="prev"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                    </div><!--nav-->
+
+                </div>
+            </div>
+            <div id="tip-gerencia" class="dialog">
+                <div class="dialog__overlay"></div>
+                <div class="dialog__content">
+                    <a  class="action hi-icon-effect-5 hi-icon-effect-5d" data-dialog-close><span class="icon-icon-arrow_close"></span></a>
+                        <div class="cube">
+                            <div class="svg-box">
+                                <div class="box"></div>
+                                <div class="bloco-texto">
+                                    <h2>Gerência</h2>
+                                    <p class="writer">Tudo tem um começo. E na Fields 360, todo os trabalhos começam com o pontapé do nosso presidente.</p>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="nav-controls-modal">
+                        <div class="next"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                        <div class="prev"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                    </div><!--nav-->
+                </div>
+            </div>
+            <div id="tip-estudio" class="dialog">
+                <div class="dialog__overlay"></div>
+                <div class="dialog__content">
+                    <a  class="action hi-icon-effect-5 hi-icon-effect-5d" data-dialog-close><span class="icon-arrow_close"></span></a>
+                        <div class="cube">
+                            <div class="svg-box">
+                                <div class="box"></div>
+                                <div class="bloco-texto">
+                                    <h2>Estúdio</h2>
+                                    <p class="writer">Quando a gente cria o que tem pra criar, os jobs não acabam. Afinal, eles precisam ir pra rua. Por isso que o nosso time de arte-finalistas são afinados e atenciosos em tudo que fazem.</p>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="nav-controls-modal">
+                        <div class="next"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                        <div class="prev"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                    </div><!--nav-->
+                </div>
+            </div>
+            <div id="tip-producao" class="dialog">
+                <div class="dialog__overlay"></div>
+                <div class="dialog__content">
+                    <a  class="action hi-icon-effect-5 hi-icon-effect-5d" data-dialog-close><span class="icon-arrow_close"></span></a>
+                        <div class="cube">
+                            <div class="svg-box">
+                                <div class="box"></div>
+                                <div class="bloco-texto">
+                                    <h2>Produção</h2>
+                                    <p class="writer">Papéis especiais, apliques de acrílico, formatos diferentes, etc. Tem gente na Fields que corre atrás de inúmeras formas para cada projeto ficar ainda melhor. Esse é o trabalho do nosso time de Produção.</p>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="nav-controls-modal">
+                        <div class="next"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                        <div class="prev"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                    </div><!--nav-->
+                </div>
+            </div>
+            <div id="tip-atendimento" class="dialog">
+                <div class="dialog__overlay"></div>
+                <div class="dialog__content">
+                    <a  class="action hi-icon-effect-5 hi-icon-effect-5d" data-dialog-close><span class="icon-arrow_close"></span></a>
+                        <div class="cube">
+                            <div class="svg-box">
+                                <div class="box"></div>
+                                <div class="bloco-texto">
+                                    <h2>Atendimento</h2>
+                                    <p class="writer">A relação entre cliente e agência, é tão importante quanto uma campanha brilhante. Por isso que a equipe de atendimento da Fields 360 não é de leva e traz. É uma equipe especialista em entender demandas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="nav-controls-modal">
+                        <div class="next"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                        <div class="prev"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                    </div><!--nav-->
+                </div>
+            </div>
+            <div id="tip-revisao" class="dialog">
+                <div class="dialog__overlay"></div>
+                <div class="dialog__content">
+                    <a  class="action hi-icon-effect-5 hi-icon-effect-5d" data-dialog-close><span class="icon-arrow_close"></span></a>
+                        <div class="cube">
+                            <div class="svg-box">
+                                <div class="box"></div>
+                                <div class="bloco-texto">
+                                    <h2>Revisão</h2>
+                                    <p class="writer">A gente faz tudo tão bem, que desconfia da gente mesmo. Por isso, nosso departamento de revisão é um olho vivo pronto para identificar qualquer errinho.</p>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="nav-controls-modal">
+                        <div class="next"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                        <div class="prev"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                    </div><!--nav-->
+                </div>
+            </div>
+            <div id="tip-copa" class="dialog">
+                <div class="dialog__overlay"></div>
+                <div class="dialog__content">
+                    <a  class="action hi-icon-effect-5 hi-icon-effect-5d" data-dialog-close><span class="icon-arrow_close"></span></a>
+                        <div class="cube">
+                            <div class="svg-box">
+                                <div class="box"></div>
+                                <div class="bloco-texto">
+                                    <h2>Copa</h2>
+                                    <p class="writer">A gente entrega tudo o que promete, e da melhor maneira possível. É por isso que a gente implementa essa mesma ideia no dia a dia da agência. Nosso Serviço de Copa existe justamente pra isso.</p>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="nav-controls-modal">
+                        <div class="next"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                        <div class="prev"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                    </div><!--nav-->
+
+                </div>
+            </div>
+            <div id="tip-midia" class="dialog">
+                <div class="dialog__overlay"></div>
+                <div class="dialog__content">
+                    <a  class="action hi-icon-effect-5 hi-icon-effect-5d" data-dialog-close><span class="icon-arrow_close"></span></a>
+                        <div class="cube">
+                            <div class="svg-box">
+                                <div class="box"></div>
+                                <div class="bloco-texto">
+                                    <h2>Mídia</h2>
+                                    <p class="writer">A gente sabe que pensar em mídias inteligentes é ótimo. É por isso que fazemos questão de trabalhar com pessoas que não se prendem à formatos. Nosso time de Mídia, sabem muito bem disso.</p>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="nav-controls-modal">
+                        <div class="next"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                        <div class="prev"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                    </div><!--nav-->
+                </div>
+            </div>
+            <div id="tip-zeladoria" class="dialog">
+                <div class="dialog__overlay"></div>
+                <div class="dialog__content">
+                    <a  class="action hi-icon-effect-5 hi-icon-effect-5d" data-dialog-close><span class="icon-arrow_close"></span></a>
+                        <div class="cube">
+                            <div class="svg-box">
+                                <div class="box"></div>
+                                <div class="bloco-texto">
+                                    <h2>Zeladoria</h2>
+                                    <p class="writer">Pro nosso trabalho ser de qualidade, a agência precisa estar totalmente focada nas demandas. É por isso que a nossa zeladoria cuida de tudo pra gente não se preocupar com nada. </p>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="nav-controls-modal">
+                        <div class="next"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                        <div class="prev"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                    </div><!--nav-->             
+                </div>
+            </div>
+            <div id="tip-financeiro" class="dialog">
+                <div class="dialog__overlay"></div>
+                <div class="dialog__content">
+                    <a  class="action hi-icon-effect-5 hi-icon-effect-5d" data-dialog-close><span class="icon-arrow_close"></span></a>
+                        <div class="cube">
+                            <div class="svg-box">
+                                <div class="box"></div>
+                                <div class="bloco-texto">
+                                    <h2>Financeiro</h2>
+                                    <p class="writer">90% da agência entende muito bem de propaganda. Mas os 10% mais importantes, são os que fazem o negócio acontecer. E isso está tudo nas mãos do nosso Financeiro.</p>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="nav-controls-modal">
+                        <div class="next"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                        <div class="prev"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                    </div><!--nav-->
+                </div>
+            </div>
+            <div id="tip-rh" class="dialog">
+                <div class="dialog__overlay"></div>
+                <div class="dialog__content">
+                    <a  class="action hi-icon-effect-5 hi-icon-effect-5d" data-dialog-close><span class="icon-arrow_close"></span></a>
+                    <div class="cube">
+                        <div class="svg-box">
+                            <div class="box"></div>
+                            <div class="bloco-texto">
+                                <h2>Recepção/RH</h2>
+                                <p class="writer">Somos uma agência de comunicação. Por isso, desde o primeiro contato na entrada da agência, até a relação interpessoal dos colaboradores no dia a dia, é bem clara e direta. Nosso time de recepção e RH, faz com que uma boa comunicação seja nosso melhor recurso sempre. Então, se quiser falar com a gente, entre em contato por aqui: (61) 3039-8700 ou (11)3571-5700</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-controls-modal">
+                        <div class="next"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                        <div class="prev"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                    </div><!--nav-->
+                </div>
+            </div>
+            <div id="tip-delivery" class="dialog" >
+                <div class="dialog__overlay"></div>
+                <div class="dialog__content">
+                    <a  class="action hi-icon-effect-5 hi-icon-effect-5d" data-dialog-close><span class="icon-arrow_close"></span></a>
+                    <div class="cube">
+                        <div class="svg-box">
+                            <div class="box"></div>
+                            <div class="bloco-texto">
+                                <h2>Delivery</h2>
+                                <p class="writer"  data-in-effect="fadeIn">Ao final cada trabalho, inicia o momento das entregas. Nessa hora, nosso Office Delivery pilota isso pra gente.</p>
+                                <span class="events-list__item__shadow"></span>
+                            </div><!--bloco-->
+                        </div><!--svg-->
+                    </div>
+                    <div class="nav-controls-modal">
+                        <div class="next"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                        <div class="prev"> <a href="#"><span class="hi-icon hi-icon-arrow" ></span></a></div>
+                    </div><!--nav-->
+                </div>
+            </div>
+        </div>
+
+        <script src="http://fields360.agency/anuncio360/js/vendor/jquery.js"></script>
+        <script src="http://fields360.agency/anuncio360/js/foundation.min.js"></script>
+<!-- JQUERY TWEEN -->
+        <script src="http://fields360.agency/anuncio360/plugins/gsap/CSSPlugin.min.js"></script>
+        <script src="http://fields360.agency/anuncio360/plugins/gsap/EasePack.min.js"></script>
+        <script src="http://fields360.agency/anuncio360/plugins/gsap/TweenLite.min.js"></script>
+        <!--CDN link for the latest TweenMax-->
+        <script src="http://fields360.agency/anuncio360/plugins/gsap/TweenMax.min.js"></script>
+
+
+        <script src="http://fields360.agency/anuncio360/plugins/text-effects/jquery.fittext.js"></script>
+        <script src="http://fields360.agency/anuncio360/plugins/text-effects/jquery.lettering.js"></script>
+        <script src="http://fields360.agency/anuncio360/plugins/text-effects/highlight.min.js"></script>
+        <script src="http://fields360.agency/anuncio360/plugins/text-effects/jquery.textillate.js"></script>
+
+        <script src="http://fields360.agency/anuncio360/plugins/animate/animate.js"></script>
+
+        <!-- TOUCH ELEMENT -->
+        <script src="http://fields360.agency/anuncio360/plugins/touch/jquery.mobile-1.4.5.js"></script>
+        <script src="http://fields360.agency/anuncio360/plugins/touch/jquery.parallaxify.min.js"></script>
+        <!-- parallax Effect -->
+        <script src="http://fields360.agency/anuncio360/plugins/parallax/parallax-content.js"></script>
+        <script>
+            $(document).foundation();
+
+            $(document).ready(function() {
+                
+
+                var $navStatus = 1;
+                var $shape = null;
+                $('.nav-open').hide();
+
+                function dotToggle($action,$shape) {
+                    if($action == 'open') {
+                        $shape.toggleClass('animate');
+                    }
+                    if($action == 'close') {
+                        $shape.removeClass('animate');
+                    }
+                }
+                // barra marrom de navegacao
+                function navToggle($action) {
+                    if($action == 'close') {
+                        $('nav').animate({height: "30px"});
+                        $('.nav-close').fadeOut(function() {
+                            $('.nav-open').fadeIn();
+                        });
+                    }
+                    if($action == 'open') {
+                        $('nav').animate({height: "90px"});
+                        $('.nav-open').fadeOut(function() {
+                            $('.nav-close').fadeIn('fast');
+                        });
+                        
+                    }
+                }
+
+                // $(document).mouseup(function() {
+                //     navToggle('close');
+                // });
+                $('#anuncio360').on('touchend', function() {
+                   navToggle('close');
+                });
+
+                
+                $('[data-dialog]').click(function(e) {
+                    $shape = $(this).find('.shape');
+                    dotToggle('open',$shape);
+                    
+                    var item = $(this).attr('data-dialog');
+                    $('.writer', $('#'+item) ).textillate('start');
+                    $('.writer', $('#'+item) ).textillate({ in: { effect: 'fadeIn', delay: 2.5 } });
+
+                    var mc = $('.dialog');
+                    // $('.dialog').addClass('animated wo');
+                    // TweenLite.from(mc, 0.2, {x:-300, ease:Elastic.easeOut,  easeParams:[0.5, 0.2]});   
+                });
+                $('[data-dialog-close]').click(function() {
+                    dotToggle('close',$shape);
+
+                });
+                $('.dialog__overlay').click(function() {
+                    dotToggle('close',$shape);
+                });
+                $(document).keydown(function(e) {
+                    if (e.keyCode == 27) {
+                        dotToggle('close',$shape);
+                    }
+                });
+
+                $('#menuOpen').click(function(e) {
+                    e.preventDefault();
+                    navToggle('open');
+                });
+
+
+                function siteInit() {
+                    //SABE DEUS COMO PARA ANIMACAO
+                    setTimeout(function(){
+                        $('faa-passing').removeClass('animated');
+                        $('faa-fadding').toggleClass('animated');
+                    }, 2000);
+                }
+
+                $(window).load(function() {
+                    $(".loader").fadeOut("slow");
+                    siteInit();
+                });
+                if( $(window).width() > 600 ){
+                    // animate('.cube');
+                }
+                
+                $('.dialog').on('swipeleft swiperight',function(event){
+                        if (event.type == "swipeleft") {
+                            var that =  $(this);
+                            // $('.next a', that).click();
+                            that.addClass('right');
+                            // that.addClass('animated wobble');
+
+                                $($('[data-dialog-close] span', that) ).click();
+
+                                setTimeout(function(){
+                                    var navNext = that;
+                                    $('.box-images .dots a').each(function(index){
+                                        if(navNext.attr('id') == $(this).attr('data-dialog')){
+                                            var open = $('a', $('#' +$(this).attr('id')).parent().next()).attr('id');
+
+                                            if(typeof open !== 'undefined'){
+                                                eventFire(document.getElementById(open), 'click');   
+                                            }else{
+                                                var existNextgallery = $('#' +$(this).attr('id') ).parent().parent().parent().next();
+                                                var existPrevgallery = $('#' +$(this).attr('id') ).parent().parent().parent().prev();
+
+
+                                                if(existNextgallery.length){
+                                                    var open = $('.dots a:first', existNextgallery).attr('id');
+                                                }else if(existPrevgallery.length){
+                                                    var open = $('.dots a:first', existPrevgallery).attr('id');
+                                                }else{
+                                                    var open = "modal-criacao";
+                                                }
+                                                eventFire(document.getElementById(open), 'click');   
+                                            }
+
+                                        }
+                                    });
+                                    that.removeClass('right');
+                                    // that.removeClass('animated wobble');
+
+                                }, 500);
+                            // $('.prev a', that).click();
+                        }
+                        if (event.type == "swiperight") {
+                            var that =  $(this);
+
+                            // that.addClass('animated wobble');
+                            that.addClass('left');
+                            $($('[data-dialog-close] span', that) ).click();
+                            var navNext = that;
+
+                            setTimeout(function(){
+                                $('.box-images .dots a').each(function(index){
+                                    if(navNext.attr('id') == $(this).attr('data-dialog')){
+                                        var open = $('a', $('#' +$(this).attr('id')).parent().prev()).attr('id');
+
+                                        if(typeof open !== 'undefined'){
+                                            eventFire(document.getElementById(open), 'click');   
+                                        }else{
+                                            var existNextgallery = $('#' +$(this).attr('id') ).parent().parent().parent().next();
+                                            var existPrevgallery = $('#' +$(this).attr('id') ).parent().parent().parent().prev();
+
+                                            if(existNextgallery.length){
+                                                var open = $('.dots a:first', existNextgallery).attr('id');
+                                            }else if(existPrevgallery.length){
+                                                var open = $('.dots a:first', existPrevgallery).attr('id');
+                                            }else{
+                                                var open = "modal-criacao";
+                                            }
+                                            eventFire(document.getElementById(open), 'click');     
+
+                                        }
+
+                                    }
+                                });
+                                that.removeClass('left');
+                                // that.removeClass('animated wobble');
+
+                            }, 500);
+                        }
+                        event.preventDefault();
+                    });
+
+                
+    
+
+                function eventFire(el, etype){
+                  if (el.fireEvent) {
+                    el.fireEvent('on' + etype);
+                  } else {
+                    var evObj = document.createEvent('Events');
+                    evObj.initEvent(etype, true, false);
+                    el.dispatchEvent(evObj);
+                  }
+                }
+
+                 $('.next a').on('click', function(e){
+                    e.preventDefault();
+
+                    var that =  $(this).parent().parent().parent().parent();
+                    that.addClass('right');
+
+                    $($('[data-dialog-close] span', that) ).click();
+
+                    setTimeout(function(){
+                        var navNext = that;
+                        $('.box-images .dots a').each(function(index){
+                            if(navNext.attr('id') == $(this).attr('data-dialog')){
+                                var open = $('a', $('#' +$(this).attr('id')).parent().next()).attr('id');
+
+                                if(typeof open !== 'undefined'){
+                                    eventFire(document.getElementById(open), 'click');   
+                                }else{
+                                    var existNextgallery = $('#' +$(this).attr('id') ).parent().parent().parent().next();
+                                    var existPrevgallery = $('#' +$(this).attr('id') ).parent().parent().parent().prev();
+
+
+                                    if(existNextgallery.length){
+                                        var open = $('.dots a:first', existNextgallery).attr('id');
+                                    }else if(existPrevgallery.length){
+                                        var open = $('.dots a:first', existPrevgallery).attr('id');
+                                    }else{
+                                        var open = "modal-criacao";
+                                    }
+                                    eventFire(document.getElementById(open), 'click');   
+                                }
+
+                            }
+                        });
+                        that.removeClass('right');
+
+                    }, 500);
+
+
+                });
+
+
+
+                $('.prev a').on('click', function(e){
+                    e.preventDefault();
+
+                    var that =  $(this).parent().parent().parent().parent();
+                    that.addClass('left');
+
+                    $($('[data-dialog-close] span', that) ).click();
+                    var navNext = that;
+
+                    setTimeout(function(){
+                        $('.box-images .dots a').each(function(index){
+                            if(navNext.attr('id') == $(this).attr('data-dialog')){
+                                var open = $('a', $('#' +$(this).attr('id')).parent().prev()).attr('id');
+
+                                if(typeof open !== 'undefined'){
+                                    eventFire(document.getElementById(open), 'click');   
+                                }else{
+                                    var existNextgallery = $('#' +$(this).attr('id') ).parent().parent().parent().next();
+                                    var existPrevgallery = $('#' +$(this).attr('id') ).parent().parent().parent().prev();
+
+                                    if(existNextgallery.length){
+                                        var open = $('.dots a:first', existNextgallery).attr('id');
+                                    }else if(existPrevgallery.length){
+                                        var open = $('.dots a:first', existPrevgallery).attr('id');
+                                    }else{
+                                        var open = "modal-criacao";
+                                    }
+                                    eventFire(document.getElementById(open), 'click');     
+
+                                }
+
+                            }
+                        });
+                        that.removeClass('left');
+
+                    }, 500);
+
+                });
+            
+            // var scene = document.getElementById('parallax-content');
+            // var parallax = new Parallax(scene);
+            // $('.dialog').parallaxify({positionProperty: 'transform'});
+
+
+            function scrollToElement( target ) {
+                    var topoffset = 0;
+                    var speed = 1500;
+                    var destination = jQuery( target ).offset().top - topoffset;
+                    jQuery( 'html:not(:animated),body:not(:animated)' ).animate( { scrollTop: destination}, speed, function() {
+                        window.location.hash = target;
+                    });
+                    return false;
+                }
+     
+            });
+        </script>
+
+        <link rel="Stylesheet" type="text/css" href="http://fields360.agency/anuncio360/plugins/smoothTouchScroll/css/smoothTouchScroll.css" />
+        <script src="http://fields360.agency/anuncio360/plugins/smoothTouchScroll/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+        <script src="http://fields360.agency/anuncio360/plugins/smoothTouchScroll/js/source/jquery.kinetic.js" type="text/javascript"></script>
+        <!-- FIXME mudei o código do smoothtouchscroll para melhorar a performance  -->
+        <script src="touchscroll.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // FIXME dei uma enxugada aqui, pois não precisa mais do height programático
+
+                function resized() {
+
+                    $("#anuncio360").smoothTouchScroll("recalculateScrollableArea");
+                }
+
+                $(window).resize(function() { resized(); });
+                $(window).load(function() { 
+                    $("#anuncio360").smoothTouchScroll({
+                        continuousScrolling: true,
+                        enableLinks: true,
+                    });
+
+                });
+
+            });
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="http://fields360.agency/anuncio360/plugins/dialog/css/dialog.css" />
+        <link rel="stylesheet" type="text/css" href="http://fields360.agency/anuncio360/plugins/dialog/css/dialog-ricky.css" />
+        <script src="http://fields360.agency/anuncio360/plugins/dialog/js/classie.js"></script>
+        <script src="http://fields360.agency/anuncio360/plugins/dialog/js/dialogFx.js"></script>
+        <script>
+            (function() {
+                $('[data-dialog]').each( function(){
+                    var dlgtrigger = this,
+                        somedialog = document.getElementById( dlgtrigger.getAttribute('data-dialog') ),
+                        dlg = new DialogFx( somedialog );
+                    dlgtrigger.addEventListener('click', dlg.toggle.bind(dlg) );
+                });
+            })();
+        </script>
+
+        <script src="http://fields360.agency/anuncio360/plugins/parallax/jquery.parallax.js"></script>
+        <script>
+            //FIXME correção do bug no desktop (gap entre as duas imagens)
+            $('.parallax').parallax({
+                calibrateX: true,
+                originX: 0.0,
+            });
+            
+        </script>
+        
+
+        <script type="text/javascript">
+        // $(document).ready(function(){
+        //    var mc = $('#testCanvas');
+        //     TweenLite.from(mc, 0.9, {x:-600, ease:Elastic.easeOut,  easeParams:[0.5, 0.2]});
+        //     // TweenLite.to(mc, 1, {_xscale:0, ease:Elastic.easeOut, easeParams:[0.5, 0.2]});
+        // })
+        </script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-70277738-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>
