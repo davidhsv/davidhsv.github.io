@@ -691,6 +691,7 @@
         
 
         <script type="text/javascript">
+            var wrapper, widthWrapper, steps, offset, scrollLeft;
 
             $(document).ready(function () {
                 // FIXME dei uma enxugada aqui, pois não precisa mais do height programático
@@ -702,7 +703,7 @@
                     this.el.scrollTop = options.y;
                 };
 
-                var wrapper, widthWrapper, steps, offset;
+                
                 function resized() { 
 
                     $("#anuncio360").smoothTouchScroll("recalculateScrollableArea");
@@ -723,11 +724,11 @@
 
 
                     // TODO refazer calculos no resized
-                    gyro.frequency = 50;
+                    gyro.frequency = 10;
                     wrapper = $(".scrollWrapper");
                     widthWrapper = parseInt($(".scrollableArea").get(0).style.width, 10)/2;// /2, pois está com o dobro de elementos no DOM (4 box-images)
                     steps = widthWrapper/360;
-                    offset = $(".box-images.b1").outerWidth();
+                    offset = $(".box-images.b1").outerWidth() * 2;
 
                     wrapper.kinetic('jumpTo', { x: offset});
 
@@ -738,16 +739,24 @@
                             if (o.alpha == null) {
                                 return;
                             }
-                            //jQuery(".teste123").text(steps * o.alpha);
+                            scrollLeft = (offset + (steps * o.alpha * -1));
                             
-                            wrapper.kinetic('jumpTo', { x: (offset + (steps * o.alpha * -1))});
                         });
+
                     }
-                    
+
+                    window.requestAnimationFrame(step);
 
                 });
 
             });
+
+            function step() {
+                if (scrollLeft) {
+                    wrapper.kinetic('jumpTo', { x: scrollLeft});
+                }
+                window.requestAnimationFrame(step);
+            }
         </script>
 
         <link rel="stylesheet" type="text/css" href="http://fields360.agency/anuncio360/plugins/dialog/css/dialog.css" />
