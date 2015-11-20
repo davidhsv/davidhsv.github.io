@@ -689,13 +689,16 @@
                     widthWrapper = wrapper.get(0).style.width;
                     steps = widthWrapper/360;
 
-                    gyro.startTracking(function(o) {
-                        // o.x, o.y, o.z for accelerometer
-                        // o.alpha, o.beta, o.gamma for gyro
-                        jQuery(".teste123").text(o.alpha);
-                        
-                        wrapper.kinetic('jumpTo', { x: steps * o.alpha});
-                    });
+                    if (gyro.hasFeature('devicemotion')) {
+                        gyro.startTracking(function(o) {
+                            // o.x, o.y, o.z for accelerometer
+                            // o.alpha, o.beta, o.gamma for gyro
+                            jQuery(".teste123").text(o.alpha);
+                            
+                            wrapper.kinetic('jumpTo', { x: steps * o.alpha});
+                        });
+                    }
+                    
 
                 });
 
