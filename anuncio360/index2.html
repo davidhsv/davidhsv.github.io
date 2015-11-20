@@ -686,7 +686,7 @@
 
                     // padrao -> gyro.frequency = 500;
                     wrapper = $(".scrollWrapper");
-                    widthWrapper = wrapper.get(0).style.width;
+                    widthWrapper = parseInt($(".scrollableArea").get(0).style.width, 10);
                     steps = widthWrapper/360;
 
                     if (gyro.hasFeature('devicemotion')) {
