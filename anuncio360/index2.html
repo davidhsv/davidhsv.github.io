@@ -736,7 +736,7 @@
                         gyro.startTracking(function(o) {
                             // o.x, o.y, o.z for accelerometer
                             // o.alpha, o.beta, o.gamma for gyro
-                            if (o.alpha == null) {
+                            if (o.alpha == null || o.alpha == 0) {
                                 return;
                             }
                             scrollLeft = (offset + (steps * o.alpha * -1));
