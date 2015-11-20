@@ -41,6 +41,7 @@
         </style>
     </head>
     <body>
+        <div style="position:fixed; top: 10px; left: 10px;z-index: 99999;"> teste</div>
         <div class="loader"></div>
 
         <nav>
@@ -656,6 +657,7 @@
         <script src="http://fields360.agency/anuncio360/plugins/smoothTouchScroll/js/source/jquery.kinetic.js" type="text/javascript"></script>
         <!-- FIXME mudei o código do smoothtouchscroll para melhorar a performance  -->
         <script src="touchscroll.js"></script>
+        <script src="gyro.js"></script>
 
         <script type="text/javascript">
             $(document).ready(function () {
@@ -671,6 +673,12 @@
                     $("#anuncio360").smoothTouchScroll({
                         continuousScrolling: true,
                         enableLinks: true,
+                    });
+
+                    gyro.startTracking(function(o) {
+                        // o.x, o.y, o.z for accelerometer
+                        // o.alpha, o.beta, o.gamma for gyro
+                        console.log(o.beta);
                     });
 
                 });
