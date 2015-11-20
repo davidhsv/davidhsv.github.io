@@ -660,9 +660,18 @@
         <script src="gyro.js"></script>
 
         <script type="text/javascript">
+
             $(document).ready(function () {
                 // FIXME dei uma enxugada aqui, pois não precisa mais do height programático
 
+                //FIXME adicionar método ao kinetic
+                $.Kinetic.prototype.jumpTo = function(options){
+                    this.stop();
+                    this.el.scrollLeft = options.x;
+                    this.el.scrollTop = options.y;
+                };
+
+                var wrapper, widthWrapper, steps;
                 function resized() {
 
                     $("#anuncio360").smoothTouchScroll("recalculateScrollableArea");
@@ -675,10 +684,17 @@
                         enableLinks: true,
                     });
 
+                    // padrao -> gyro.frequency = 500;
+                    wrapper = $(".scrollWrapper");
+                    widthWrapper = wrapper.get(0).style.width;
+                    steps = widthWrapper/360;
+
                     gyro.startTracking(function(o) {
                         // o.x, o.y, o.z for accelerometer
                         // o.alpha, o.beta, o.gamma for gyro
                         jQuery(".teste123").text(o.alpha);
+                        
+                        wrapper.kinetic('jumpTo', { x: steps * o.alpha});
                     });
 
                 });
