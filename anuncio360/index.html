@@ -41,7 +41,7 @@
         </style>
     </head>
     <body>
-        <div style="position:fixed; top: 10px; left: 10px;z-index: 99999;"> teste</div>
+        <div class="teste123" style="position:fixed; top: 10px; left: 10px;z-index: 99999;"> teste</div>
         <div class="loader"></div>
 
         <nav>
@@ -678,7 +678,7 @@
                     gyro.startTracking(function(o) {
                         // o.x, o.y, o.z for accelerometer
                         // o.alpha, o.beta, o.gamma for gyro
-                        console.log(o.beta);
+                        jQuery(".teste123").text(o.beta);
                     });
 
                 });
